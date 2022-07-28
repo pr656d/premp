@@ -7,7 +7,7 @@ slug = "about"
 
 My name is Prem Patel. I am a Computer Science & Engineering graduate from [Parul University][pu] and [Google certified Associal Android Developer][aadcertificate].
 
-I used to be a freelance frontend developer before moving to Android development and created a website for [unseenarchitects](https://unseenarchitects.com).
+I was a freelance frontend developer before moving to Android development and created a website for [unseenarchitects](https://unseenarchitects.com).
 
 Currently, I am working at [Simform][simform] as a Senior Software Engineer. Developing Android applications and ensuring high code quality.
 
