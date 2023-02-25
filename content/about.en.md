@@ -15,7 +15,10 @@ I am interested in software architecture, design patterns, DevOps, Self hosting 
 
 In my spare time I like to read books, watch movies and series.
 
+Do checkout my [experience page][experience] to know more about my experiences.
+
 [aadcertificate]: https://www.credential.net/33ae4f6b-263d-4e37-99fd-67ea77980443?key=3e751dbe99d00d7dec86173da34a8f3f6cc058cf3832f2d1258694641dfaa002
 [pu]: https://paruluniversity.ac.in/
 [simform]: https://simform.com/
 [now]: /now
+[experience]: /experience
