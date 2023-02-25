@@ -94,12 +94,18 @@ url = "https://www.linkedin.com/in/pr656d/"
 [languages.en]
 languageName = ":us:"
 
+
+[[languages.en.menu.main]]
+name = "Experience"
+weight = 1
+url = "experience/"
+
 [[languages.en.menu.main]]
 name = "Now"
-weight = 1
+weight = 2
 url = "now/"
 
 [[languages.en.menu.main]]
 name = "About"
-weight = 2
+weight = 3
 url = "about/"
