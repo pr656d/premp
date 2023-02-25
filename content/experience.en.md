@@ -30,6 +30,7 @@ slug = "experience"
 ### Freelance
 * July 2017, Worked on static responsive website for [Unseenarchitects][unseenarchitects] in order to help them showcase their company online.
     * Was live till 2019
+* January 2020, Started working on [CattleNotes][CattleNotes] as a project to showcase my Android skills.
 
 [SSNeumorphicKit]: https://github.com/SimformSolutionsPvtLtd/SSNeumorphicKit
 [AndroidProjectSetup]: https://github.com/SimformSolutionsPvtLtd/Android_Project_Setup
@@ -41,3 +42,4 @@ slug = "experience"
 [SAI]: https://shield.ai/
 [Nova2]: https://shield.ai/nova-2/
 [unseenarchitects]: https://unseenarchitects.com
+[CattleNotes]: https://github.com/pr656d/CattleNotes
