@@ -33,7 +33,7 @@ slug = "experience"
     * Was live till 2019
 * January 2020, Started working on [CattleNotes][CattleNotes] as a project to showcase my Android skills.
 
-[SSNeumorphicKit]: https://github.com/SimformSolutionsPvtLtd/SSNeumorphicKit
+[SSNeumorphicKit]: https://github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit
 [AndroidProjectSetup]: https://github.com/SimformSolutionsPvtLtd/Android_Project_Setup
 [cookiecutter]: https://github.com/cookiecutter/cookiecutter
 [DingStingerIOS]: https://apps.apple.com/us/app/ding-stinger/id586028601
