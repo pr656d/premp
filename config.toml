@@ -14,7 +14,7 @@ author = "Prem Patel"
 # license = '<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA-4.0</a>'
 description = "Prem Patel's personal website"
 keywords = "developer,personal"
-info = ["Software Engineer","Android developer | DevOps explorer | GoLang Learner"]
+info = ["Senior Software Engineer","Android | AWS | DevOps"]
 avatarURL = "images/avatar.jpg"
 #gravatar = "prempatel40p@gmail.com"
 dateFormat = "January 2, 2006"
