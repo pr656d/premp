@@ -14,6 +14,7 @@ slug = "experience"
     * Responsible for making strategic decisions to deliver features on time.
     * Worked on major key features of the app like maps (Online & Offline), ATAK integration, route planning, alerts and communication with Nova.
     * I feel proud if I can showcase the demo in future when it's publicly available.
+    * [Recommendation by Rommel Pesigan][linkedRecommendations]
 * Mentoring trainees of 2023
 
 ### Software Engineer, Simform (June 2020 - January 2022)
@@ -43,3 +44,4 @@ slug = "experience"
 [Nova2]: https://shield.ai/nova-2/
 [unseenarchitects]: https://unseenarchitects.com
 [CattleNotes]: https://github.com/pr656d/CattleNotes
+[linkedRecommendations]: https://www.linkedin.com/in/pr656d/details/recommendations/
