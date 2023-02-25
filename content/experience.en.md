@@ -5,7 +5,7 @@ title = "Experience"
 slug = "experience" 
 +++
 
-## Senior Software Engineer, Simform (January 2022 - Present)
+### Senior Software Engineer, Simform (January 2022 - Present)
 * Transitioned to Senior, I led a team of developers, Mentoring trainees, guiding team members and reviewing pull requests of different projects to ensure architecture and quality.
 * Maintainer of [Android project template][AndroidProjectSetup].
 * Throughout 2022 worked with [ShieldAI][SAI] team on their next generation intelligent drone app for [Nova2 product][Nova2].
@@ -16,7 +16,7 @@ slug = "experience"
     * I feel proud if I can showcase the demo in future when it's publicly available.
 * Mentoring trainees of 2023
 
-## Software Engineer, Simform (June 2020 - January 2022)
+### Software Engineer, Simform (June 2020 - January 2022)
 * Worked on diverse set of client projects
 * Created [Android project template][AndroidProjectSetup] using [cookiecutter][cookiecutter] which is widely used in the department to quickly get started with the new project from scratch.
 * Worked with GlobalConnect to transition their project into Simform and worked on [GlobalConnect Android applications][GCApps].
@@ -27,7 +27,7 @@ slug = "experience"
 * Shipping apps to play store.
 * In app purchase & updates.
 
-## Freelance
+### Freelance
 * July 2017, Worked on static responsive website for [Unseenarchitects][unseenarchitects] in order to help them showcase their company online.
     * Was live till 2019
 
