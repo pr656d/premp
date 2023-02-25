@@ -18,7 +18,7 @@ slug = "experience"
 
 ### Software Engineer, Simform (June 2020 - January 2022)
 * Worked on diverse set of client projects
-* Created [Android project template][AndroidProjectSetup] using [cookiecutter][cookiecutter] which is widely used in the department to quickly get started with the new project from scratch.
+* Created [Android project template][AndroidProjectSetup] using [cookiecutter][cookiecutter] which is widely being used in the department to quickly get started with the new project from scratch.
 * Worked with GlobalConnect to transition their project into Simform and worked on [GlobalConnect Android applications][GCApps].
     * Worked on key feature of making vending machines touchless using BLE. See [touchless demo][touchlessDemo].
     * Refactored various parts of the project to fullfill future requirements of the product.
