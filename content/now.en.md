@@ -7,21 +7,16 @@ slug = "now"
 
 ### Learning
 - Building my personal website
-- As part of DevOps self hosting services on the cloud. See my services on the [Dashboard][dashboard] page.
-- Exploring [AWS][aws] & [Google Cloud][googlecloud]
-- [GoLang][golang] language for backend and scripting
+- Preparing for AWS Solutions Architect Associate certification
+- Exploring [AWS][aws] and services
 
 ### Reading
-- [Clean Architecture][cleanarchitecture]
+* Reading [Kotlin Design Patterns and Best Practices][kotlinBook]
 
 ---
 
 This is a **now page**, a place to share what I am focused right now. If you want to know more, [read here][aboutnow].
 
-[golang]: https://go.dev/
-[dashboard]: https://dashboard.premp.in/
 [aws]: https://aws.amazon.com/
-[googlecloud]: https://cloud.google.com/
-[cleanarchitecture]: https://www.amazon.com/dp/0134494164
 [aboutnow]: https://nownownow.com/about
-[hugo]: https://gohugo.io
+[kotlinBook]: https://www.packtpub.com/product/kotlin-design-patterns-and-best-practices-second-edition/9781801815727
