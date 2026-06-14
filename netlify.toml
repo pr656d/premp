@@ -2,4 +2,9 @@
   package = "netlify-plugin-discord"
 
 [build]
-  environment = { NODE_VERSION = "22" }
+  command = "hugo"
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "22"
+  HUGO_VERSION = "0.163.1"
