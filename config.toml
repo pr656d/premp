@@ -1,7 +1,7 @@
 baseURL = "https://premp.in"
 title = "Prem Patel"
 theme = "hugo-coder"
-languageCode = "en"
+locale = "en"
 defaultContentLanguage = "en"
 paginate = 20
 pygmentsStyle = "bw"
@@ -99,7 +99,7 @@ weight = 4
 url = "https://www.linkedin.com/in/pr656d/"
 
 [languages.en]
-languageName = ":us:"
+label = ":us:"
 
 
 [[languages.en.menu.main]]
