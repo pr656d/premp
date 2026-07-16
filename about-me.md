@@ -1,8 +1,8 @@
 # Prem Patel
 
 - **Email**: hello@premp.in
-- **Phone**: [PHONE]
-- **Location**: [CITY]
+- **Phone**: +91 95746 85826
+- **Location**: Ahmedabad, India
 - **LinkedIn**: [LinkedIn](https://www.linkedin.com/in/pr656d/)
 - **GitHub**: [GitHub](https://github.com/pr656d)
 
@@ -80,8 +80,3 @@ Lead Software Engineer with 6 years of experience specializing in native Android
 - **AWS Certified Solutions Architect – Associate**  
   *Status: In Progress*
 
----
-
-## Open Questions / Placeholders
-1. [PHONE] - User phone number required.
-2. [CITY] - User city/location required.

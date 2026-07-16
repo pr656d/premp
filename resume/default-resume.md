@@ -1,6 +1,6 @@
 # Prem Patel | Lead Engineer
 
-- **Email**: hello@premp.in | **Phone**: [PHONE] | **Location**: [CITY]
+- **Email**: hello@premp.in | **Phone**: +91 95746 85826 | **Location**: Ahmedabad, India
 - **LinkedIn**: [linkedin.com/in/pr656d](https://www.linkedin.com/in/pr656d/) | **GitHub**: [github.com/pr656d](https://github.com/pr656d)
 
 ---
