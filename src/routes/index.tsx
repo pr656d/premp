@@ -1,5 +1,5 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute, useNavigate, useRouter } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { PaperCanvas } from "../components/notebook/PaperCanvas";
 import { Doodle } from "../components/notebook/Doodle";
 
@@ -9,7 +9,23 @@ export const Route = createFileRoute("/")({
 
 function Cover() {
   const navigate = useNavigate();
+  const router = useRouter();
   const [opening, setOpening] = useState(false);
+
+  // Prefetch the index route + fonts as soon as the cover mounts,
+  // so the open animation and contents page render instantly on click.
+  useEffect(() => {
+    router.preloadRoute({ to: "/index-page" }).catch(() => {});
+    // Trigger font loads (Caveat handwriting + Inter body) up-front.
+    if (typeof document !== "undefined" && "fonts" in document) {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const fonts = (document as any).fonts;
+      try {
+        fonts.load("500 2rem Caveat");
+        fonts.load("500 1rem Inter");
+      } catch { /* noop */ }
+    }
+  }, [router]);
 
   const open = () => {
     const reduced =
@@ -20,22 +36,49 @@ function Cover() {
       return;
     }
     setOpening(true);
-    window.setTimeout(() => navigate({ to: "/index-page" }), 650);
+    window.setTimeout(() => navigate({ to: "/index-page" }), 780);
   };
 
   return (
     <PaperCanvas>
       <div className="flex min-h-screen items-center justify-center px-6 py-10 sm:py-16">
-        <div className="relative" style={{ perspective: "1800px" }}>
+        <div className="relative" style={{ perspective: "2400px", perspectiveOrigin: "50% 50%" }}>
+          {/* Static index preview under the cover — visible as it lifts */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 rounded-r-xl rounded-l-md border border-[var(--rule)] bg-[var(--paper)] page-paper overflow-hidden"
+            style={{ zIndex: 0 }}
+          >
+            <div className="h-full w-full px-[9%] py-[10%]">
+              <div className="text-[clamp(9px,1vh,12px)] uppercase tracking-[0.3em] text-[var(--ink-faint)]">
+                00 · Index
+              </div>
+              <div className="mt-2 h-px w-8 bg-[var(--ink)]/30" />
+              <h2 className="ink-hand mt-6 text-[clamp(2rem,5.5vh,4rem)] leading-none text-[var(--ink)]">
+                Contents
+              </h2>
+              <ol className="mt-6 space-y-1.5 text-[var(--ink-muted)]">
+                {["About","Experience","Projects","Uses","Now","Resume","Contact"].map((l, i) => (
+                  <li key={l} className="flex items-baseline gap-2">
+                    <span className="text-[0.65rem] text-[var(--ink-faint)] w-6">{String(i+1).padStart(2,"0")}</span>
+                    <span className="ink-hand text-[clamp(1.25rem,2.5vh,1.9rem)]">{l}</span>
+                    <span className="flex-1 border-b border-dotted border-[var(--rule)] translate-y-[-4px]" />
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+
           <button
             onClick={open}
             aria-label="Open notebook"
-            className={`group relative block aspect-[5/7] h-[70vh] max-h-[820px] min-h-[460px] w-auto max-w-[92vw] rounded-r-xl rounded-l-md border border-[var(--rule)] bg-[var(--paper-tint)] text-left shadow-[0_20px_40px_-20px_rgba(0,0,0,0.25),inset_-3px_0_0_var(--rule)] transition-transform hover:scale-[1.01] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] ${opening ? "cover-opening" : ""}`}
+            className={`group relative block aspect-[5/7] h-[70vh] min-h-[460px] w-auto max-w-[92vw] rounded-r-xl rounded-l-md border border-[var(--rule)] bg-[var(--paper-tint)] text-left shadow-[0_20px_40px_-20px_rgba(0,0,0,0.28),inset_-3px_0_0_var(--rule)] transition-transform hover:scale-[1.005] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--link)] ${opening ? "cover-opening" : ""}`}
+            style={{ zIndex: 1 }}
           >
             {/* spine */}
-            <span aria-hidden className="absolute left-0 top-0 h-full w-2 rounded-l-md bg-[var(--ink)]/10" />
-            {/* elastic band */}
-            <span aria-hidden className="absolute inset-y-[-10px] right-[10%] w-2 rounded-sm bg-[var(--ink)]/25 shadow-[0_0_0_1px_rgba(0,0,0,0.05)]" />
+            <span aria-hidden className="absolute left-0 top-0 h-full w-2 rounded-l-md bg-[var(--ink)]/12" />
+            {/* elastic band — realistic, wraps top & bottom */}
+            <span aria-hidden className="elastic-band" style={{ right: "12%" }} />
 
             <div className="flex h-full flex-col justify-between px-[8%] py-[9%]">
               <div>
@@ -58,8 +101,8 @@ function Cover() {
                 </p>
               </div>
 
-              <div className="flex items-end justify-between pr-[8%]">
-                <div className="flex items-center gap-2 text-[var(--ink-faint)]">
+              <div className="flex items-end justify-between pr-[24%]">
+                <div className="flex items-center gap-2 text-[var(--red-pencil)]">
                   <Doodle kind="star" className="h-4 w-4" />
                   <span className="ink-hand text-[clamp(1rem,2vh,1.5rem)]">tap to open</span>
                 </div>

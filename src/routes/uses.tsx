@@ -15,13 +15,13 @@ export const Route = createFileRoute("/uses")({
 
 function Section({ title, items }: { title: string; items: [string, string][] }) {
   return (
-    <div className="mt-8">
-      <h2 className="ink-hand text-3xl text-[var(--ink)]">{title}</h2>
-      <dl className="mt-3 divide-y divide-dashed divide-[var(--rule)]">
+    <div>
+      <h2 className="ink-hand text-2xl text-[var(--ink)]">{title}</h2>
+      <dl className="mt-2 divide-y divide-dashed divide-[var(--rule)]">
         {items.map(([k, v]) => (
-          <div key={k} className="flex gap-4 py-2 text-sm">
-            <dt className="w-32 shrink-0 text-[var(--ink-faint)]">{k}</dt>
-            <dd className="text-[var(--ink)]">{v}</dd>
+          <div key={k} className="flex gap-3 py-1.5 text-sm">
+            <dt className="w-24 shrink-0 text-[var(--red-pencil)] text-xs uppercase tracking-wider pt-0.5">{k}</dt>
+            <dd className="text-[var(--ink)] flex-1">{v}</dd>
           </div>
         ))}
       </dl>
@@ -33,25 +33,32 @@ function Uses() {
   return (
     <NotebookPage currentPath="/uses" title="Uses" tint="3">
       <p className="text-[var(--ink-muted)]">Gear, tools, and the homelab.</p>
-      <Section title="Hardware" items={[
-        ["Daily driver", "MacBook Pro (Apple Silicon)"],
-        ["Phone", "Android — always testing on real hardware"],
-        ["Homelab", "Hetzner dedicated + a small NAS at home"],
-        ["Keyboard", "Something clicky and unremarkable"],
-      ]} />
-      <Section title="Dev" items={[
-        ["Editor", "Android Studio · VS Code · Neovim for text"],
-        ["Languages", "Kotlin, Java, TypeScript, a lot of shell"],
-        ["Android", "Jetpack Compose, Coroutines, Room, BLE stack"],
-        ["Version control", "Git, self-hosted Forgejo mirror"],
-      ]} />
-      <Section title="Self-hosted stack" items={[
-        ["Compute", "Hetzner + Docker Compose per service"],
-        ["Networking", "Cloudflare Tunnel · Traefik reverse proxy"],
-        ["Automation", "n8n for agentic workflows and glue"],
-        ["Money", "Firefly III"],
-        ["Backups", "Restic → object storage, nightly"],
-      ]} />
+      <div className="mt-6 grid gap-6 md:grid-cols-2">
+        <Section title="Hardware" items={[
+          ["Daily driver", "MacBook Pro (Apple Silicon)"],
+          ["Phone", "Android — always testing on real hardware"],
+          ["Homelab", "Hetzner dedicated + a small NAS at home"],
+          ["Keyboard", "Something clicky and unremarkable"],
+        ]} />
+        <Section title="Dev" items={[
+          ["Editor", "Android Studio · VS Code · Neovim"],
+          ["Languages", "Kotlin, Java, TypeScript, shell"],
+          ["Android", "Compose, Coroutines, Room, BLE"],
+          ["Version control", "Git · self-hosted Forgejo mirror"],
+        ]} />
+        <Section title="Self-hosted" items={[
+          ["Compute", "Hetzner + Docker Compose"],
+          ["Networking", "Cloudflare Tunnel · Traefik"],
+          ["Automation", "n8n"],
+          ["Money", "Firefly III"],
+          ["Backups", "Restic → object storage, nightly"],
+        ]} />
+        <Section title="Small joys" items={[
+          ["Notes", "Plain markdown, git-tracked"],
+          ["Reader", "Miniflux, self-hosted"],
+          ["Music", "Navidrome"],
+        ]} />
+      </div>
     </NotebookPage>
   );
 }
