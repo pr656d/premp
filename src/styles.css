@@ -286,7 +286,7 @@ html {
 @media (hover: hover) and (pointer: fine) {
   .cover-tilt:hover:not(.cover-opening),
   .cover-tilt:focus-visible:not(.cover-opening) {
-    transform: perspective(2400px) rotateY(-7deg) rotateX(1deg);
+    transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-7deg) rotateX(1deg);
     box-shadow:
       0 28px 46px -16px rgba(0,0,0,0.34),
       30px 36px 62px -22px rgba(0,0,0,0.28),
@@ -339,9 +339,9 @@ html {
 
 /* Cover hinge open animation — starts from the lifted hover pose so hover→click is seamless */
 @keyframes cover-hinge {
-  0%   { transform: perspective(2400px) rotateY(-7deg) rotateX(1deg); box-shadow: 0 20px 40px -20px rgba(0,0,0,0.25); }
-  75%  { transform: perspective(2400px) rotateY(-95deg) rotateX(0deg); box-shadow: 40px 40px 60px -20px rgba(0,0,0,0.35); }
-  100% { transform: perspective(2400px) rotateY(-150deg) rotateX(0deg); box-shadow: 80px 60px 80px -30px rgba(0,0,0,0.15); }
+  0%   { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-7deg) rotateX(1deg); box-shadow: 0 20px 40px -20px rgba(0,0,0,0.25); }
+  75%  { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-95deg) rotateX(0deg); box-shadow: 40px 40px 60px -20px rgba(0,0,0,0.35); }
+  100% { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-150deg) rotateX(0deg); box-shadow: 80px 60px 80px -30px rgba(0,0,0,0.15); }
 }
 .cover-opening {
   animation: cover-hinge 500ms linear forwards;
