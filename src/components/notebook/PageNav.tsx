@@ -44,6 +44,7 @@ export function usePageNav(currentPath: string) {
       const dx = t.clientX - touch.current.x;
       const dy = t.clientY - touch.current.y;
       if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        window.scrollTo(0, 0);
         if (dx < 0) goRight();
         else goLeft();
       }
