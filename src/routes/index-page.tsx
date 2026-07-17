@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PaperCanvas } from "../components/notebook/PaperCanvas";
 import { NotebookSurface } from "../components/notebook/NotebookSurface";
-import { PAGES } from "../components/notebook/PageNav";
+import { PAGES, usePageNav } from "../components/notebook/PageNav";
 import { Doodle } from "../components/notebook/Doodle";
 
 export const Route = createFileRoute("/index-page")({
@@ -17,6 +17,7 @@ export const Route = createFileRoute("/index-page")({
 });
 
 function IndexPage() {
+  usePageNav("/index-page");
   return (
     <PaperCanvas>
       <div className="flex min-h-screen w-full items-center justify-center px-4 py-6 md:py-10">

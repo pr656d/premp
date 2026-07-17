@@ -8,11 +8,13 @@ interface Props {
   title: string;
   kicker?: string;
   tint?: "none" | "1" | "2" | "3";
+  align?: "center" | "start";
   children: ReactNode;
 }
 
-export function NotebookPage({ currentPath, title, kicker, tint = "none", children }: Props) {
+export function NotebookPage({ currentPath, title, kicker, tint = "none", align = "center", children }: Props) {
   const page = PAGES.find((p) => p.to === currentPath);
+  const justify = align === "start" ? "justify-start" : "justify-center";
   return (
     <PaperCanvas>
       <div className="flex min-h-screen w-full items-center justify-center px-4 py-6 md:py-10">
@@ -25,7 +27,7 @@ export function NotebookPage({ currentPath, title, kicker, tint = "none", childr
                   <span>premp.in</span>
                 </div>
                 <h1 className="ink-hand text-[clamp(2.75rem,7vh,5rem)] leading-[0.95] text-[var(--ink)]">{title}</h1>
-                <div className="mt-6 flex-1 min-h-0 flex flex-col justify-center text-[var(--ink)] leading-relaxed">{children}</div>
+                <div className={`mt-6 flex-1 min-h-0 flex flex-col ${justify} text-[var(--ink)] leading-relaxed`}>{children}</div>
                 <PageNavBar currentPath={currentPath} />
               </div>
             </div>
