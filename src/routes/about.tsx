@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { NotebookPage } from "../components/notebook/NotebookPage";
+import { BulletMark } from "../components/notebook/BulletMark";
 import { Doodle } from "../components/notebook/Doodle";
 
 export const Route = createFileRoute("/about")({
