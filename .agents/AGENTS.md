@@ -28,7 +28,7 @@ tech stack: TanStack Start + TypeScript + Tailwind). The Hugo site below is the
 
 Mirrors the nyomipatel/tiny-artist-studio setup:
 
-- Lovable commits to `pr656d/premp-lovable` `main` (source; repo created when
+- Lovable commits to `pr656d/prem-s-dot-notebook` `main` (source; repo created when
   Prem connects the Lovable project to GitHub — one-time UI step).
 - `/reflect-premp` skill (`.agents/skills/reflect-premp/`) force-pushes
   `lovable-source/main` → `origin/notebook-preview`.
