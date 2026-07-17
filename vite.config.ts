@@ -12,4 +12,11 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Allow the deploy target's Nitro preset to be selected via NITRO_PRESET
+  // (e.g. Netlify branch deploys set NITRO_PRESET=netlify in netlify.toml).
+  // Inside the Lovable sandbox NITRO_PRESET is unset, so this stays undefined
+  // and the wrapper's default Cloudflare behavior is preserved.
+  nitro: process.env.NITRO_PRESET
+    ? { preset: process.env.NITRO_PRESET }
+    : undefined,
 });
