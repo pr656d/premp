@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 import { NotebookPage } from "../components/notebook/NotebookPage";
 
 export const Route = createFileRoute("/projects")({
@@ -15,7 +16,7 @@ export const Route = createFileRoute("/projects")({
 
 type Project = {
   title: string;
-  body: string;
+  body: ReactNode;
   tags: string[];
   href?: string;
 };
@@ -23,29 +24,40 @@ type Project = {
 const FEATURED: Project[] = [
   {
     title: "Smart Vending Platform",
-    body: "BLE/IoT Android app converting manual vending machines to app-driven vending. Custom BLE protocol, white-label multi-brand builds.",
-    tags: ["Kotlin", "BLE", "IoT"],
+    body: (
+      <>BLE/IoT Android app converting <span className="marker-hl">manual vending machines into app-connected ones</span>. Custom BLE protocol, white-label multi-brand builds.</>
+    ),
+    tags: ["BLE GATT", "IoT", "White-label flavors"],
   },
   {
     title: "Autonomous Drone Ground Control",
-    body: "Android ground-control app over a custom RF SDK: live telemetry, offline maps, route planning and in-flight navigation.",
-    tags: ["Kotlin", "Maps", "RF"],
+    body: (
+      <>Android ground-control app over a custom RF SDK: <span className="marker-hl">live telemetry, offline maps</span>, route planning and in-flight navigation.</>
+    ),
+    tags: ["Offline Maps", "RF Telemetry", "Route Navigation"],
   },
   {
     title: "SSNeumorphicKit",
-    body: "Open-source neumorphic UI kit for Android — soft shadows done properly, without murdering the CPU. 83 stars on GitHub.",
-    tags: ["Kotlin", "Open Source"],
+    body: (
+      <>Open-source neumorphic UI kit for Android — soft shadows done properly, without murdering the CPU. <span className="marker-hl">83 stars</span> on GitHub.</>
+    ),
+    tags: ["Kotlin Library", "Custom Views", "Open Source"],
     href: "https://github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit",
   },
   {
     title: "Unified Communications Platform",
-    body: "Jitsi + Matrix event architecture on Android: channels, calls, threads. Parsed the event stream into a scalable chat UI.",
-    tags: ["Kotlin", "Architecture"],
+    body: (
+      <>Jitsi + Matrix event architecture on Android: channels, calls, threads. Parsed the event stream into a <span className="marker-hl">scalable chat UI</span>.</>
+    ),
+    tags: ["Jitsi", "Matrix", "Event-driven Architecture"],
   },
   {
     title: "Homelab",
-    body: "Self-hosted services on a cloud VPS: Tailscale, reverse proxy, Cloudflare Tunnels, Docker Compose, n8n with LLM-powered automations, custom AI agent orchestration.",
-    tags: ["DevOps", "Self-hosting", "AI"],
+    body: (
+      <>Self-hosted services on a cloud VPS: Tailscale, reverse proxy, Cloudflare Tunnels, Docker Compose, n8n with LLM-powered automations, <span className="marker-hl">custom AI agent orchestration</span>.</>
+    ),
+    tags: ["Tailscale", "Docker Compose", "n8n + LLM", "Hetzner"],
+    href: "https://dashboard.premp.in",
   },
 ];
 
