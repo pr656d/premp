@@ -46,7 +46,7 @@ function Now() {
       </p>
 
       <p className="mt-4 text-[var(--ink-muted)]">
-        On the workbench: redesigning this very website — the dot-grid notebook you're reading right now — and making my AI setup agent-agnostic: one shared configuration of instructions, skills, and MCP servers that Claude Code, Codex, Gemini, and opencode all read, so switching agents costs nothing.
+        On the workbench: redesigning this very website — the dot-grid notebook you're reading right now — and building an agent-agnostic orchestration setup: a crew of AI agents (Claude Code, Codex, Gemini, opencode) sharing one configuration of instructions, skills, and tools, dispatched in parallel and working my way.
       </p>
 
       <p className="mt-4 text-[var(--ink-muted)]">
