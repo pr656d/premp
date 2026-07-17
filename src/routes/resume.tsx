@@ -19,13 +19,13 @@ export const Route = createFileRoute("/resume")({
 function Resume() {
   return (
     <NotebookPage currentPath="/resume" title="Resume" align="start">
-      <div className="flex items-center gap-3 text-[var(--red-pencil)]">
+      <div className="flex flex-wrap items-center gap-3 gap-y-2 text-[var(--red-pencil)]">
         <span className="ink-hand text-2xl">grab the printable copy</span>
         <Doodle kind="arrow" className="h-6 w-16" />
         <a
           href={PDF_URL}
           download
-          className="inline-flex items-center gap-2 rounded-full border-2 border-[var(--link)] bg-[var(--link)] px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-transparent hover:text-[var(--link)]"
+          className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border-2 border-[var(--link)] bg-[var(--link)] px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-transparent hover:text-[var(--link)]"
         >
           ↓ Download PDF
         </a>
