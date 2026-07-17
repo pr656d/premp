@@ -347,6 +347,17 @@ html {
 }
 .ink-in { animation: ink-in 500ms ease-out both; }
 
+/* Mobile "tap me" breathing — same transform list as hinge so no jump if opening starts mid-breath */
+@keyframes cover-breathe {
+  0%, 100% { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(0deg); }
+  50%      { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-5deg); }
+}
+@media (hover: none), (pointer: coarse) {
+  .cover-tilt:not(.cover-opening) {
+    animation: cover-breathe 4s ease-in-out infinite;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cover-opening { animation-duration: 1ms; }
   .ink-in { animation: none; }
