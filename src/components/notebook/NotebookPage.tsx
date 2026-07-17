@@ -25,7 +25,7 @@ export function NotebookPage({ currentPath, title, kicker, tint = "none", childr
                   <span>premp.in</span>
                 </div>
                 <h1 className="ink-hand text-[clamp(2.75rem,7vh,5rem)] leading-[0.95] text-[var(--ink)]">{title}</h1>
-                <div className="mt-6 text-[var(--ink)] leading-relaxed flex-1">{children}</div>
+                <div className="mt-6 flex-1 min-h-0 flex flex-col justify-center text-[var(--ink)] leading-relaxed">{children}</div>
                 <PageNavBar currentPath={currentPath} />
               </div>
             </div>
