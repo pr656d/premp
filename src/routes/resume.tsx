@@ -18,8 +18,8 @@ export const Route = createFileRoute("/resume")({
 
 function Resume() {
   return (
-    <div className="min-h-screen bg-white text-neutral-900">
-      <div className="mx-auto max-w-4xl px-6 py-10">
+    <div className="flex h-screen h-dvh flex-col bg-white text-neutral-900">
+      <div className="mx-auto flex h-full w-full max-w-4xl min-h-0 flex-col px-6 py-5">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-xs uppercase tracking-widest text-neutral-500">Loose sheet</p>
@@ -42,9 +42,9 @@ function Resume() {
           </div>
         </div>
 
-        <div className="mt-8 overflow-hidden rounded-md bg-white shadow-[0_10px_40px_-12px_rgba(0,0,0,0.25)] ring-1 ring-neutral-200">
-          <object data={PDF_EMBED} type="application/pdf" className="block h-[85vh] w-full">
-            <iframe src={PDF_EMBED} title="Prem Patel Resume" className="block h-[85vh] w-full border-0" />
+        <div className="mt-4 flex-1 min-h-0 overflow-hidden rounded-md bg-white shadow-[0_10px_40px_-12px_rgba(0,0,0,0.25)] ring-1 ring-neutral-200">
+          <object data={PDF_EMBED} type="application/pdf" className="block h-full w-full">
+            <iframe src={PDF_EMBED} title="Prem Patel Resume" className="block h-full w-full border-0" />
             <div className="p-6 text-sm text-neutral-600">
               Your browser can't display the PDF inline.{" "}
               <a href={PDF_URL} className="underline">Download it here.</a>
@@ -52,7 +52,7 @@ function Resume() {
           </object>
         </div>
 
-        <div className="mt-10 text-neutral-700">
+        <div className="mt-4 text-neutral-700">
           <PageNavBar currentPath="/resume" />
         </div>
       </div>
