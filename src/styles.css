@@ -193,6 +193,14 @@ html {
     0 24px 40px -18px rgba(0,0,0,0.7),
     0 60px 100px -40px rgba(0,0,0,0.55);
 }
+@media (max-width: 640px) {
+  .notebook-surface {
+    aspect-ratio: auto;
+    height: 86svh;
+    width: 94vw;
+    max-width: 94vw;
+  }
+}
 
 /* Page block peeking out from under the cover — single full-size element so the
    bottom-right corner draws the full cover radius (thin strips can't). */
