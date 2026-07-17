@@ -89,21 +89,48 @@
   background-position: 0 0;
 }
 
-/* Cursor-pressure overlay: darker dots near cursor */
+/* Cursor-pressure overlay: only the dots near the cursor darken slightly, like pen pressure */
 @utility paper-pressure {
+  position: relative;
+  background-color: var(--paper);
   background-image: radial-gradient(
-    circle at var(--cursor-x, -200px) var(--cursor-y, -200px),
-    var(--dot-strong) 0px,
-    transparent 140px
-  ),
-  radial-gradient(
     circle at center,
     var(--dot) 1px,
     transparent 1.4px
   );
-  background-size:
-    100% 100%,
-    var(--dot-size) var(--dot-size);
+  background-size: var(--dot-size) var(--dot-size);
+}
+.paper-pressure::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+    circle at center,
+    var(--dot-strong) 1px,
+    transparent 1.4px
+  );
+  background-size: var(--dot-size) var(--dot-size);
+  -webkit-mask-image: radial-gradient(
+    circle at var(--cursor-x, -200px) var(--cursor-y, -200px),
+    rgba(0,0,0,0.55) 0px,
+    rgba(0,0,0,0.25) 40px,
+    transparent 90px
+  );
+  mask-image: radial-gradient(
+    circle at var(--cursor-x, -200px) var(--cursor-y, -200px),
+    rgba(0,0,0,0.55) 0px,
+    rgba(0,0,0,0.25) 40px,
+    transparent 90px
+  );
+  z-index: 0;
+}
+.paper-pressure > * { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .paper-pressure::before { display: none; }
+}
+@media (pointer: coarse) {
+  .paper-pressure::before { display: none; }
 }
 
 @utility ink-hand {

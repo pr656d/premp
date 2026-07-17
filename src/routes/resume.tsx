@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageNavBar } from "../components/notebook/PageNav";
 
 const PDF_URL = "/prem-patel-resume.pdf";
+const PDF_EMBED = `${PDF_URL}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`;
 
 export const Route = createFileRoute("/resume")({
   head: () => ({
@@ -41,9 +42,9 @@ function Resume() {
           </div>
         </div>
 
-        <div className="mt-8 overflow-hidden rounded-md border border-neutral-200 shadow-sm">
-          <object data={PDF_URL} type="application/pdf" className="h-[80vh] w-full">
-            <iframe src={PDF_URL} title="Prem Patel Resume" className="h-[80vh] w-full" />
+        <div className="mt-8 overflow-hidden rounded-md bg-white shadow-[0_10px_40px_-12px_rgba(0,0,0,0.25)] ring-1 ring-neutral-200">
+          <object data={PDF_EMBED} type="application/pdf" className="block h-[85vh] w-full">
+            <iframe src={PDF_EMBED} title="Prem Patel Resume" className="block h-[85vh] w-full border-0" />
             <div className="p-6 text-sm text-neutral-600">
               Your browser can't display the PDF inline.{" "}
               <a href={PDF_URL} className="underline">Download it here.</a>
