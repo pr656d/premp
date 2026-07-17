@@ -74,7 +74,7 @@ function Cover() {
 
             <div className="flex h-full flex-col justify-between px-[8%] py-[9%]">
               <div>
-                <div className="flex items-baseline justify-between gap-3 text-[clamp(10px,1.1vh,13px)] uppercase tracking-[0.3em] text-[var(--ink-faint)]">
+                <div className="flex items-baseline justify-between gap-3 pr-[12%] text-[clamp(10px,1.1vh,13px)] uppercase tracking-[0.3em] text-[var(--ink-faint)]">
                   <span>premp.in</span>
                   <a
                     href="mailto:hello@premp.in"
