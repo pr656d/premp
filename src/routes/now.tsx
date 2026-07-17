@@ -46,7 +46,11 @@ function Now() {
       </p>
 
       <p className="mt-4 text-[var(--ink-muted)]">
-        Also on the bench: relearning data structures properly, and riding the GT 650 when the weather agrees.
+        On the workbench: redesigning this very website — the dot-grid notebook you're reading right now — and making my AI setup agent-agnostic: one shared configuration of instructions, skills, and MCP servers that Claude Code, Codex, Gemini, and opencode all read, so switching agents costs nothing.
+      </p>
+
+      <p className="mt-4 text-[var(--ink-muted)]">
+        Also: relearning data structures properly, and riding the GT 650 when the weather agrees.
       </p>
 
       <div className="mt-10 flex items-center gap-3">
