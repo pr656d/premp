@@ -59,7 +59,7 @@ export function IndexContent({ suppressInkIn = false, inert = false }: Props) {
               tabIndex={inert ? -1 : undefined}
               className="hover:text-[var(--ink)]"
             >
-              <span className="font-semibold text-[var(--link)]">←</span> close notebook
+              <span className="font-semibold text-[var(--link)]">←</span> <span className="ink-hand text-lg">close notebook</span>
             </Link>
             <span className="ink-hand text-lg text-[var(--red-pencil)]">
               use ← → to flip pages
