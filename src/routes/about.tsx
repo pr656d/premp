@@ -6,9 +6,9 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About — Prem Patel" },
-      { name: "description", content: "Prem Patel — Lead Engineer at Simform, self-hosted homelab tinkerer, AI-workflow explorer, and rider of a Continental GT 650." },
+      { name: "description", content: "Prem Patel — Android engineer, self-hosted homelab tinkerer, AI-workflow explorer, and rider of a Continental GT 650." },
       { property: "og:title", content: "About — Prem Patel" },
-      { property: "og:description", content: "Lead Engineer · self-hosted homelab · AI workflows · Continental GT 650." },
+      { property: "og:description", content: "Android · self-hosted homelab · AI workflows · Continental GT 650." },
     ],
   }),
   component: () => (
