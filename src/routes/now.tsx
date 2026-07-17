@@ -26,19 +26,21 @@ function Now() {
       <ul className="mt-8 space-y-4 text-lg">
         <li className="flex gap-3">
           <Doodle kind="check" className="mt-1 h-5 w-5 shrink-0 text-[var(--link)]" />
-          Leading Android engineering at Simform.
+          <span className="min-w-0 flex-1">Leading Android engineering at Simform.</span>
         </li>
         <li className="flex gap-3">
           <Doodle kind="check" className="mt-1 h-5 w-5 shrink-0 text-[var(--link)]" />
-          Deepening <span className="marker-hl">BLE and offline-first patterns</span> on production apps.
+          <span className="min-w-0 flex-1">
+            Deepening <span className="marker-hl">BLE and offline-first patterns</span> on production apps.
+          </span>
         </li>
         <li className="flex gap-3">
           <Doodle kind="check" className="mt-1 h-5 w-5 shrink-0 text-[var(--link)]" />
-          Building small AI-agentic workflows on n8n — not chatbots, chores.
+          <span className="min-w-0 flex-1">Building small AI-agentic workflows on n8n — not chatbots, chores.</span>
         </li>
         <li className="flex gap-3">
           <Doodle kind="check" className="mt-1 h-5 w-5 shrink-0 text-[var(--link)]" />
-          Slowly moving more of my life off the cloud and into the homelab.
+          <span className="min-w-0 flex-1">Slowly moving more of my life off the cloud and into the homelab.</span>
         </li>
       </ul>
       <div className="mt-10 flex items-center gap-3">
