@@ -55,8 +55,8 @@ function Cover() {
           <button
             onClick={open}
             aria-label="Open notebook"
-            className={`cover-tilt group relative block aspect-[5/7] h-[70vh] min-h-[460px] w-auto max-w-[92vw] overflow-hidden rounded-r-xl rounded-l-md border border-[var(--rule)] bg-[var(--paper-tint)] text-left shadow-[0_20px_40px_-20px_rgba(0,0,0,0.28),inset_-3px_0_0_var(--rule)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--link)] ${opening ? "cover-opening" : ""}`}
-            style={{ zIndex: 1 }}
+            className={`cover-tilt group relative block aspect-[3/4] w-auto max-w-[94vw] overflow-hidden rounded-r-xl rounded-l-md border border-[var(--rule)] bg-[var(--paper-tint)] text-left shadow-[0_20px_40px_-20px_rgba(0,0,0,0.28),inset_-3px_0_0_var(--rule)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--link)] ${opening ? "cover-opening" : ""}`}
+            style={{ zIndex: 1, height: "min(88vh, calc(94vw * 4 / 3))" }}
           >
 
             {/* spine */}
