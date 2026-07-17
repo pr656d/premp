@@ -350,10 +350,8 @@ html {
       0 28px 48px -16px rgba(0,0,0,0.42),
       inset -3px 0 0 var(--rule);
   }
-  .cover-hover-scope:has(.cover-tilt:hover) .page-right,
-  .cover-hover-scope:has(.cover-tilt:focus-visible) .page-right { right: -7px; width: 7px; }
-  .cover-hover-scope:has(.cover-tilt:hover) .page-stack,
-  .cover-hover-scope:has(.cover-tilt:focus-visible) .page-stack { bottom: -6px; }
+  .cover-hover-scope:has(.cover-tilt:hover) .page-block,
+  .cover-hover-scope:has(.cover-tilt:focus-visible) .page-block { right: -7px; bottom: -6px; transition: none; }
 }
 
 
