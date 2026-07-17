@@ -5,70 +5,69 @@ export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
       { title: "Projects — Prem Patel" },
-      { name: "description", content: "Featured projects: ShieldAI Nova2, SSNeumorphicKit, GlobalConnect BLE Vending, and the homelab." },
+      { name: "description", content: "Projects worth writing down: smart vending, autonomous drone ground control, SSNeumorphicKit, a unified comms platform, and the homelab." },
       { property: "og:title", content: "Projects — Prem Patel" },
-      { property: "og:description", content: "Android, BLE, and self-hosted infra." },
+      { property: "og:description", content: "Android, BLE, RF, open source, and self-hosted infra." },
     ],
   }),
   component: Projects,
 });
 
-const FEATURED = [
+type Project = {
+  title: string;
+  body: string;
+  tags: string[];
+  href?: string;
+};
+
+const FEATURED: Project[] = [
   {
-    title: "ShieldAI Nova2",
-    body: "Ground-control Android app for the Nova2 autonomous drone — BLE + radio link, live telemetry, offline mission planning.",
-    tags: ["Android", "Kotlin", "BLE", "Offline maps"],
+    title: "Smart Vending Platform",
+    body: "BLE/IoT Android app converting manual vending machines to app-driven vending. Custom BLE protocol, white-label multi-brand builds.",
+    tags: ["Kotlin", "BLE", "IoT"],
+  },
+  {
+    title: "Autonomous Drone Ground Control",
+    body: "Android ground-control app over a custom RF SDK: live telemetry, offline maps, route planning and in-flight navigation.",
+    tags: ["Kotlin", "Maps", "RF"],
   },
   {
     title: "SSNeumorphicKit",
-    body: "Open-source neumorphic UI toolkit for Android — soft shadows done properly, without murdering the CPU.",
-    tags: ["Android", "Open source", "UI"],
+    body: "Open-source neumorphic UI kit for Android — soft shadows done properly, without murdering the CPU. 83 stars on GitHub.",
+    tags: ["Kotlin", "Open Source"],
+    href: "https://github.com/pr656d/SSNeumorphicKit",
   },
   {
-    title: "GlobalConnect BLE Vending",
-    body: "Consumer-facing BLE vending integration — secure pairing, session handling, payments handoff.",
-    tags: ["Android", "BLE", "IoT"],
+    title: "Unified Communications Platform",
+    body: "Jitsi + Matrix event architecture on Android: channels, calls, threads. Parsed the event stream into a scalable chat UI.",
+    tags: ["Kotlin", "Architecture"],
   },
   {
     title: "Homelab",
-    body: "Self-hosted stack: Hetzner + Docker, Cloudflare tunnels, n8n automations, nightly backups. Boring on purpose.",
-    tags: ["Hetzner", "Docker", "Cloudflare", "n8n"],
+    body: "Self-hosted services on a cloud VPS: Tailscale, reverse proxy, Cloudflare Tunnels, Docker Compose, n8n with LLM-powered automations, custom AI agent orchestration.",
+    tags: ["DevOps", "Self-hosting", "AI"],
   },
 ];
 
-function HandDividers() {
-  // Two slightly wobbly lines, drawn like ruled with a pen.
+function Card({ p }: { p: Project }) {
   return (
-    <svg
-      aria-hidden
-      viewBox="0 0 100 100"
-      preserveAspectRatio="none"
-      className="pointer-events-none absolute inset-0 h-full w-full"
-    >
-      {/* horizontal */}
-      <path
-        d="M 2 50.6 C 20 49.6, 38 51.4, 52 50.2 S 82 49.4, 98 50.8"
-        className="hand-stroke"
-        vectorEffect="non-scaling-stroke"
-      />
-      {/* vertical */}
-      <path
-        d="M 50.3 2 C 49.5 22, 51.2 40, 50.1 54 S 49.4 82, 50.7 98"
-        className="hand-stroke"
-        vectorEffect="non-scaling-stroke"
-      />
-    </svg>
-  );
-}
-
-function Quadrant({ p }: { p: (typeof FEATURED)[number] }) {
-  return (
-    <div className="relative flex flex-col justify-center p-4 md:p-6">
-      <h3 className="ink-hand text-[clamp(1.5rem,3.2vh,2.25rem)] leading-tight text-[var(--ink)]">
-        {p.title}
+    <div className="border-b border-dashed border-[var(--rule)] py-4 last:border-b-0">
+      <h3 className="ink-hand text-[clamp(1.4rem,2.8vh,2rem)] leading-tight text-[var(--ink)]">
+        {p.href ? (
+          <a
+            href={p.href}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="underline decoration-[var(--link)] decoration-2 underline-offset-4 hover:text-[var(--link)]"
+          >
+            {p.title}
+          </a>
+        ) : (
+          p.title
+        )}
       </h3>
-      <p className="mt-2 text-sm text-[var(--ink-muted)] leading-relaxed">{p.body}</p>
-      <div className="mt-3 text-xs text-[var(--ink-faint)]">
+      <p className="mt-1.5 text-sm text-[var(--ink-muted)] leading-relaxed">{p.body}</p>
+      <div className="mt-1.5 text-xs text-[var(--ink-faint)]">
         {p.tags.map((t, i) => (
           <span key={t}>
             <span className="pen-underline">{t}</span>
@@ -83,12 +82,11 @@ function Quadrant({ p }: { p: (typeof FEATURED)[number] }) {
 function Projects() {
   return (
     <NotebookPage currentPath="/projects" title="Projects" tint="2">
-      <p className="text-[var(--ink-muted)]">Four worth writing down.</p>
+      <p className="text-[var(--ink-muted)]">Five worth writing down.</p>
 
-      <div className="relative mt-4 flex-1 min-h-0 grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2">
-        <div className="hidden sm:block absolute inset-0"><HandDividers /></div>
+      <div className="mt-4 flex-1 min-h-0">
         {FEATURED.map((p) => (
-          <Quadrant key={p.title} p={p} />
+          <Card key={p.title} p={p} />
         ))}
       </div>
 

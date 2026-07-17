@@ -20,9 +20,13 @@ export function IndexContent({ suppressInkIn = false, inert = false }: Props) {
         className={`mx-auto flex w-full max-w-[92%] flex-1 flex-col px-2 py-8 md:px-8 md:py-12 lg:px-12 ${suppressInkIn ? "" : "ink-in"}`}
       >
         <div className="border-l-2 border-[var(--link)]/40 pl-5 md:pl-8 flex-1 flex flex-col">
-          <div className="mb-4 flex items-baseline justify-between text-[0.7rem] uppercase tracking-widest text-[var(--ink-faint)]">
+          <div className="mb-4 flex items-baseline justify-between gap-3 text-[0.7rem] uppercase tracking-widest text-[var(--ink-faint)]">
             <span>00 · Index</span>
-            <span>premp.in</span>
+            <span className="text-right">
+              premp.in
+              <span className="mx-1 text-[var(--ink-faint)]">·</span>
+              <a href="mailto:hello@premp.in" className="normal-case tracking-normal text-[var(--link)] hover:text-[var(--ink)]">hello@premp.in</a>
+            </span>
           </div>
           <h1 className="ink-hand text-[clamp(3rem,8vh,6rem)] leading-[0.95] text-[var(--ink)]">
             Contents

@@ -86,15 +86,12 @@ function Cover() {
                   <br />
                   Patel
                 </h1>
-                <p className="mt-4 text-[var(--ink-muted)] text-[clamp(0.85rem,1.6vh,1.15rem)]">
-                  Lead Android Engineer
-                  <br />
-                  <span className="text-[var(--ink-faint)]">DevOps · Self-Hosting</span>
+                <p className="mt-4 max-w-[92%] text-[var(--ink-muted)] text-[clamp(0.78rem,1.45vh,1.05rem)] leading-snug">
+                  I'm an explorer at heart. I build Android apps for a living — and a self-hosted homelab, AI-driven workflows, and whatever else looks interesting, for the joy of it. Off the keyboard you'll find me maintaining my Continental GT 650.
                 </p>
               </div>
 
-              <div className="flex items-end justify-between gap-4">
-                <span className="max-w-[55%] text-[clamp(9px,1vh,12px)] uppercase tracking-[0.18em] text-[var(--ink-faint)]">Ahmedabad, India · hello@premp.in</span>
+              <div className="flex items-end justify-end gap-4">
                 <div className="flex shrink-0 items-center gap-2 pr-[14%] text-[var(--red-pencil)]">
                   <Doodle kind="star" className="h-4 w-4" />
                   <span className="ink-hand text-[clamp(1rem,2vh,1.5rem)]">tap to open</span>

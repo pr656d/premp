@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { NotebookPage } from "../components/notebook/NotebookPage";
 import { Doodle } from "../components/notebook/Doodle";
+import { SOCIALS } from "../components/notebook/SocialIcons";
 
 const EMAIL = "hello@premp.in";
 const HANDLE = "@pr656d";
@@ -10,7 +11,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Prem Patel" },
-      { name: "description", content: `Get in touch with Prem Patel — ${EMAIL}, one handle everywhere: ${HANDLE}.` },
+      { name: "description", content: `Get in touch with Prem Patel — ${EMAIL}. One handle everywhere: ${HANDLE}.` },
       { property: "og:title", content: "Contact — Prem Patel" },
       { property: "og:description", content: "Say hello." },
     ],
@@ -27,13 +28,6 @@ function Contact() {
       setTimeout(() => setCopied(false), 1600);
     } catch {}
   };
-
-  const socials: { label: string; href: string }[] = [
-    { label: "GitHub", href: "https://github.com/pr656d" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/pr656d" },
-    { label: "Mastodon", href: "https://mastodon.social/@pr656d" },
-    { label: "Twitter", href: "https://twitter.com/pr656d" },
-  ];
 
   return (
     <NotebookPage currentPath="/contact" title="Contact">
@@ -66,18 +60,19 @@ function Contact() {
           </button>
         </div>
 
-        <ul className="mt-6 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-[var(--ink-muted)]">
-          {socials.map((s, i) => (
-            <li key={s.label} className="flex items-center gap-4">
+        <ul className="mt-6 flex flex-wrap items-center gap-4">
+          {SOCIALS.map(({ label, href, Icon }) => (
+            <li key={label}>
               <a
-                href={s.href}
+                href={href}
                 target="_blank"
                 rel="noreferrer noopener"
-                className="text-[var(--link)] underline decoration-dotted underline-offset-4 hover:text-[var(--ink)]"
+                aria-label={label}
+                title={label}
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[var(--rule)] text-[var(--ink-muted)] transition-colors hover:border-[var(--link)] hover:text-[var(--link)]"
               >
-                {s.label}
+                <Icon className="h-5 w-5" />
               </a>
-              {i < socials.length - 1 && <span className="text-[var(--ink-faint)]">·</span>}
             </li>
           ))}
         </ul>
