@@ -85,13 +85,13 @@ function Cover() {
                 </p>
               </div>
 
-              <div className="flex items-end justify-between pr-[24%]">
+              <div className="flex items-end justify-end pr-[20%]">
                 <div className="flex items-center gap-2 text-[var(--red-pencil)]">
                   <Doodle kind="star" className="h-4 w-4" />
                   <span className="ink-hand text-[clamp(1rem,2vh,1.5rem)]">tap to open</span>
                 </div>
-                <div className="ink-hand text-[clamp(1.25rem,2.5vh,2rem)] text-[var(--ink-faint)]">pp</div>
               </div>
+
             </div>
           </button>
         </div>
