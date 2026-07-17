@@ -336,7 +336,7 @@ html {
 @keyframes cover-hinge {
   0%   { transform: rotateY(-7deg) rotateX(1deg); box-shadow: 0 20px 40px -20px rgba(0,0,0,0.25); }
   60%  { transform: rotateY(-100deg) rotateX(0deg); box-shadow: 40px 40px 60px -20px rgba(0,0,0,0.35); }
-  100% { transform: rotateY(-150deg) rotateX(0deg); box-shadow: 80px 60px 80px -30px rgba(0,0,0,0.15); opacity: 0.9; }
+  100% { transform: rotateY(-150deg) rotateX(0deg); box-shadow: 80px 60px 80px -30px rgba(0,0,0,0.15); }
 }
 .cover-opening {
   animation: cover-hinge 800ms cubic-bezier(0.55, 0.05, 0.35, 1) forwards;
