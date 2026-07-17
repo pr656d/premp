@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageNavBar } from "../components/notebook/PageNav";
 
 const PDF_URL = "/prem-patel-resume.pdf";
+const PDF_EMBED = `${PDF_URL}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`;
 
 export const Route = createFileRoute("/resume")({
   head: () => ({
