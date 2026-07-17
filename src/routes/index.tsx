@@ -57,10 +57,9 @@ function Cover() {
           </div>
 
 
-          {/* Page-stack peeking below the cover */}
+          {/* Page block peeking out — right edge (primary) + bottom hint, meeting at bottom-right */}
+          <div aria-hidden className="page-right" style={{ zIndex: 2 }} />
           <div aria-hidden className="page-stack" style={{ zIndex: 2 }} />
-          {/* Right-edge page sliver revealed as the cover lifts on hover */}
-          <div aria-hidden className="page-edge-right" style={{ zIndex: 2 }} />
 
           <button
             onClick={open}
