@@ -39,13 +39,13 @@ Lead Software Engineer with 6 years of experience specializing in native Android
 **Android Developer (CattleNotes)** | Freelance | Ahmedabad, India | Jan 2020 - Jan 2020
 - Developed a native Android application from scratch featuring local DB caching.
 
-**Frontend Developer (Unseenarchitects)** | Freelance | Ahmedabad, India | Jul 2017 - Dec 2019
+**Frontend Developer (Unseenarchitects)** | Freelance | Ahmedabad, India | Jul 2017 - 2019
 - Deployed a responsive static website for business web presence.
 
 ---
 
 ## Education
-- **Bachelor of Technology (B.Tech) in Computer Science & Engineering** | Parul University | Vadodara, India | Jul 2016 - Jun 2020
+- **Bachelor of Technology (B.Tech) in Computer Science & Engineering** | Parul University | Vadodara, India | 2016 - 2020
 
 ---
 
