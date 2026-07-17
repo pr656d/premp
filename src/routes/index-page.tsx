@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PaperCanvas } from "../components/notebook/PaperCanvas";
 import { NotebookSurface } from "../components/notebook/NotebookSurface";
-import { PAGES } from "../components/notebook/PageNav";
+import { PAGES, usePageNav } from "../components/notebook/PageNav";
 import { Doodle } from "../components/notebook/Doodle";
 
 export const Route = createFileRoute("/index-page")({
