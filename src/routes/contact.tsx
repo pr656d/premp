@@ -83,7 +83,7 @@ function Contact() {
         </ul>
       </div>
 
-      <div className="mt-auto pt-10 text-sm text-[var(--ink-faint)]">
+      <div className="mt-10 text-sm text-[var(--ink-faint)]">
         <span className="ink-hand text-lg text-[var(--red-pencil)]">p.s.</span>{" "}
         replies come from a real human, usually within a day.
       </div>
