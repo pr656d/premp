@@ -12,7 +12,7 @@ export const Route = createFileRoute("/about")({
     ],
   }),
   component: () => (
-    <NotebookPage currentPath="/about" title="About">
+    <NotebookPage currentPath="/about" title="About" align="start">
       <p className="text-lg">
         Hi — I'm <strong>Prem</strong>. I lead Android engineering at Simform out of
         Ahmedabad, India. I've spent the last few years going deep on{" "}
@@ -40,16 +40,14 @@ export const Route = createFileRoute("/about")({
         </div>
       </div>
 
-      {/* margin doodles */}
-      <div className="mt-10 flex items-center justify-between text-[var(--ink-faint)]">
-        <div className="flex items-center gap-2">
-          <svg viewBox="0 0 40 40" className="h-8 w-8" aria-hidden>
-            <ellipse cx="20" cy="20" rx="13" ry="12" fill="none" stroke="var(--red-pencil)" strokeWidth="1.2" opacity="0.55" strokeDasharray="2 3" />
-            <ellipse cx="20" cy="20" rx="9" ry="8" fill="none" stroke="var(--red-pencil)" strokeWidth="0.9" opacity="0.4" />
-          </svg>
-          <span className="ink-hand text-sm text-[var(--red-pencil)]/80">coffee ring</span>
-        </div>
-        <div className="flex items-center gap-2">
+      {/* margin doodles — coffee-mug ring in the quiet lower-right corner */}
+      <div className="relative mt-auto flex items-end justify-between pt-10">
+        <svg viewBox="0 0 60 60" className="h-16 w-16 opacity-40" aria-hidden>
+          <ellipse cx="30" cy="30" rx="24" ry="22" fill="none" stroke="var(--red-pencil)" strokeWidth="1.1" strokeDasharray="3 5" />
+          <ellipse cx="30" cy="30" rx="18" ry="16" fill="none" stroke="var(--red-pencil)" strokeWidth="0.7" opacity="0.7" />
+          <ellipse cx="34" cy="26" rx="4" ry="3" fill="var(--red-pencil)" opacity="0.25" />
+        </svg>
+        <div className="flex items-center gap-2 text-[var(--ink-faint)]">
           <span className="ink-hand text-sm">p.t.o. →</span>
           <Doodle kind="arrow" className="h-5 w-14 text-[var(--red-pencil)]" />
         </div>
