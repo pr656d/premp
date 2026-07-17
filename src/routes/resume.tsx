@@ -32,9 +32,9 @@ function Resume() {
         </a>
       </div>
 
-      <div className="mt-8 mx-auto w-full max-w-[85%]">
+      <div className="mt-8 mx-auto w-full max-w-[85%] flex-1 flex items-center">
         <div
-          className="rounded-sm bg-white p-6 md:p-8 font-sans text-neutral-900 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200"
+          className="w-full rounded-sm bg-white p-6 md:p-8 font-sans text-neutral-900 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200"
           style={{ transform: "rotate(-0.8deg)" }}
         >
           <div className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Loose sheet · printed</div>
@@ -44,29 +44,56 @@ function Resume() {
             <div className="text-[11px] text-neutral-500 mt-0.5">India · working remotely · hello@premp.in · @pr656d</div>
           </div>
 
-          <div className="my-4 h-px bg-neutral-300" />
+          <div className="my-3 h-px bg-neutral-300" />
+
+          <div>
+            <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Summary</div>
+            <p className="mt-1.5 text-[12px] leading-snug text-neutral-800">
+              6+ years of native Android (Kotlin) and software architecture. Led teams shipping BLE/IoT products, a drone ground-control app, and a unified communications platform. Self-hosted infrastructure and agent-agnostic AI workflows on the side.
+            </p>
+          </div>
+
+          <div className="my-3 h-px bg-neutral-300" />
 
           <div>
             <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Experience</div>
-            <ul className="mt-2 space-y-1 text-[12px] leading-snug text-neutral-800">
+            <ul className="mt-1.5 space-y-1 text-[12px] leading-snug text-neutral-800">
               <li><span className="font-semibold">Simform — Lead Engineer</span> (2025–present) · Android department lead, CI/CD, multi-brand white-label releases</li>
               <li><span className="font-semibold">Simform — Senior Software Engineer</span> (Jan 2022–Jan 2025) · Drone ground-control app, unified comms platform, project template</li>
               <li><span className="font-semibold">Simform — Software Engineer</span> (Jun 2020–Jan 2022) · Smart vending BLE platform · SSNeumorphicKit (Open Source)</li>
             </ul>
           </div>
 
-          <div className="my-4 h-px bg-neutral-300" />
+          <div className="my-3 h-px bg-neutral-300" />
+
+          <div>
+            <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Open Source & Side Projects</div>
+            <p className="mt-1.5 text-[12px] leading-snug text-neutral-800">
+              SSNeumorphicKit (83★) · Self-hosted homelab (Tailscale, Docker, n8n) · Agent-agnostic AI orchestration · CattleNotes
+            </p>
+          </div>
+
+          <div className="my-3 h-px bg-neutral-300" />
 
           <div>
             <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Skills</div>
-            <p className="mt-2 text-[12px] leading-snug text-neutral-800">
+            <p className="mt-1.5 text-[12px] leading-snug text-neutral-800">
               Kotlin · Java · Jetpack Compose · BLE · Offline Maps · Docker · Tailscale · Cloudflare Tunnels · n8n
+            </p>
+          </div>
+
+          <div className="my-3 h-px bg-neutral-300" />
+
+          <div>
+            <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Certifications & Education</div>
+            <p className="mt-1.5 text-[12px] leading-snug text-neutral-800">
+              Google Certified Associate Android Developer (2022) · AWS SAA (in progress) · B.Tech CSE, Parul University (2016–2020)
             </p>
           </div>
         </div>
       </div>
 
-      <div className="mt-10">
+      <div className="mt-8">
         <div className="text-xs uppercase tracking-widest text-[var(--ink-faint)]">Find me elsewhere</div>
         <ul className="mt-3 flex flex-wrap items-center gap-4">
           {SOCIALS.map(({ label, href, Icon }) => (
