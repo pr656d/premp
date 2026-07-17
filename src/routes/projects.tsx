@@ -35,7 +35,7 @@ const FEATURED: Project[] = [
     title: "SSNeumorphicKit",
     body: "Open-source neumorphic UI kit for Android — soft shadows done properly, without murdering the CPU. 83 stars on GitHub.",
     tags: ["Kotlin", "Open Source"],
-    href: "https://github.com/pr656d/SSNeumorphicKit",
+    href: "https://github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit",
   },
   {
     title: "Unified Communications Platform",
