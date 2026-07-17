@@ -1,0 +1,412 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-hand: "Caveat", "Comic Sans MS", cursive;
+
+  --color-background: var(--desk);
+  --color-foreground: var(--ink);
+  --color-card: var(--paper);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--paper);
+  --color-popover-foreground: var(--ink);
+  --color-primary: var(--ink);
+  --color-primary-foreground: var(--paper);
+  --color-secondary: var(--paper-tint);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--paper-tint);
+  --color-muted-foreground: var(--ink-muted);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--paper);
+  --color-destructive: #B3543F;
+  --color-destructive-foreground: var(--paper);
+  --color-border: var(--rule);
+  --color-input: var(--rule);
+  --color-ring: var(--link);
+
+  --color-paper: var(--paper);
+  --color-desk: var(--desk);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-faint: var(--ink-faint);
+  --color-rule: var(--rule);
+  --color-link: var(--link);
+  --color-red-pencil: var(--red-pencil);
+  --color-marker: var(--marker);
+}
+
+:root {
+  --radius: 0.5rem;
+
+  --nb-radius-l: 6px;
+  --nb-radius-r: 14px;
+
+  /* Three-pens system — light */
+  --paper: #F5EFE1;
+  --paper-tint: #EFE8D7;
+  --desk: #DED3BB;
+  --ink: #262A33;
+  --ink-muted: #4A4E58;
+  --ink-faint: #8B8578;
+  --rule: #D6CDB8;
+
+  --dot: #C7BCA1;
+  --dot-strong: #6B6555;
+  --dot-size: 22px;
+
+  --link: #3B5F8A;         /* fountain-pen blue */
+  --red-pencil: #B3543F;   /* margin notes, dates */
+  --marker: #F2D64B;       /* highlighter */
+  --accent: var(--link);
+}
+
+.dark {
+  --paper: #23252B;
+  --paper-tint: #292B32;
+  --desk: #14151A;
+  --ink: #E9E4D8;
+  --ink-muted: #B4AE9C;
+  --ink-faint: #7A7568;
+  --rule: #3A3C43;
+
+  --dot: #3F4148;
+  --dot-strong: #8A8579;
+
+  --link: #7FA3CC;
+  --red-pencil: #D08770;
+  --marker: #F2D64B;
+  --accent: var(--link);
+}
+
+/* Root font-size scales gently with viewport height */
+html {
+  font-size: clamp(15px, calc(0.65vh + 10px), 22px);
+}
+
+/* Desk = plain paper canvas, no dots; darker than page */
+@utility desk-canvas {
+  background-color: var(--desk);
+}
+
+/* Notebook page surface — dotted, fixed-aspect */
+@utility page-paper {
+  background-color: var(--paper);
+  background-image: radial-gradient(
+    circle at center,
+    var(--dot) 1px,
+    transparent 1.4px
+  );
+  background-size: var(--dot-size) var(--dot-size);
+  position: relative;
+}
+.page-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+    circle at center,
+    var(--dot-strong) 1px,
+    transparent 1.4px
+  );
+  background-size: var(--dot-size) var(--dot-size);
+  -webkit-mask-image: radial-gradient(
+    circle at var(--cursor-x, -200px) var(--cursor-y, -200px),
+    rgba(0,0,0,0.55) 0px,
+    rgba(0,0,0,0.28) 30px,
+    transparent 65px
+  );
+  mask-image: radial-gradient(
+    circle at var(--cursor-x, -200px) var(--cursor-y, -200px),
+    rgba(0,0,0,0.55) 0px,
+    rgba(0,0,0,0.28) 30px,
+    transparent 65px
+  );
+  z-index: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-paper::before { display: none; }
+}
+@media (pointer: coarse) {
+  .page-paper::before { display: none; }
+}
+
+@utility ink-hand {
+  font-family: var(--font-hand);
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+
+/* Page tints (≤5%) */
+@utility page-tint-1 { background-color: color-mix(in oklab, var(--paper) 96%, var(--link)); }
+@utility page-tint-2 { background-color: color-mix(in oklab, var(--paper) 96%, var(--red-pencil)); }
+@utility page-tint-3 { background-color: color-mix(in oklab, var(--paper) 96%, #7FA37F); }
+
+/* Highlighter — hand-drawn swipe behind one phrase */
+@utility marker-hl {
+  background-image: linear-gradient(
+    180deg,
+    transparent 58%,
+    color-mix(in oklab, var(--marker) 45%, transparent) 58%,
+    color-mix(in oklab, var(--marker) 45%, transparent) 92%,
+    transparent 92%
+  );
+  padding: 0 0.18em;
+}
+
+/* Pen-underline for inline tech tags */
+@utility pen-underline {
+  text-decoration: underline;
+  text-decoration-color: var(--link);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+/* Fixed notebook page: 3:4 aspect, ~88vh tall, capped by viewport width */
+@utility notebook-surface {
+  aspect-ratio: 3 / 4;
+  height: min(88vh, calc(94vw * 4 / 3));
+  width: auto;
+  max-width: 94vw;
+  border-radius: var(--nb-radius-l) var(--nb-radius-r) var(--nb-radius-r) var(--nb-radius-l);
+  box-shadow:
+    0 1px 0 rgba(0,0,0,0.04),
+    0 24px 40px -18px rgba(0,0,0,0.28),
+    0 60px 90px -40px rgba(0,0,0,0.22);
+  overflow: hidden;
+  position: relative;
+}
+.dark .notebook-surface {
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.02),
+    0 24px 40px -18px rgba(0,0,0,0.7),
+    0 60px 100px -40px rgba(0,0,0,0.55);
+}
+@media (max-width: 640px) {
+  .notebook-surface {
+    aspect-ratio: auto;
+    height: 86svh;
+    width: 94vw;
+    max-width: 94vw;
+  }
+}
+
+/* Page block peeking out from under the cover — single full-size element so the
+   bottom-right corner draws the full cover radius (thin strips can't). */
+.page-block {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  right: -7px;
+  bottom: -6px;
+  border-radius: var(--nb-radius-l) var(--nb-radius-r) var(--nb-radius-r) var(--nb-radius-l);
+  background:
+    linear-gradient(to right,
+      color-mix(in oklab, var(--paper) 92%, #b8a98a) 0%,
+      color-mix(in oklab, var(--paper) 92%, #b8a98a) 34%,
+      color-mix(in oklab, var(--paper) 88%, #a89a7c) 34%,
+      color-mix(in oklab, var(--paper) 88%, #a89a7c) 67%,
+      color-mix(in oklab, var(--paper) 84%, #8f8266) 67%,
+      color-mix(in oklab, var(--paper) 84%, #8f8266) 100%) right center / 14px 100% no-repeat,
+    linear-gradient(to bottom,
+      color-mix(in oklab, var(--paper) 92%, #b8a98a) 0%,
+      color-mix(in oklab, var(--paper) 92%, #b8a98a) 34%,
+      color-mix(in oklab, var(--paper) 88%, #a89a7c) 34%,
+      color-mix(in oklab, var(--paper) 88%, #a89a7c) 67%,
+      color-mix(in oklab, var(--paper) 84%, #8f8266) 67%,
+      color-mix(in oklab, var(--paper) 84%, #8f8266) 100%) center bottom / 100% 12px no-repeat,
+    color-mix(in oklab, var(--paper) 90%, #b8a98a);
+  box-shadow:
+    4px 6px 12px -6px rgba(0,0,0,0.25),
+    0 6px 10px -6px rgba(0,0,0,0.2);
+  transition: right 400ms ease-out, bottom 400ms ease-out;
+  pointer-events: none;
+}
+.dark .page-block {
+  background:
+    linear-gradient(to right,
+      color-mix(in oklab, var(--paper) 80%, #000) 0%,
+      color-mix(in oklab, var(--paper) 80%, #000) 34%,
+      color-mix(in oklab, var(--paper) 70%, #000) 34%,
+      color-mix(in oklab, var(--paper) 70%, #000) 67%,
+      color-mix(in oklab, var(--paper) 60%, #000) 67%,
+      color-mix(in oklab, var(--paper) 60%, #000) 100%) right center / 14px 100% no-repeat,
+    linear-gradient(to bottom,
+      color-mix(in oklab, var(--paper) 80%, #000) 0%,
+      color-mix(in oklab, var(--paper) 80%, #000) 34%,
+      color-mix(in oklab, var(--paper) 70%, #000) 34%,
+      color-mix(in oklab, var(--paper) 70%, #000) 67%,
+      color-mix(in oklab, var(--paper) 60%, #000) 67%,
+      color-mix(in oklab, var(--paper) 60%, #000) 100%) center bottom / 100% 12px no-repeat,
+    color-mix(in oklab, var(--paper) 70%, #000);
+  box-shadow:
+    4px 6px 12px -6px rgba(0,0,0,0.6),
+    0 6px 10px -6px rgba(0,0,0,0.5);
+}
+
+
+/* Elastic band — realistic; caps clip behind cover edges via cover overflow:hidden */
+.elastic-band {
+  position: absolute;
+  top: -20px;
+  bottom: -20px;
+  width: 14px;
+  background: linear-gradient(
+    90deg,
+    #1b1b1b 0%,
+    #333 25%,
+    #5a5a5a 50%,
+    #333 75%,
+    #1b1b1b 100%
+  );
+  box-shadow:
+    -4px 0 8px -2px rgba(0,0,0,0.28),
+    inset 0 0 0 1px rgba(0,0,0,0.5),
+    inset 0 -30px 20px -20px rgba(0,0,0,0.4),
+    inset 0 30px 20px -20px rgba(0,0,0,0.4);
+}
+/* Darkened fold hint where the band disappears behind the cover edges */
+.elastic-band::before,
+.elastic-band::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  height: 6px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0));
+  pointer-events: none;
+}
+.elastic-band::before { top: 20px; }
+.elastic-band::after {
+  bottom: 20px;
+  background: linear-gradient(0deg, rgba(0,0,0,0.55), rgba(0,0,0,0));
+}
+
+/* Cover hover tilt — "someone lifting the right edge" tease */
+.cover-tilt {
+  transform-origin: left center;
+  transform-style: flat;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  isolation: isolate;
+  cursor: pointer;
+  transition:
+    transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 520ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
+}
+@media (hover: hover) and (pointer: fine) {
+  .cover-tilt:hover:not(.cover-opening),
+  .cover-tilt:focus-visible:not(.cover-opening) {
+    transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-7deg);
+    box-shadow:
+      0 28px 46px -16px rgba(0,0,0,0.34),
+      30px 36px 62px -22px rgba(0,0,0,0.28),
+      inset -3px 0 0 var(--rule);
+    transition-duration: 400ms;
+    transition-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cover-hover-scope:has(.cover-tilt:hover:not(.cover-opening)) .page-block,
+  .cover-hover-scope:has(.cover-tilt:focus-visible:not(.cover-opening)) .page-block {
+    right: -12px;
+    bottom: -9px;
+  }
+}
+
+
+/* Cover hinge open animation — starts from the lifted hover pose so hover→click is seamless */
+@keyframes cover-hinge {
+  0%   { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-7deg); box-shadow: 0 20px 40px -20px rgba(0,0,0,0.25); }
+  75%  { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-95deg); box-shadow: 40px 40px 60px -20px rgba(0,0,0,0.35); }
+  100% { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-150deg); box-shadow: 80px 60px 80px -30px rgba(0,0,0,0.15); }
+}
+.cover-opening {
+  animation: cover-hinge 500ms linear forwards;
+  transform-origin: left center;
+  transform-style: flat;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+@keyframes ink-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ink-in { animation: ink-in 500ms ease-out both; }
+
+/* Mobile "tap me" breathing — same transform list as hinge so no jump if opening starts mid-breath */
+@keyframes cover-breathe {
+  0%   { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(0deg); }
+  45%  { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-7deg); }
+  70%  { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-7deg); }
+  100% { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(0deg); }
+}
+@keyframes page-block-breathe {
+  0%   { right: -7px; bottom: -6px; }
+  45%  { right: -12px; bottom: -9px; }
+  70%  { right: -12px; bottom: -9px; }
+  100% { right: -7px; bottom: -6px; }
+}
+@media (hover: none), (pointer: coarse) {
+  .cover-tilt:not(.cover-opening) {
+    animation: cover-breathe 1.8s ease-in-out infinite;
+  }
+  .cover-hover-scope .page-block {
+    animation: page-block-breathe 1.8s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cover-opening { animation-duration: 1ms; }
+  .ink-in { animation: none; }
+  .cover-tilt { transition: box-shadow 200ms ease-out; }
+  .cover-tilt:hover:not(.cover-opening),
+  .cover-tilt:focus-visible:not(.cover-opening) {
+    transform: none;
+    box-shadow:
+      0 28px 48px -16px rgba(0,0,0,0.42),
+      inset -3px 0 0 var(--rule);
+  }
+  .cover-hover-scope:has(.cover-tilt:hover) .page-block,
+  .cover-hover-scope:has(.cover-tilt:focus-visible) .page-block { right: -7px; bottom: -6px; transition: none; }
+  .cover-tilt:not(.cover-opening) { animation: none; }
+}
+
+
+/* Nearly-invisible scrollbar inside a page */
+.page-scroll::-webkit-scrollbar { width: 6px; }
+.page-scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--ink) 20%, transparent);
+  border-radius: 3px;
+}
+.page-scroll { scrollbar-width: thin; scrollbar-color: color-mix(in oklab, var(--ink) 20%, transparent) transparent; }
+
+/* Wobbly hand-drawn SVG stroke */
+.hand-stroke {
+  stroke: var(--ink-muted);
+  stroke-width: 1.4;
+  fill: none;
+  stroke-linecap: round;
+  opacity: 0.55;
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body { height: 100%; overflow: hidden; overscroll-behavior: none; background-color: var(--desk); color: var(--ink); }
+  body { font-family: var(--font-sans); }
+  h1, h2, h3, h4 { color: var(--ink); }
+  a { color: var(--link); }
+}

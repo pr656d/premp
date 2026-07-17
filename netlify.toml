@@ -1,7 +1,11 @@
 [build]
-  command = "hugo"
-  publish = "public"
+  command = "bun run build"
+  publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "24"
-  HUGO_VERSION = "0.163.1"
+  # Tell Nitro to build for Netlify (functions + static assets).
+  # The Lovable vite config wrapper (@lovable.dev/vite-tanstack-config)
+  # picks this up and forwards it to nitro() as the active preset.
+  NITRO_PRESET = "netlify"
+  # Use bun for install to match the committed bun.lock.
+  NETLIFY_USE_BUN = "true"
