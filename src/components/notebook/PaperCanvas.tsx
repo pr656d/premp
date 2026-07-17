@@ -2,16 +2,18 @@ import { useEffect, useRef, type ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
-  tint?: "none" | "1" | "2" | "3";
   className?: string;
 }
 
-export function PaperCanvas({ children, tint = "none", className = "" }: Props) {
+/**
+ * Desk canvas: plain darker background beneath the notebook page.
+ * Also tracks cursor position on documentElement so the page surface
+ * (page-paper) can render its pressure overlay.
+ */
+export function PaperCanvas({ children, className = "" }: Props) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const coarse = window.matchMedia("(pointer: coarse)").matches;
     if (reduced || coarse) return;
@@ -22,8 +24,9 @@ export function PaperCanvas({ children, tint = "none", className = "" }: Props) 
       y = e.clientY;
       if (!raf) {
         raf = requestAnimationFrame(() => {
-          el.style.setProperty("--cursor-x", `${x}px`);
-          el.style.setProperty("--cursor-y", `${y}px`);
+          // Cursor coords in viewport space; page surface reads via var()
+          document.documentElement.style.setProperty("--cursor-x", `${x}px`);
+          document.documentElement.style.setProperty("--cursor-y", `${y}px`);
           raf = 0;
         });
       }
@@ -35,11 +38,8 @@ export function PaperCanvas({ children, tint = "none", className = "" }: Props) 
     };
   }, []);
 
-  const tintClass =
-    tint === "1" ? "page-tint-1" : tint === "2" ? "page-tint-2" : tint === "3" ? "page-tint-3" : "";
-
   return (
-    <div ref={ref} className={`paper-pressure min-h-screen w-full ${tintClass} ${className}`}>
+    <div ref={ref} className={`desk-canvas min-h-screen w-full ${className}`}>
       {children}
     </div>
   );

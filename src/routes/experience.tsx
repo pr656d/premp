@@ -19,6 +19,7 @@ const ITEMS = [
     role: "Lead Engineer",
     org: "Simform",
     body: "Leading Android teams — architecture, mentoring, DevOps for mobile pipelines. Balancing shipping with the boring, load-bearing decisions.",
+    highlight: true,
   },
   {
     when: "2022 — 2025",
@@ -37,13 +38,16 @@ const ITEMS = [
 function Experience() {
   return (
     <NotebookPage currentPath="/experience" title="Experience" tint="1">
-      <ol className="relative space-y-10 border-l-2 border-dashed border-[var(--rule)] pl-6">
+      <ol className="relative space-y-8 border-l-2 border-dashed border-[var(--rule)] pl-6">
         {ITEMS.map((it) => (
           <li key={it.role} className="relative">
-            <span className="absolute -left-[31px] top-2 h-3 w-3 rounded-full border-2 border-[var(--accent)] bg-[var(--paper)]" />
-            <div className="ink-hand text-xl text-[var(--ink-muted)]">{it.when}</div>
+            <span className="absolute -left-[31px] top-2 h-3 w-3 rounded-full border-2 border-[var(--link)] bg-[var(--paper)]" />
+            <div className="ink-hand text-xl text-[var(--red-pencil)]">{it.when}</div>
             <div className="mt-1 text-lg text-[var(--ink)]">
-              <strong>{it.role}</strong> <span className="text-[var(--ink-muted)]">· {it.org}</span>
+              <strong>
+                {it.highlight ? <span className="marker-hl">{it.role}</span> : it.role}
+              </strong>{" "}
+              <span className="text-[var(--ink-muted)]">· {it.org}</span>
             </div>
             <p className="mt-2 text-[var(--ink-muted)]">{it.body}</p>
           </li>

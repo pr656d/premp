@@ -23,9 +23,9 @@ export const Route = createFileRoute("/about")({
       <p className="mt-4 text-[var(--ink-muted)]">
         Outside the day job I run a small self-hosted homelab: Hetzner boxes,
         Docker, Cloudflare tunnels, n8n workflows, Firefly III for money. I like
-        systems that are boring, legible, and mine.
+        systems that are <span className="marker-hl">boring, legible, and mine</span>.
       </p>
-      <div className="mt-8 flex items-center gap-3 text-[var(--accent)]">
+      <div className="mt-8 flex items-center gap-3 text-[var(--red-pencil)]">
         <Doodle kind="arrow" className="h-6 w-16" />
         <span className="ink-hand text-2xl">flip the page for the timeline</span>
       </div>
