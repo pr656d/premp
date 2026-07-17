@@ -63,7 +63,7 @@ function HandDividers() {
 
 function Quadrant({ p }: { p: (typeof FEATURED)[number] }) {
   return (
-    <div className="relative flex flex-col p-4 md:p-6">
+    <div className="relative flex flex-col justify-center p-4 md:p-6">
       <h3 className="ink-hand text-[clamp(1.5rem,3.2vh,2.25rem)] leading-tight text-[var(--ink)]">
         {p.title}
       </h3>
@@ -85,14 +85,14 @@ function Projects() {
     <NotebookPage currentPath="/projects" title="Projects" tint="2">
       <p className="text-[var(--ink-muted)]">Four worth writing down.</p>
 
-      <div className="relative mt-6 grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2">
+      <div className="relative mt-4 flex-1 min-h-0 grid grid-cols-1 sm:grid-cols-2 sm:grid-rows-2">
         <div className="hidden sm:block absolute inset-0"><HandDividers /></div>
         {FEATURED.map((p) => (
           <Quadrant key={p.title} p={p} />
         ))}
       </div>
 
-      <div className="mt-8 text-right">
+      <div className="mt-4 text-right">
         <span className="ink-hand text-lg text-[var(--red-pencil)]">
           more scribbles →{" "}
           <a
