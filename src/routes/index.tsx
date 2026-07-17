@@ -93,7 +93,8 @@ function Cover() {
                 </p>
               </div>
 
-              <div className="flex items-end justify-end pr-[20%]">
+              <div className="flex items-end justify-between gap-4">
+                <span className="text-[clamp(9px,1vh,12px)] uppercase tracking-[0.18em] text-[var(--ink-faint)]">Ahmedabad, India · hello@premp.in</span>
                 <div className="flex items-center gap-2 text-[var(--red-pencil)]">
                   <Doodle kind="star" className="h-4 w-4" />
                   <span className="ink-hand text-[clamp(1rem,2vh,1.5rem)]">tap to open</span>
@@ -103,10 +104,6 @@ function Cover() {
           </button>
         </div>
       </div>
-
-      <p className="pointer-events-none fixed inset-x-0 bottom-4 text-center text-xs text-[var(--ink-faint)]">
-        Ahmedabad, India · hello@premp.in
-      </p>
     </PaperCanvas>
   );
 }
