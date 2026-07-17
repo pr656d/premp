@@ -194,85 +194,59 @@ html {
     0 60px 100px -40px rgba(0,0,0,0.55);
 }
 
-/* Page stack peeking below the cover — narrower than cover, thin stacked sheet edges (no dots) */
-.page-stack {
+/* Page block peeking out from under the cover — single full-size element so the
+   bottom-right corner draws the full cover radius (thin strips can't). */
+.page-block {
   position: absolute;
-  left: 1.5%;
+  top: 1%;
+  left: 1%;
   right: -7px;
   bottom: -6px;
-  height: 8px;
-  border-bottom-left-radius: 3px;
-  border-bottom-right-radius: var(--nb-radius-r);
+  border-radius: var(--nb-radius-l) var(--nb-radius-r) var(--nb-radius-r) var(--nb-radius-l);
   background:
-    linear-gradient(
-      to bottom,
+    linear-gradient(to right,
       color-mix(in oklab, var(--paper) 92%, #b8a98a) 0%,
       color-mix(in oklab, var(--paper) 92%, #b8a98a) 34%,
       color-mix(in oklab, var(--paper) 88%, #a89a7c) 34%,
       color-mix(in oklab, var(--paper) 88%, #a89a7c) 67%,
       color-mix(in oklab, var(--paper) 84%, #8f8266) 67%,
-      color-mix(in oklab, var(--paper) 84%, #8f8266) 100%
-    );
-  box-shadow:
-    0 6px 10px -6px rgba(0,0,0,0.25),
-    inset 0 1px 0 rgba(0,0,0,0.08);
-}
-.dark .page-stack {
-  background:
-    linear-gradient(
-      to bottom,
-      color-mix(in oklab, var(--paper) 80%, #000) 0%,
-      color-mix(in oklab, var(--paper) 80%, #000) 34%,
-      color-mix(in oklab, var(--paper) 70%, #000) 34%,
-      color-mix(in oklab, var(--paper) 70%, #000) 67%,
-      color-mix(in oklab, var(--paper) 60%, #000) 67%,
-      color-mix(in oklab, var(--paper) 60%, #000) 100%
-    );
-  box-shadow:
-    0 6px 10px -6px rgba(0,0,0,0.6),
-    inset 0 1px 0 rgba(255,255,255,0.03);
-}
-
-/* Right-edge page block — the primary visible book block, persistent */
-.page-right {
-  position: absolute;
-  top: 1.5%;
-  bottom: -6px;
-  right: -7px;
-  width: 7px;
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: var(--nb-radius-r);
-  background:
-    linear-gradient(
-      to right,
+      color-mix(in oklab, var(--paper) 84%, #8f8266) 100%) right center / 14px 100% no-repeat,
+    linear-gradient(to bottom,
       color-mix(in oklab, var(--paper) 92%, #b8a98a) 0%,
       color-mix(in oklab, var(--paper) 92%, #b8a98a) 34%,
       color-mix(in oklab, var(--paper) 88%, #a89a7c) 34%,
       color-mix(in oklab, var(--paper) 88%, #a89a7c) 67%,
       color-mix(in oklab, var(--paper) 84%, #8f8266) 67%,
-      color-mix(in oklab, var(--paper) 84%, #8f8266) 100%
-    );
+      color-mix(in oklab, var(--paper) 84%, #8f8266) 100%) center bottom / 100% 12px no-repeat,
+    color-mix(in oklab, var(--paper) 90%, #b8a98a);
   box-shadow:
-    4px 6px 10px -6px rgba(0,0,0,0.25),
-    inset 0 1px 0 rgba(0,0,0,0.08);
-  transition: right 400ms ease-out, width 400ms ease-out;
+    4px 6px 12px -6px rgba(0,0,0,0.25),
+    0 6px 10px -6px rgba(0,0,0,0.2);
+  transition: right 400ms ease-out, bottom 400ms ease-out;
   pointer-events: none;
 }
-.dark .page-right {
+.dark .page-block {
   background:
-    linear-gradient(
-      to right,
+    linear-gradient(to right,
       color-mix(in oklab, var(--paper) 80%, #000) 0%,
       color-mix(in oklab, var(--paper) 80%, #000) 34%,
       color-mix(in oklab, var(--paper) 70%, #000) 34%,
       color-mix(in oklab, var(--paper) 70%, #000) 67%,
       color-mix(in oklab, var(--paper) 60%, #000) 67%,
-      color-mix(in oklab, var(--paper) 60%, #000) 100%
-    );
+      color-mix(in oklab, var(--paper) 60%, #000) 100%) right center / 14px 100% no-repeat,
+    linear-gradient(to bottom,
+      color-mix(in oklab, var(--paper) 80%, #000) 0%,
+      color-mix(in oklab, var(--paper) 80%, #000) 34%,
+      color-mix(in oklab, var(--paper) 70%, #000) 34%,
+      color-mix(in oklab, var(--paper) 70%, #000) 67%,
+      color-mix(in oklab, var(--paper) 60%, #000) 67%,
+      color-mix(in oklab, var(--paper) 60%, #000) 100%) center bottom / 100% 12px no-repeat,
+    color-mix(in oklab, var(--paper) 70%, #000);
   box-shadow:
     4px 6px 12px -6px rgba(0,0,0,0.6),
-    inset 0 1px 0 rgba(255,255,255,0.03);
+    0 6px 10px -6px rgba(0,0,0,0.5);
 }
+
 
 /* Elastic band — realistic; caps clip behind cover edges via cover overflow:hidden */
 .elastic-band {
