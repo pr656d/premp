@@ -23,7 +23,7 @@ function Resume() {
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div>
             <p className="text-xs uppercase tracking-widest text-neutral-500">Loose sheet</p>
-            <h1 className="mt-1 text-3xl font-semibold">Résumé — Prem Patel</h1>
+            <h1 className="mt-1 text-3xl font-semibold text-neutral-900">Résumé — Prem Patel</h1>
           </div>
           <div className="flex items-center gap-2">
             <a
