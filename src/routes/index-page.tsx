@@ -17,6 +17,7 @@ export const Route = createFileRoute("/index-page")({
 });
 
 function IndexPage() {
+  usePageNav("/index-page");
   return (
     <PaperCanvas>
       <div className="flex min-h-screen w-full items-center justify-center px-4 py-6 md:py-10">
