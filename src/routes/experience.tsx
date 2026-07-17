@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { NotebookPage } from "../components/notebook/NotebookPage";
+import { BulletMark } from "../components/notebook/BulletMark";
 
 export const Route = createFileRoute("/experience")({
   head: () => ({
@@ -68,7 +69,7 @@ function Experience() {
             <ul className="mt-2 space-y-1.5 text-[var(--ink-muted)] text-sm">
               {it.bullets.map((b, i) => (
                 <li key={i} className="flex gap-2">
-                  <span className="text-[var(--red-pencil)] shrink-0">·</span>
+                  <BulletMark />
                   <span>{b}</span>
                 </li>
               ))}
