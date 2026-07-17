@@ -42,20 +42,23 @@ function Cover() {
   return (
     <PaperCanvas>
       <div className="flex min-h-screen flex-col items-center justify-center px-6 py-10 sm:py-16">
-        <div className="relative" style={{ perspective: "2400px", perspectiveOrigin: "50% 50%" }}>
+        <div className="cover-hover-scope relative" style={{ perspective: "2400px", perspectiveOrigin: "50% 50%" }}>
           {/* Page-stack peeking below the cover — narrower than cover, thin stacked sheets */}
           <div
             aria-hidden
             className="page-stack"
             style={{ zIndex: 0 }}
           />
+          {/* Right-edge page sliver revealed as the cover lifts on hover */}
+          <div aria-hidden className="page-edge-right" style={{ zIndex: 0 }} />
 
           <button
             onClick={open}
             aria-label="Open notebook"
-            className={`group relative block aspect-[5/7] h-[70vh] min-h-[460px] w-auto max-w-[92vw] overflow-hidden rounded-r-xl rounded-l-md border border-[var(--rule)] bg-[var(--paper-tint)] text-left shadow-[0_20px_40px_-20px_rgba(0,0,0,0.28),inset_-3px_0_0_var(--rule)] transition-transform hover:scale-[1.005] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--link)] ${opening ? "cover-opening" : ""}`}
+            className={`cover-tilt group relative block aspect-[5/7] h-[70vh] min-h-[460px] w-auto max-w-[92vw] overflow-hidden rounded-r-xl rounded-l-md border border-[var(--rule)] bg-[var(--paper-tint)] text-left shadow-[0_20px_40px_-20px_rgba(0,0,0,0.28),inset_-3px_0_0_var(--rule)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--link)] ${opening ? "cover-opening" : ""}`}
             style={{ zIndex: 1 }}
           >
+
             {/* spine */}
             <span aria-hidden className="absolute left-0 top-0 h-full w-2 rounded-l-md bg-[var(--ink)]/12" />
             {/* elastic band — wraps top & bottom (clipped by cover overflow) */}
