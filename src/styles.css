@@ -349,12 +349,23 @@ html {
 
 /* Mobile "tap me" breathing — same transform list as hinge so no jump if opening starts mid-breath */
 @keyframes cover-breathe {
-  0%, 100% { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(0deg); }
-  50%      { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-5deg); }
+  0%   { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(0deg); }
+  45%  { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-7deg); }
+  70%  { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-7deg); }
+  100% { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(0deg); }
+}
+@keyframes page-block-breathe {
+  0%   { right: -7px; bottom: -6px; }
+  45%  { right: -12px; bottom: -9px; }
+  70%  { right: -12px; bottom: -9px; }
+  100% { right: -7px; bottom: -6px; }
 }
 @media (hover: none), (pointer: coarse) {
   .cover-tilt:not(.cover-opening) {
-    animation: cover-breathe 4s ease-in-out infinite;
+    animation: cover-breathe 1.8s ease-in-out infinite;
+  }
+  .cover-hover-scope .page-block {
+    animation: page-block-breathe 1.8s ease-in-out infinite;
   }
 }
 
