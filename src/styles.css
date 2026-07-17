@@ -193,6 +193,14 @@ html {
     0 24px 40px -18px rgba(0,0,0,0.7),
     0 60px 100px -40px rgba(0,0,0,0.55);
 }
+@media (max-width: 640px) {
+  .notebook-surface {
+    aspect-ratio: auto;
+    height: 86svh;
+    width: 94vw;
+    max-width: 94vw;
+  }
+}
 
 /* Page block peeking out from under the cover — single full-size element so the
    bottom-right corner draws the full cover radius (thin strips can't). */
@@ -339,6 +347,17 @@ html {
 }
 .ink-in { animation: ink-in 500ms ease-out both; }
 
+/* Mobile "tap me" breathing — same transform list as hinge so no jump if opening starts mid-breath */
+@keyframes cover-breathe {
+  0%, 100% { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(0deg); }
+  50%      { transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-5deg); }
+}
+@media (hover: none), (pointer: coarse) {
+  .cover-tilt:not(.cover-opening) {
+    animation: cover-breathe 4s ease-in-out infinite;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cover-opening { animation-duration: 1ms; }
   .ink-in { animation: none; }
@@ -352,6 +371,7 @@ html {
   }
   .cover-hover-scope:has(.cover-tilt:hover) .page-block,
   .cover-hover-scope:has(.cover-tilt:focus-visible) .page-block { right: -7px; bottom: -6px; transition: none; }
+  .cover-tilt:not(.cover-opening) { animation: none; }
 }
 
 
