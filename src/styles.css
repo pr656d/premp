@@ -270,8 +270,10 @@ html {
 /* Cover hover tilt — "someone lifting the right edge" tease */
 .cover-tilt {
   transform-origin: left center;
-  transform-style: preserve-3d;
+  transform-style: flat;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  isolation: isolate;
   cursor: pointer;
   transition:
     transform 520ms cubic-bezier(0.22, 0.61, 0.36, 1),
