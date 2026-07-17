@@ -50,7 +50,7 @@ function Cover() {
         <div className="cover-hover-scope relative">
           {/* Real contents page, sized identically, sitting UNDER the cover.
               Purely visual on this route — never interactive. */}
-          <div aria-hidden className="pointer-events-none select-none relative z-0 transform-gpu" style={{ transform: "translateZ(0)" }}>
+          <div aria-hidden className="pointer-events-none select-none relative z-[2] transform-gpu" style={{ transform: "translateZ(0)" }}>
             <NotebookSurface>
               <IndexContent suppressInkIn inert />
             </NotebookSurface>
@@ -58,7 +58,7 @@ function Cover() {
 
 
           {/* Page block peeking out from under the cover — single full-size element */}
-          <div aria-hidden className="page-block" style={{ zIndex: 2 }} />
+          <div aria-hidden className="page-block" style={{ zIndex: 1 }} />
 
           <button
             onClick={open}
