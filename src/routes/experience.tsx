@@ -5,9 +5,9 @@ export const Route = createFileRoute("/experience")({
   head: () => ({
     meta: [
       { title: "Experience — Prem Patel" },
-      { name: "description", content: "Prem Patel's engineering timeline at Simform — Software Engineer to Lead Engineer, native Android, BLE, drone ground control, and department leadership." },
+      { name: "description", content: "Prem Patel's engineering timeline at Simform — native Android, BLE, drone ground control, and department leadership." },
       { property: "og:title", content: "Experience — Prem Patel" },
-      { property: "og:description", content: "Timeline: Simform — Software Engineer to Lead Engineer." },
+      { property: "og:description", content: "Engineering timeline at Simform: Android, BLE, drone ground control." },
     ],
   }),
   component: Experience,
