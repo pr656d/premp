@@ -66,11 +66,11 @@ function Cover() {
             onClick={open}
             aria-label="Open notebook"
             aria-expanded={opening}
-            className={`cover-tilt group absolute inset-0 block overflow-hidden rounded-r-xl rounded-l-md border border-[var(--rule)] bg-[var(--paper-tint)] text-left shadow-[0_20px_40px_-20px_rgba(0,0,0,0.28),inset_-3px_0_0_var(--rule)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--link)] ${opening ? "cover-opening" : ""}`}
-            style={{ zIndex: 3 }}
+            className={`cover-tilt group absolute inset-0 block overflow-hidden border border-[var(--rule)] bg-[var(--paper-tint)] text-left shadow-[0_20px_40px_-20px_rgba(0,0,0,0.28),inset_-3px_0_0_var(--rule)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--link)] ${opening ? "cover-opening" : ""}`}
+            style={{ zIndex: 3, borderRadius: "var(--nb-radius-l) var(--nb-radius-r) var(--nb-radius-r) var(--nb-radius-l)" }}
           >
             {/* spine */}
-            <span aria-hidden className="absolute left-0 top-0 h-full w-2 rounded-l-md bg-[var(--ink)]/12" />
+            <span aria-hidden className="absolute left-0 top-0 h-full w-2 bg-[var(--ink)]/12" style={{ borderTopLeftRadius: "var(--nb-radius-l)", borderBottomLeftRadius: "var(--nb-radius-l)" }} />
             {/* elastic band — wraps top & bottom (clipped by cover overflow) */}
             <span aria-hidden className="elastic-band" style={{ right: "12%" }} />
 
