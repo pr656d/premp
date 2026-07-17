@@ -1,8 +1,8 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageNavBar } from "../components/notebook/PageNav";
+import { createFileRoute } from "@tanstack/react-router";
+import { NotebookPage } from "../components/notebook/NotebookPage";
+import { Doodle } from "../components/notebook/Doodle";
 
 const PDF_URL = "/prem-patel-resume.pdf";
-const PDF_EMBED = `${PDF_URL}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`;
 
 export const Route = createFileRoute("/resume")({
   head: () => ({
@@ -18,44 +18,52 @@ export const Route = createFileRoute("/resume")({
 
 function Resume() {
   return (
-    <div className="flex h-screen h-dvh flex-col bg-white text-neutral-900">
-      <div className="mx-auto flex h-full w-full max-w-4xl min-h-0 flex-col px-6 py-5">
-        <div className="flex flex-wrap items-center justify-between gap-3">
+    <NotebookPage currentPath="/resume" title="Resume" align="start">
+      <div className="flex items-center gap-3 text-[var(--red-pencil)]">
+        <span className="ink-hand text-2xl">grab the printable copy</span>
+        <Doodle kind="arrow" className="h-6 w-16" />
+        <a
+          href={PDF_URL}
+          download
+          className="inline-flex items-center gap-2 rounded-full border-2 border-[var(--link)] bg-[var(--link)] px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-transparent hover:text-[var(--link)]"
+        >
+          ↓ Download PDF
+        </a>
+      </div>
+
+      <div className="mt-8 mx-auto w-full max-w-[85%]">
+        <div
+          className="rounded-sm bg-white p-6 md:p-8 font-sans text-neutral-900 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.35)] ring-1 ring-neutral-200"
+          style={{ transform: "rotate(-0.8deg)" }}
+        >
+          <div className="text-[10px] uppercase tracking-[0.2em] text-neutral-500">Loose sheet · printed</div>
+          <div className="mt-2">
+            <div className="text-lg font-bold tracking-[0.15em]">PREM PATEL</div>
+            <div className="text-sm text-neutral-700">Lead Android Engineer · DevOps</div>
+            <div className="text-[11px] text-neutral-500 mt-0.5">Ahmedabad, India · hello@premp.in · @pr656d</div>
+          </div>
+
+          <div className="my-4 h-px bg-neutral-300" />
+
           <div>
-            <p className="text-xs uppercase tracking-widest text-neutral-500">Loose sheet</p>
-            <h1 className="mt-1 text-3xl font-semibold text-neutral-900">Résumé — Prem Patel</h1>
+            <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Experience</div>
+            <ul className="mt-2 space-y-1 text-[12px] leading-snug text-neutral-800">
+              <li><span className="font-semibold">Simform — Lead Engineer</span> (2025–present)</li>
+              <li><span className="font-semibold">Simform — Senior Software Engineer</span> (2022–2025) · ShieldAI Nova2 drone control</li>
+              <li><span className="font-semibold">Simform — Software Engineer</span> (2020–2022) · BLE vending · SSNeumorphicKit OSS</li>
+            </ul>
           </div>
-          <div className="flex items-center gap-2">
-            <a
-              href={PDF_URL}
-              download
-              className="inline-flex items-center gap-2 rounded-full bg-neutral-900 px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-neutral-700"
-            >
-              ↓ Download PDF
-            </a>
-            <Link
-              to="/index-page"
-              className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-5 py-2 text-sm text-neutral-700 hover:border-neutral-900"
-            >
-              Back to notebook
-            </Link>
+
+          <div className="my-4 h-px bg-neutral-300" />
+
+          <div>
+            <div className="text-[10px] font-semibold uppercase tracking-[0.2em] text-neutral-500">Skills</div>
+            <p className="mt-2 text-[12px] leading-snug text-neutral-800">
+              Kotlin · Java · Jetpack Compose · BLE · Offline Maps/Routing · Docker · Hetzner · n8n
+            </p>
           </div>
-        </div>
-
-        <div className="mt-4 flex-1 min-h-0 overflow-hidden rounded-md bg-white shadow-[0_10px_40px_-12px_rgba(0,0,0,0.25)] ring-1 ring-neutral-200">
-          <object data={PDF_EMBED} type="application/pdf" className="block h-full w-full">
-            <iframe src={PDF_EMBED} title="Prem Patel Resume" className="block h-full w-full border-0" />
-            <div className="p-6 text-sm text-neutral-600">
-              Your browser can't display the PDF inline.{" "}
-              <a href={PDF_URL} className="underline">Download it here.</a>
-            </div>
-          </object>
-        </div>
-
-        <div className="mt-4 text-neutral-700">
-          <PageNavBar currentPath="/resume" />
         </div>
       </div>
-    </div>
+    </NotebookPage>
   );
 }
