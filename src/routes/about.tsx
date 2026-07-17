@@ -45,11 +45,11 @@ export const Route = createFileRoute("/about")({
         <Doodle kind="arrow" className="h-6 w-16" />
         <span className="ink-hand text-2xl">currently focused on</span>
       </div>
-      <ul className="mt-3 grid gap-2 text-sm text-[var(--ink-muted)] sm:grid-cols-2">
-        <li>· Exploring AI capabilities and agentic workflows</li>
-        <li>· Self-hosted infrastructure (Tailscale, Docker, n8n)</li>
-        <li>· Native Android at lead level</li>
-        <li>· Mentoring and department leadership</li>
+      <ul className="mt-3 grid gap-x-6 gap-y-3 text-sm text-[var(--ink-muted)] sm:grid-cols-2">
+        <li className="flex gap-2"><BulletMark /><span>Exploring AI capabilities and agentic workflows</span></li>
+        <li className="flex gap-2"><BulletMark /><span>Self-hosted infrastructure (Tailscale, Docker, n8n)</span></li>
+        <li className="flex gap-2"><BulletMark /><span>Native Android at lead level</span></li>
+        <li className="flex gap-2"><BulletMark /><span>Mentoring and department leadership</span></li>
       </ul>
 
       <div className="mt-8 grid grid-cols-2 gap-4 text-sm">
