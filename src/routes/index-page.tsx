@@ -8,10 +8,16 @@ import { IndexContent } from "../components/notebook/IndexContent";
 export const Route = createFileRoute("/index-page")({
   head: () => ({
     meta: [
-      { title: "Index — Prem Patel" },
-      { name: "description", content: "Table of contents for Prem Patel's notebook portfolio." },
-      { property: "og:title", content: "Index — Prem Patel" },
-      { property: "og:description", content: "Table of contents for Prem Patel's notebook portfolio." },
+      { title: "TOC — Prem Patel" },
+      { name: "description", content: "Table of contents for Prem Patel's notebook portfolio. Navigate to about, experience, projects, uses, now, and contact." },
+      { property: "og:url", content: "https://premp.in/index-page" },
+      { property: "og:title", content: "TOC — Prem Patel" },
+      { property: "og:description", content: "Table of contents for Prem Patel's notebook portfolio. Navigate to about, experience, projects, uses, now, and contact." },
+      { name: "twitter:title", content: "TOC — Prem Patel" },
+      { name: "twitter:description", content: "Table of contents for Prem Patel's notebook portfolio. Navigate to about, experience, projects, uses, now, and contact." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://premp.in/index-page" },
     ],
   }),
   component: IndexPage,

@@ -7,8 +7,14 @@ export const Route = createFileRoute("/experience")({
     meta: [
       { title: "Experience — Prem Patel" },
       { name: "description", content: "Prem Patel's engineering timeline at Simform — native Android, BLE, drone ground control, and department leadership." },
+      { property: "og:url", content: "https://premp.in/experience" },
       { property: "og:title", content: "Experience — Prem Patel" },
-      { property: "og:description", content: "Engineering timeline at Simform: Android, BLE, drone ground control." },
+      { property: "og:description", content: "Prem Patel's engineering timeline at Simform — native Android, BLE, drone ground control, and department leadership." },
+      { name: "twitter:title", content: "Experience — Prem Patel" },
+      { name: "twitter:description", content: "Prem Patel's engineering timeline at Simform — native Android, BLE, drone ground control, and department leadership." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://premp.in/experience" },
     ],
   }),
   component: Experience,

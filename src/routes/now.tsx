@@ -8,9 +8,15 @@ export const Route = createFileRoute("/now")({
   head: () => ({
     meta: [
       { title: "Now — Prem Patel" },
-      { name: "description", content: `What Prem Patel is focused on right now. Updated ${UPDATED}.` },
+      { name: "description", content: `What Prem Patel is focused on right now, including family life, agentic AI frameworks, and technical study. Updated ${UPDATED}.` },
+      { property: "og:url", content: "https://premp.in/now" },
       { property: "og:title", content: "Now — Prem Patel" },
-      { property: "og:description", content: `Currently: a 16-month-old daughter, and a real question about what AI can do. (${UPDATED})` },
+      { property: "og:description", content: `What Prem Patel is focused on right now, including family life, agentic AI frameworks, and technical study. Updated ${UPDATED}.` },
+      { name: "twitter:title", content: "Now — Prem Patel" },
+      { name: "twitter:description", content: `What Prem Patel is focused on right now, including family life, agentic AI frameworks, and technical study. Updated ${UPDATED}.` },
+    ],
+    links: [
+      { rel: "canonical", href: "https://premp.in/now" },
     ],
   }),
   component: Now,

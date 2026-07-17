@@ -6,9 +6,15 @@ export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
       { title: "Projects — Prem Patel" },
-      { name: "description", content: "Projects worth writing down: smart vending, autonomous drone ground control, SSNeumorphicKit, a unified comms platform, and the homelab." },
+      { name: "description", content: "Engineering projects by Prem Patel, including smart vending, autonomous drone ground control, SSNeumorphicKit, and self-hosted infrastructure." },
+      { property: "og:url", content: "https://premp.in/projects" },
       { property: "og:title", content: "Projects — Prem Patel" },
-      { property: "og:description", content: "Android, BLE, RF, open source, and self-hosted infra." },
+      { property: "og:description", content: "Engineering projects by Prem Patel, including smart vending, autonomous drone ground control, SSNeumorphicKit, and self-hosted infrastructure." },
+      { name: "twitter:title", content: "Projects — Prem Patel" },
+      { name: "twitter:description", content: "Engineering projects by Prem Patel, including smart vending, autonomous drone ground control, SSNeumorphicKit, and self-hosted infrastructure." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://premp.in/projects" },
     ],
   }),
   component: Projects,

@@ -11,9 +11,15 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Prem Patel" },
-      { name: "description", content: `Get in touch with Prem Patel — ${EMAIL}. One handle everywhere: ${HANDLE}.` },
+      { name: "description", content: `Get in touch with Prem Patel via email (${EMAIL}) or find him across social channels under the username ${HANDLE}.` },
+      { property: "og:url", content: "https://premp.in/contact" },
       { property: "og:title", content: "Contact — Prem Patel" },
-      { property: "og:description", content: "Say hello." },
+      { property: "og:description", content: `Get in touch with Prem Patel via email (${EMAIL}) or find him across social channels under the username ${HANDLE}.` },
+      { name: "twitter:title", content: "Contact — Prem Patel" },
+      { name: "twitter:description", content: `Get in touch with Prem Patel via email (${EMAIL}) or find him across social channels under the username ${HANDLE}.` },
+    ],
+    links: [
+      { rel: "canonical", href: "https://premp.in/contact" },
     ],
   }),
   component: Contact,

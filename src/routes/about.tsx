@@ -7,13 +7,37 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About — Prem Patel" },
-      { name: "description", content: "Prem Patel — Android engineer, self-hosted homelab tinkerer, AI-workflow explorer, and rider of a Continental GT 650." },
+      { name: "description", content: "Prem Patel — Lead Android Engineer, self-hosted homelab developer, AI agentic workflow explorer, and motorcycle enthusiast." },
+      { property: "og:url", content: "https://premp.in/about" },
       { property: "og:title", content: "About — Prem Patel" },
-      { property: "og:description", content: "Android · self-hosted homelab · AI workflows · Continental GT 650." },
+      { property: "og:description", content: "Prem Patel — Lead Android Engineer, self-hosted homelab developer, AI agentic workflow explorer, and motorcycle enthusiast." },
+      { name: "twitter:title", content: "About — Prem Patel" },
+      { name: "twitter:description", content: "Prem Patel — Lead Android Engineer, self-hosted homelab developer, AI agentic workflow explorer, and motorcycle enthusiast." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://premp.in/about" },
     ],
   }),
   component: () => (
     <NotebookPage currentPath="/about" title="About" align="start">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Prem Patel",
+            "url": "https://premp.in",
+            "sameAs": [
+              "https://github.com/pr656d",
+              "https://linkedin.com/in/pr656d",
+              "https://x.com/pr656d"
+            ],
+            "jobTitle": "Lead Android Engineer",
+            "knowsAbout": ["Android Development", "Kotlin", "Software Engineering", "AI Workflows", "Self-hosting"]
+          })
+        }}
+      />
       <p className="text-lg">
         I'm <strong>Prem</strong> — an enthusiastic <span className="marker-hl">explorer</span>, in tech and outside it.
       </p>

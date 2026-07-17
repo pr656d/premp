@@ -5,9 +5,15 @@ export const Route = createFileRoute("/uses")({
   head: () => ({
     meta: [
       { title: "Uses — Prem Patel" },
-      { name: "description", content: "The hardware, editors, AI tools, and self-hosted stack Prem Patel uses day to day." },
+      { name: "description", content: "The hardware, text editors, developer setup, AI terminal tools, and self-hosted services Prem Patel uses daily." },
+      { property: "og:url", content: "https://premp.in/uses" },
       { property: "og:title", content: "Uses — Prem Patel" },
-      { property: "og:description", content: "Hardware, editors, AI CLI stack, and homelab." },
+      { property: "og:description", content: "The hardware, text editors, developer setup, AI terminal tools, and self-hosted services Prem Patel uses daily." },
+      { name: "twitter:title", content: "Uses — Prem Patel" },
+      { name: "twitter:description", content: "The hardware, text editors, developer setup, AI terminal tools, and self-hosted services Prem Patel uses daily." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://premp.in/uses" },
     ],
   }),
   component: Uses,

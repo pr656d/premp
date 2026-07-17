@@ -11,9 +11,15 @@ export const Route = createFileRoute("/resume")({
   head: () => ({
     meta: [
       { title: "Resume — Prem Patel" },
-      { name: "description", content: "Prem Patel's resume — downloadable PDF." },
+      { name: "description", content: "Prem Patel's professional CV and resume. Lead Android Engineer with experience in BLE IoT, offline maps, and drone control systems. Downloadable PDF available." },
+      { property: "og:url", content: "https://premp.in/resume" },
       { property: "og:title", content: "Resume — Prem Patel" },
-      { property: "og:description", content: "Download the PDF resume." },
+      { property: "og:description", content: "Prem Patel's professional CV and resume. Lead Android Engineer with experience in BLE IoT, offline maps, and drone control systems. Downloadable PDF available." },
+      { name: "twitter:title", content: "Resume — Prem Patel" },
+      { name: "twitter:description", content: "Prem Patel's professional CV and resume. Lead Android Engineer with experience in BLE IoT, offline maps, and drone control systems. Downloadable PDF available." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://premp.in/resume" },
     ],
   }),
   component: Resume,

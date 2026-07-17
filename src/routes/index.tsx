@@ -6,6 +6,20 @@ import { IndexContent } from "../components/notebook/IndexContent";
 import { Doodle } from "../components/notebook/Doodle";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Prem Patel — Lead Android Engineer & Explorer" },
+      { name: "description", content: "Personal website of Prem Patel, Lead Android Engineer. Discover project logs, experience, and tools in a dot-grid notebook layout." },
+      { property: "og:url", content: "https://premp.in/" },
+      { property: "og:title", content: "Prem Patel — Lead Android Engineer & Explorer" },
+      { property: "og:description", content: "Personal website of Prem Patel, Lead Android Engineer. Discover project logs, experience, and tools in a dot-grid notebook layout." },
+      { name: "twitter:title", content: "Prem Patel — Lead Android Engineer & Explorer" },
+      { name: "twitter:description", content: "Personal website of Prem Patel, Lead Android Engineer. Discover project logs, experience, and tools in a dot-grid notebook layout." },
+    ],
+    links: [
+      { rel: "canonical", href: "https://premp.in/" },
+    ],
+  }),
   component: Cover,
 });
 
@@ -46,6 +60,24 @@ function Cover() {
 
   return (
     <PaperCanvas>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Prem Patel",
+            "url": "https://premp.in",
+            "sameAs": [
+              "https://github.com/pr656d",
+              "https://linkedin.com/in/pr656d",
+              "https://x.com/pr656d"
+            ],
+            "jobTitle": "Lead Android Engineer",
+            "knowsAbout": ["Android Development", "Kotlin", "Software Engineering", "AI Workflows", "Self-hosting"]
+          })
+        }}
+      />
       <div className="flex min-h-screen w-full items-center justify-center px-4 py-6 md:py-10">
         <div className="cover-hover-scope relative">
           {/* Real contents page, sized identically, sitting UNDER the cover.
