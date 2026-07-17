@@ -1,7 +1,8 @@
 {
   "mcpServers": {
     "lovable": {
-      "serverUrl": "https://mcp.lovable.dev/"
+      "serverUrl": "https://mcp.lovable.dev",
+      "transport": "sse"
     }
   }
 }
