@@ -9,7 +9,7 @@ export const Route = createFileRoute("/resume")({
   head: () => ({
     meta: [
       { title: "Resume — Prem Patel" },
-      { name: "description", content: "Prem Patel's resume — Lead Engineer at Simform, downloadable PDF." },
+      { name: "description", content: "Prem Patel's resume — downloadable PDF." },
       { property: "og:title", content: "Resume — Prem Patel" },
       { property: "og:description", content: "Download the PDF resume." },
     ],
