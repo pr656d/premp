@@ -45,7 +45,7 @@ export function IndexContent({ suppressInkIn = false, inert = false }: Props) {
                     {p.label}
                   </span>
                   <span className="flex-1 border-b border-dotted border-[var(--rule)] translate-y-[-6px]" />
-                  <span className="text-xs text-[var(--link)] opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="text-[clamp(1.25rem,2.5vh,1.75rem)] font-semibold leading-none text-[var(--link)] opacity-0 group-hover:opacity-100 transition-opacity">
                     →
                   </span>
                 </Link>
