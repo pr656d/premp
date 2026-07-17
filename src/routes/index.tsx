@@ -51,10 +51,14 @@ function Cover() {
           className="cover-hover-scope relative"
           style={{ perspective: "2400px", perspectiveOrigin: "50% 50%" }}
         >
-          {/* Real contents page, sized identically, sitting UNDER the cover. */}
-          <NotebookSurface>
-            <IndexContent suppressInkIn inert={!opening} />
-          </NotebookSurface>
+          {/* Real contents page, sized identically, sitting UNDER the cover.
+              Purely visual on this route — never interactive. */}
+          <div aria-hidden className="pointer-events-none select-none">
+            <NotebookSurface>
+              <IndexContent suppressInkIn inert />
+            </NotebookSurface>
+          </div>
+
 
           {/* Page-stack peeking below the cover */}
           <div aria-hidden className="page-stack" style={{ zIndex: 2 }} />
