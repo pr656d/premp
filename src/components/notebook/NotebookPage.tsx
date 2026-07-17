@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { PaperCanvas } from "./PaperCanvas";
 import { NotebookSurface } from "./NotebookSurface";
 import { PageNavBar, PAGES } from "./PageNav";
@@ -15,11 +15,17 @@ interface Props {
 export function NotebookPage({ currentPath, title, kicker, tint = "none", align = "center", children }: Props) {
   const page = PAGES.find((p) => p.to === currentPath);
   const justify = align === "start" ? "justify-start" : "justify-center";
+  const pageScrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    pageScrollRef.current?.scrollTo(0, 0);
+  }, [currentPath]);
+
   return (
     <PaperCanvas>
       <div className="flex min-h-screen w-full items-center justify-center px-4 py-6 md:py-10">
         <NotebookSurface tint={tint}>
-          <div key={currentPath} className="page-scroll flex h-full w-full flex-col overflow-y-auto">
+          <div ref={pageScrollRef} key={currentPath} className="page-scroll flex h-full w-full flex-col overflow-y-auto">
             <div className="mx-auto flex w-full max-w-[92%] flex-1 flex-col px-2 py-8 md:px-8 md:py-12 lg:px-12 ink-in">
               <div className="border-l-2 border-[var(--link)]/40 pl-5 md:pl-8 flex-1 flex flex-col">
                 <div className="mb-4 flex items-baseline justify-between text-[0.7rem] uppercase tracking-widest text-[var(--ink-faint)]">
