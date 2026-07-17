@@ -286,7 +286,7 @@ html {
 @media (hover: hover) and (pointer: fine) {
   .cover-tilt:hover:not(.cover-opening),
   .cover-tilt:focus-visible:not(.cover-opening) {
-    transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-7deg) rotateX(1deg);
+    transform: translateX(100%) perspective(2400px) translateX(-100%) rotateY(-7deg);
     box-shadow:
       0 28px 46px -16px rgba(0,0,0,0.34),
       30px 36px 62px -22px rgba(0,0,0,0.28),
