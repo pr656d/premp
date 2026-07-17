@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prem Patel — Resume</title>
+<style>
+  @page { size: A4; margin: 12mm 14mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+    font-size: 9.5pt; line-height: 1.34; color: #1a1a1a;
+  }
+  h1 { font-size: 18pt; letter-spacing: 2.5px; font-weight: 700; }
+  .subtitle { font-size: 10.5pt; color: #444; margin-top: 2px; }
+  .contact { font-size: 8.6pt; color: #555; margin-top: 4px; }
+  .contact a { color: #2b4a8b; text-decoration: none; }
+  hr { border: none; border-top: 1px solid #ccc; margin: 6px 0; }
+  h2 {
+    font-size: 8.4pt; text-transform: uppercase; letter-spacing: 2px;
+    color: #666; margin: 9px 0 4px;
+  }
+  .role { margin-bottom: 6px; }
+  .role-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .role-title { font-size: 10.2pt; font-weight: 600; }
+  .role-org { color: #444; font-weight: 400; }
+  .role-when { font-size: 8.6pt; color: #666; white-space: nowrap; }
+  ul { margin: 3px 0 0 14px; }
+  li { margin-bottom: 1px; }
+  .skills p { margin-bottom: 2px; }
+  .skills b { font-weight: 600; }
+  .two-col { display: flex; justify-content: space-between; gap: 16px; }
+</style>
+</head>
+<body>
+
+<h1>PREM PATEL</h1>
+<div class="subtitle">Lead Engineer · Simform</div>
+<div class="contact">
+  <a href="mailto:hello@premp.in">hello@premp.in</a> ·
+  <a href="https://premp.in">premp.in</a> ·
+  <a href="https://github.com/pr656d">github.com/pr656d</a> ·
+  <a href="https://www.linkedin.com/in/pr656d">linkedin.com/in/pr656d</a> ·
+  India (working remotely)
+</div>
+
+<hr>
+
+<h2>Summary</h2>
+<p>
+Lead Engineer with 6+ years of native Android development (Kotlin) and software architecture.
+Led teams shipping BLE/IoT products, an autonomous drone ground-control app with offline maps and
+route navigation, and a unified communications platform. Runs department-level engineering practice:
+project templates, CI/CD, code review, mentoring. Builds self-hosted infrastructure and AI-driven,
+agent-agnostic developer workflows on the side.
+</p>
+
+<h2>Experience</h2>
+
+<div class="role">
+  <div class="role-head">
+    <span class="role-title">Lead Engineer <span class="role-org">· Simform</span></span>
+    <span class="role-when">2025 – present</span>
+  </div>
+  <ul>
+    <li>Manage two projects with separate teams — including both Android and iOS teams on one engagement — and review several others.</li>
+    <li>Own CI/CD pipelines, multi-environment setup, and product-flavor releases, including a multi-brand white-label app (one codebase, several branded apps with per-brand features).</li>
+    <li>Own and delegate the department's Android project template; review the department's open-source library work.</li>
+    <li>Run a recurring department technical forum; interview and mentor trainees; sprint planning and agile tracking.</li>
+  </ul>
+</div>
+
+<div class="role">
+  <div class="role-head">
+    <span class="role-title">Senior Software Engineer <span class="role-org">· Simform</span></span>
+    <span class="role-when">Jan 2022 – Jan 2025</span>
+  </div>
+  <ul>
+    <li>Led development of an autonomous drone ground-control Android app on a custom vendor SDK over radio frequency: live telemetry, offline maps, route planning and in-flight navigation.</li>
+    <li>App Lead at an early-stage startup engagement: grew from second Android developer to leading Android + iOS with three developers; owned features from design and backend schema alignment through deployment; designed the team communication system that fixed coordination chaos.</li>
+    <li>Code reviewer and architect on a unified communications platform (internal Teams alternative): designed the Android architecture for Jitsi + Matrix event handling and guided two developers.</li>
+    <li>Built the department's cookiecutter-based Android project template — database, preferences, key handling, API, logging wired in; zero boilerplate to start a product.</li>
+  </ul>
+</div>
+
+<div class="role">
+  <div class="role-head">
+    <span class="role-title">Software Engineer <span class="role-org">· Simform</span></span>
+    <span class="role-when">Jun 2020 – Jan 2022</span>
+  </div>
+  <ul>
+    <li>Built the Android side of a smart vending platform — an IoT retrofit turning manual vending machines into app-connected ones; owned the BLE layer (GATT read/write, custom phone-to-machine protocol).</li>
+    <li>Authored and open-sourced <b>SSNeumorphicKit</b>, a neumorphic UI library for Android (83★) — <a href="https://github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit">github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit</a>.</li>
+    <li>Worked directly with clients end to end; mentored trainees in Simform's mentorship program.</li>
+  </ul>
+</div>
+
+<h2>Skills</h2>
+<div class="skills">
+  <p><b>Android:</b> Kotlin, Java, Jetpack Compose, Coroutines, Room, MVVM + Clean Architecture, BLE, Maps (offline tiles, routing), Gradle, cookiecutter tooling</p>
+  <p><b>DevOps &amp; systems:</b> Docker Compose, CI/CD (GitHub Actions), Hetzner, Tailscale, Cloudflare Tunnels, n8n automation, self-hosting</p>
+  <p><b>AI tooling:</b> agentic developer workflows, Claude Code, MCP, multi-CLI agent-agnostic configuration, LLM API integration</p>
+</div>
+
+<h2>Open Source &amp; Side Projects</h2>
+<div class="role">
+  <ul>
+    <li><b>Self-hosted homelab</b> — services on a Hetzner VPS behind Tailscale, reverse-proxied and tunneled through Cloudflare, everything in Docker Compose; n8n automations with LLM nodes calling provider APIs.</li>
+    <li><b>Agent-agnostic AI orchestration</b> — a crew of AI agents (Claude Code, Codex, Gemini, opencode) sharing one configuration of instructions, skills, and tools, dispatched in parallel across git worktrees.</li>
+    <li><b>CattleNotes</b> — offline-first native Kotlin Android app (Room, repository pattern), built solo as a freelance project (2020).</li>
+  </ul>
+</div>
+
+<h2>Certifications</h2>
+<div class="role">
+  <ul>
+    <li>Google Certified Associate Android Developer (issued May 2022)</li>
+    <li>AWS Certified Solutions Architect – Associate (in progress)</li>
+  </ul>
+</div>
+
+<h2>Education</h2>
+<div class="two-col">
+  <span><b>B.Tech, Computer Science &amp; Engineering</b> — Parul University</span>
+  <span class="role-when">2016 – 2020</span>
+</div>
+
+</body>
+</html>
