@@ -18,7 +18,7 @@ export const Route = createFileRoute("/index-page")({
 function IndexPage() {
   return (
     <PaperCanvas>
-      <div className="mx-auto max-w-2xl px-6 py-16 md:py-24 ink-in">
+      <div className="mx-auto max-w-2xl xl:max-w-3xl 2xl:max-w-4xl px-6 py-16 md:py-24 text-base xl:text-[17px] 2xl:text-lg ink-in">
         <div className="border-l-2 border-[var(--accent)]/40 pl-6 md:pl-10">
           <div className="mb-6 flex items-baseline justify-between text-xs uppercase tracking-widest text-[var(--ink-faint)]">
             <span>00 · Index</span>
