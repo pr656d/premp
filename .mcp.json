@@ -3,6 +3,10 @@
     "lovable": {
       "type": "http",
       "url": "https://mcp.lovable.dev"
+    },
+    "netlify": {
+      "type": "http",
+      "url": "https://netlify-mcp.netlify.app/mcp"
     }
   }
 }

@@ -7,5 +7,9 @@ sandbox_mode = "workspace-write"
 command = "npx"
 args = ["-y", "mcp-remote", "https://mcp.lovable.dev"]
 
+[mcp_servers."netlify"]
+command = "npx"
+args = ["-y", "mcp-remote", "https://netlify-mcp.netlify.app/mcp"]
+
 [sandbox_workspace_write]
 writable_roots = ["/Users/prem/Documents/Projects/premp"]

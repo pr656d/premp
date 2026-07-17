@@ -3,6 +3,9 @@
     "lovable": {
       "serverUrl": "https://mcp.lovable.dev",
       "transport": "sse"
+    },
+    "netlify": {
+      "serverUrl": "https://netlify-mcp.netlify.app/mcp"
     }
   }
 }
