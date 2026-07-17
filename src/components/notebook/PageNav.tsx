@@ -69,11 +69,11 @@ export function PageNavBar({ currentPath }: { currentPath: string }) {
       <div>
         {prev ? (
           <Link to={prev.to} className="text-[var(--ink-muted)] hover:text-[var(--ink)]">
-            ← <span className="ink-hand text-lg">{prev.label}</span>
+            <span className="font-semibold text-[var(--link)]">←</span> <span className="ink-hand text-lg">{prev.label}</span>
           </Link>
         ) : (
           <Link to="/index-page" className="text-[var(--ink-muted)] hover:text-[var(--ink)]">
-            ← <span className="ink-hand text-lg">Index</span>
+            <span className="font-semibold text-[var(--link)]">←</span> <span className="ink-hand text-lg">Index</span>
           </Link>
         )}
       </div>
@@ -83,7 +83,7 @@ export function PageNavBar({ currentPath }: { currentPath: string }) {
       <div>
         {next && (
           <Link to={next.to} className="text-[var(--ink-muted)] hover:text-[var(--ink)]">
-            <span className="ink-hand text-lg">{next.label}</span> →
+            <span className="ink-hand text-lg">{next.label}</span> <span className="font-semibold text-[var(--link)]">→</span>
           </Link>
         )}
       </div>
