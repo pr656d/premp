@@ -94,8 +94,8 @@ function Cover() {
               </div>
 
               <div className="flex items-end justify-between gap-4">
-                <span className="text-[clamp(9px,1vh,12px)] uppercase tracking-[0.18em] text-[var(--ink-faint)]">Ahmedabad, India · hello@premp.in</span>
-                <div className="flex items-center gap-2 text-[var(--red-pencil)]">
+                <span className="max-w-[55%] text-[clamp(9px,1vh,12px)] uppercase tracking-[0.18em] text-[var(--ink-faint)]">Ahmedabad, India · hello@premp.in</span>
+                <div className="flex shrink-0 items-center gap-2 pr-[14%] text-[var(--red-pencil)]">
                   <Doodle kind="star" className="h-4 w-4" />
                   <span className="ink-hand text-[clamp(1rem,2vh,1.5rem)]">tap to open</span>
                 </div>
