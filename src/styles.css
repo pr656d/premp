@@ -405,7 +405,7 @@ html {
 
 @layer base {
   * { border-color: var(--color-border); }
-  html, body { height: 100%; overflow: hidden; background-color: var(--desk); color: var(--ink); }
+  html, body { height: 100%; overflow: hidden; overscroll-behavior: none; background-color: var(--desk); color: var(--ink); }
   body { font-family: var(--font-sans); }
   h1, h2, h3, h4 { color: var(--ink); }
   a { color: var(--link); }
