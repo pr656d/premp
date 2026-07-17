@@ -41,16 +41,13 @@ function Cover() {
       return;
     }
     setOpening(true);
-    window.setTimeout(() => navigate({ to: "/index-page" }), 780);
+    window.setTimeout(() => navigate({ to: "/index-page" }), 480);
   };
 
   return (
     <PaperCanvas>
       <div className="flex min-h-screen w-full items-center justify-center px-4 py-6 md:py-10">
-        <div
-          className="cover-hover-scope relative"
-          style={{ perspective: "2400px", perspectiveOrigin: "50% 50%" }}
-        >
+        <div className="cover-hover-scope relative">
           {/* Real contents page, sized identically, sitting UNDER the cover.
               Purely visual on this route — never interactive. */}
           <div aria-hidden className="pointer-events-none select-none">
