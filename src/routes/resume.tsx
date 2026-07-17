@@ -3,6 +3,8 @@ import { NotebookPage } from "../components/notebook/NotebookPage";
 import { Doodle } from "../components/notebook/Doodle";
 import { SOCIALS } from "../components/notebook/SocialIcons";
 
+import posthog from "posthog-js";
+
 const PDF_URL = "/prem-patel-resume.pdf";
 
 export const Route = createFileRoute("/resume")({
@@ -26,6 +28,13 @@ function Resume() {
         <a
           href={PDF_URL}
           download
+          onClick={() => {
+            if (import.meta.env.VITE_POSTHOG_KEY) {
+              posthog.capture("resume_download", {
+                page_path: "/resume",
+              });
+            }
+          }}
           className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border-2 border-[var(--link)] bg-[var(--link)] px-5 py-2 text-sm font-medium text-white transition-colors hover:bg-transparent hover:text-[var(--link)]"
         >
           ↓ Download PDF

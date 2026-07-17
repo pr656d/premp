@@ -30,6 +30,13 @@ bun install
 bun run dev
 ```
 
+## Environment Variables
+
+Configure these in Netlify (and `.env` or `.env.local` for local development):
+
+- `VITE_POSTHOG_KEY` - PostHog Project API key (leave empty to disable analytics tracking).
+- `VITE_POSTHOG_HOST` - (Optional) PostHog API host endpoint (defaults to `https://us.i.posthog.com`).
+
 ## Repo extras
 
 - `resume/` — resume sources; `resume/resume-web.html` renders to the site's

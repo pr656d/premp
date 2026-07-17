@@ -136,9 +136,23 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+import posthog from "posthog-js";
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const router = useRouter();
+  useEffect(() => {
+    const key = import.meta.env.VITE_POSTHOG_KEY;
+    const host = import.meta.env.VITE_POSTHOG_HOST || "https://us.i.posthog.com";
+    if (key && typeof window !== "undefined") {
+      posthog.init(key, {
+        api_host: host,
+        capture_pageview: "history_change",
+        capture_pageleave: true,
+        person_profiles: "identified_only",
+      });
+    }
+  }, []);
   useEffect(() => {
     return router.subscribe("onResolved", () => {
       document.querySelector(".page-scroll")?.scrollTo(0, 0);
