@@ -371,6 +371,7 @@ html {
   }
   .cover-hover-scope:has(.cover-tilt:hover) .page-block,
   .cover-hover-scope:has(.cover-tilt:focus-visible) .page-block { right: -7px; bottom: -6px; transition: none; }
+  .cover-tilt:not(.cover-opening) { animation: none; }
 }
 
 
