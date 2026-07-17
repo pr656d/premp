@@ -46,7 +46,7 @@ function Now() {
       <div className="mt-10 flex items-center gap-3">
         <Doodle kind="star" className="h-5 w-5 text-[var(--red-pencil)]" />
         <p className="text-sm text-[var(--ink-faint)]">
-          Inspired by <span className="italic">nownownow.com</span>. This page changes.
+          Inspired by <a href="https://nownownow.com" target="_blank" rel="noopener noreferrer" className="italic underline decoration-dotted underline-offset-2 hover:text-[var(--ink)]">nownownow.com</a>. This page changes.
         </p>
       </div>
     </NotebookPage>
