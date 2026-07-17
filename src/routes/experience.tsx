@@ -38,7 +38,7 @@ const ITEMS = [
 function Experience() {
   return (
     <NotebookPage currentPath="/experience" title="Experience" tint="1">
-      <ol className="relative space-y-8 border-l-2 border-dashed border-[var(--rule)] pl-6">
+      <ol className="relative flex-1 flex flex-col justify-around gap-8 border-l-2 border-dashed border-[var(--rule)] pl-6 py-2">
         {ITEMS.map((it) => (
           <li key={it.role} className="relative">
             <span className="absolute -left-[31px] top-2 h-3 w-3 rounded-full border-2 border-[var(--link)] bg-[var(--paper)]" />

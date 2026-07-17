@@ -39,6 +39,21 @@ export const Route = createFileRoute("/about")({
           <div className="mt-1">Android · BLE · Offline maps · DevOps</div>
         </div>
       </div>
+
+      {/* margin doodles */}
+      <div className="mt-10 flex items-center justify-between text-[var(--ink-faint)]">
+        <div className="flex items-center gap-2">
+          <svg viewBox="0 0 40 40" className="h-8 w-8" aria-hidden>
+            <ellipse cx="20" cy="20" rx="13" ry="12" fill="none" stroke="var(--red-pencil)" strokeWidth="1.2" opacity="0.55" strokeDasharray="2 3" />
+            <ellipse cx="20" cy="20" rx="9" ry="8" fill="none" stroke="var(--red-pencil)" strokeWidth="0.9" opacity="0.4" />
+          </svg>
+          <span className="ink-hand text-sm text-[var(--red-pencil)]/80">coffee ring</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="ink-hand text-sm">p.t.o. →</span>
+          <Doodle kind="arrow" className="h-5 w-14 text-[var(--red-pencil)]" />
+        </div>
+      </div>
     </NotebookPage>
   ),
 });

@@ -41,9 +41,12 @@ function Now() {
           Slowly moving more of my life off the cloud and into the homelab.
         </li>
       </ul>
-      <p className="mt-auto pt-10 text-sm text-[var(--ink-faint)]">
-        Inspired by <span className="italic">nownownow.com</span>. This page changes.
-      </p>
+      <div className="mt-10 flex items-center gap-3">
+        <Doodle kind="star" className="h-5 w-5 text-[var(--red-pencil)]" />
+        <p className="text-sm text-[var(--ink-faint)]">
+          Inspired by <span className="italic">nownownow.com</span>. This page changes.
+        </p>
+      </div>
     </NotebookPage>
   );
 }

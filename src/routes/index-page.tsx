@@ -34,7 +34,7 @@ function IndexPage() {
                   <span className="ink-hand text-xl">what's inside</span>
                 </div>
 
-                <ol className="mt-8 space-y-2 flex-1">
+                <ol className="mt-6 flex-1 min-h-0 flex flex-col justify-around">
                   {PAGES.map((p) => (
                     <li key={p.to}>
                       <Link

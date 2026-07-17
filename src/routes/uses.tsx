@@ -33,7 +33,8 @@ function Uses() {
   return (
     <NotebookPage currentPath="/uses" title="Uses" tint="3">
       <p className="text-[var(--ink-muted)]">Gear, tools, and the homelab.</p>
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
+      <div className="mt-4 flex-1 min-h-0 grid gap-x-8 gap-y-6 md:grid-cols-2 md:grid-rows-2 content-around">
+
         <Section title="Hardware" items={[
           ["Daily driver", "MacBook Pro (Apple Silicon)"],
           ["Phone", "Android — always testing on real hardware"],
