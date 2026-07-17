@@ -312,18 +312,10 @@ html {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .cover-hover-scope:has(.cover-tilt:hover:not(.cover-opening)) .page-right,
-  .cover-hover-scope:has(.cover-tilt:focus-visible:not(.cover-opening)) .page-right {
+  .cover-hover-scope:has(.cover-tilt:hover:not(.cover-opening)) .page-block,
+  .cover-hover-scope:has(.cover-tilt:focus-visible:not(.cover-opening)) .page-block {
     right: -12px;
-    width: 12px;
-  }
-  .cover-hover-scope:has(.cover-tilt:hover:not(.cover-opening)) .page-stack,
-  .cover-hover-scope:has(.cover-tilt:focus-visible:not(.cover-opening)) .page-stack {
     bottom: -9px;
-    box-shadow:
-      0 12px 18px -6px rgba(0,0,0,0.4),
-      inset 0 1px 0 rgba(0,0,0,0.08);
-    transition: bottom 400ms ease-out, box-shadow 400ms ease-out;
   }
 }
 
