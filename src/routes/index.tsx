@@ -57,9 +57,8 @@ function Cover() {
           </div>
 
 
-          {/* Page block peeking out — right edge (primary) + bottom hint, meeting at bottom-right */}
-          <div aria-hidden className="page-right" style={{ zIndex: 2 }} />
-          <div aria-hidden className="page-stack" style={{ zIndex: 2 }} />
+          {/* Page block peeking out from under the cover — single full-size element */}
+          <div aria-hidden className="page-block" style={{ zIndex: 2 }} />
 
           <button
             onClick={open}
