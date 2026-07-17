@@ -2,12 +2,12 @@
 
 Personal website for Prem Patel (https://premp.in).
 
-## Current State: Redesign in Progress
+## Current State: Notebook Site LIVE (since 2026-07-17)
 
-The site is being redesigned as a **dot-grid notebook** concept, built in Lovable
-(project "Prem's Dot Notebook", id `fa818a2e-9b34-491e-9054-9eddde69e19e`,
-tech stack: TanStack Start + TypeScript + Tailwind). The Hugo site below is the
-**current production** site on premp.in until the redesign ships.
+premp.in serves the **dot-grid notebook** app: TanStack Start + TypeScript +
+Tailwind, authored in Lovable (project "Prem's Dot Notebook", id
+`fa818a2e-9b34-491e-9054-9eddde69e19e`). The old Hugo site was removed from
+`master` in the go-live merge (`505f843`); its history remains in git.
 
 - Design vision + track state: `~/.plans/2026-07-17-personal-website-plan.md`
 - Redesign brief (content inventory, deploy plan): `docs/website-redesign-brief.md`
@@ -21,37 +21,46 @@ tech stack: TanStack Start + TypeScript + Tailwind). The Hugo site below is the
 - Client project names are anonymized: use "Smart Vending Platform",
   "Autonomous Drone Ground Control", "an early-stage startup",
   "Unified Communications Platform". Simform and SSNeumorphicKit may be named.
-- "Open Source" spelled out (not "OSS"); "X" not "Twitter"; resume contact links as brand icons.
-- Never publish: job search, location/hometown, employer dissatisfaction.
+- "Open Source" spelled out (not "OSS"); "X" not "Twitter"; contact links as brand
+  icons (GitHub, LinkedIn, Mastodon, X, LeetCode — all @pr656d).
+- Never publish: job search, location/hometown, employer dissatisfaction, phone number.
 
-### Lovable → repo sync (reflect pattern)
+### Release flow (Lovable → preview → production)
 
 Mirrors the nyomipatel/tiny-artist-studio setup:
 
-- Lovable commits to `pr656d/prem-s-dot-notebook` `main` (source; repo created when
-  Prem connects the Lovable project to GitHub — one-time UI step).
-- `/reflect-premp` skill (`.agents/skills/reflect-premp/`) force-pushes
-  `lovable-source/main` → `origin/notebook-preview`.
-- Netlify branch deploy builds `notebook-preview--premp.netlify.app`.
-- Production release = deliberate manual merge to `master` later; `master`
-  stays the live Hugo site until then. Never force-push `master`.
+1. Content/design changes happen in Lovable ("Prem's Dot Notebook"), which
+   commits to `pr656d/prem-s-dot-notebook` `main` (remote `lovable-source`).
+2. `/reflect-premp` skill (`.agents/skills/reflect-premp/`) force-pushes
+   `lovable-source/main` → `origin/notebook-preview`; Netlify branch deploy
+   builds `notebook-preview--premp.netlify.app` for review.
+3. Production release = deliberate merge of `notebook-preview` into `master`
+   (now shares history after the go-live merge). Never force-push `master`.
 
-## Tech Stack (current production)
-- Hugo static site generator
-- Theme: hugo-coder (submodule in `themes/hugo-coder`)
-- Netlify deployment (configured in `netlify.toml`)
+### Resume system
+
+- `resume/resume-web.html` — public anonymized resume source; render with
+  headless Chrome (`--headless --no-pdf-header-footer --print-to-pdf=prem-patel-resume.pdf`),
+  commit the PDF to `prem-s-dot-notebook` `public/`, then `/reflect-premp`.
+- `resume/default-resume.md` + `about-me.md` — private tailoring base (real
+  client names allowed, but repo may be public: keep location generic, no phone).
+- `resume-tailor` skill (`.agents/skills/resume-tailor/`) for JD-specific variants.
+
+## Tech Stack (production)
+- TanStack Start + TypeScript + Tailwind (Lovable-authored)
+- Bun (`bun.lock`), Nitro with `NITRO_PRESET=netlify`
+- Netlify deployment (`netlify.toml`: `bun run build`, publish `dist`)
 
 ## Key Files & Directories
-- `config.toml`: Hugo configuration (menus, social profiles, metadata)
-- `content/`: Markdown files for site pages
-- `themes/`: Hugo themes directory
-- `netlify.toml`: Netlify build settings (runs `hugo`, publishes `public`)
-- `about-me.md`: Source document containing personal/professional information used by the resume system (real client names allowed here — private doc, but repo may be public: keep location generic)
-- `resume/`: Directory holding `default-resume.md`, also part of the resume system
-- `.agents/`: agent-agnostic config source of truth (`AGENTS.md`, `skills/`, `mcp_config.json`); `CLAUDE.md`, `.claude/skills/*`, `.mcp.json`, `.codex/config.toml`, `.opencode/opencode.json` are symlinks/generated — edit `.agents/` and run `~/ai-config/project-setup.sh .` to regenerate
+- `src/routes/` — one file per notebook page (index = cover, about, experience, projects, uses, now, resume, contact)
+- `src/components/notebook/` — notebook UI (NotebookPage, SocialIcons, Doodle, …)
+- `public/prem-patel-resume.pdf` — downloadable resume (see Resume system above)
+- `AGENTS.md` (repo root) — Lovable's own stack instructions for the app code
+- `about-me.md`, `resume/` — resume system sources
+- `.agents/` — agent-agnostic config source of truth (`AGENTS.md`, `skills/`, `mcp_config.json`); `CLAUDE.md`, `.claude/skills/*`, `.mcp.json`, `.codex/config.toml`, `.opencode/opencode.json` are symlinks/generated — edit `.agents/` and run `~/ai-config/project-setup.sh .` to regenerate
 
 ## Commands
-- Build site locally: `hugo`
-- Start local development server: `hugo server`
+- Local dev: `bun install && bun run dev`
+- Build: `bun run build`
 - Regenerate per-CLI configs: `~/ai-config/project-setup.sh ~/Documents/Projects/premp`
 - Reflect Lovable → preview branch: `/reflect-premp`
