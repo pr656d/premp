@@ -14,16 +14,26 @@ export const Route = createFileRoute("/experience")({
   component: Experience,
 });
 
-const ITEMS = [
+import type { ReactNode } from "react";
+
+type Item = {
+  when: string;
+  role: string;
+  org: string;
+  bullets: ReactNode[];
+  highlight?: boolean;
+};
+
+const ITEMS: Item[] = [
   {
     when: "2025 — present",
     role: "Lead Engineer",
     org: "Simform",
     bullets: [
       "Department-level leadership. Run a recurring technical discussion forum where developers share new tech, project war stories, and solutions.",
-      "Manage two projects with separate teams; reviewer on several others; manage both Android and iOS teams on one engagement.",
+      <>Manage two projects with separate teams; reviewer on several others; manage <span className="marker-hl">both Android and iOS teams</span> on one engagement.</>,
       "Own and delegate the Android project template; review the department's open source library work.",
-      "Own CI/CD pipelines, multi-environment setup, and product-flavor releases — including a multi-brand white-label app (several branded apps, one codebase, per-brand features).",
+      <>Own <span className="marker-hl">CI/CD pipelines</span>, multi-environment setup, and product-flavor releases — including a <span className="marker-hl">multi-brand white-label app</span> (several branded apps, one codebase, per-brand features).</>,
       "Interview and mentor trainees; sprint planning and agile tracking to ship without delay.",
     ],
     highlight: true,
@@ -33,10 +43,10 @@ const ITEMS = [
     role: "Senior Software Engineer",
     org: "Simform",
     bullets: [
-      "Led development of an autonomous drone ground-control Android app, built on a custom vendor SDK communicating with the drone over radio frequency: live telemetry, offline maps, route planning and in-flight navigation. Plan a route on the phone, deploy it, watch the drone fly it — maps were the biggest engineering lift.",
-      "Became App Lead at an early-stage startup engagement while still senior: started as the second Android developer, grew to leading Android + iOS with three developers. Owned features from design collaboration and backend schema alignment through deployment. Signature contribution: designed the team communication system that fixed the startup's coordination chaos.",
-      "Code reviewer and architect on a unified communications platform (an internal Teams alternative): voice channels, meetings with recording, calls, chats, groups, threads. Designed the Android architecture for handling Jitsi and Matrix — parsing the event stream into a scalable chat UI — and guided two developers through it.",
-      "Built the department's Android project template: a cookiecutter-based kickstarter with database, preferences, key handling, API/Retrofit, logging and debugging wired in — zero boilerplate to start a product.",
+      <>Led development of an <span className="marker-hl">autonomous drone ground-control Android app</span>, built on a custom vendor SDK communicating with the drone over radio frequency: live telemetry, offline maps, route planning and in-flight navigation. Plan a route on the phone, deploy it, watch the drone fly it — maps were the biggest engineering lift.</>,
+      <>Became <span className="marker-hl">App Lead</span> at an early-stage startup engagement while still senior: started as the second Android developer, grew to leading Android + iOS with three developers. Owned features from design collaboration and backend schema alignment through deployment. Signature contribution: designed the team communication system that fixed the startup's coordination chaos.</>,
+      <>Code reviewer and architect on a unified communications platform (an internal Teams alternative): voice channels, meetings with recording, calls, chats, groups, threads. Designed the Android architecture for handling <span className="marker-hl">Jitsi and Matrix</span> — parsing the event stream into a scalable chat UI — and guided two developers through it.</>,
+      <>Built the department's <span className="marker-hl">Android project template</span>: a cookiecutter-based kickstarter with database, preferences, key handling, API/Retrofit, logging and debugging wired in — zero boilerplate to start a product.</>,
     ],
   },
   {
@@ -44,9 +54,9 @@ const ITEMS = [
     role: "Software Engineer",
     org: "Simform",
     bullets: [
-      "Built the Android side of a smart vending platform — an IoT retrofit turning manual vending machines into app-connected ones. Owned the BLE layer: GATT characteristics read/write and a custom phone-to-machine communication protocol.",
+      <>Built the Android side of a smart vending platform — an IoT retrofit turning manual vending machines into app-connected ones. Owned the <span className="marker-hl">BLE layer</span>: GATT characteristics read/write and a custom phone-to-machine communication protocol.</>,
       "Worked directly with clients end to end.",
-      "Authored and open-sourced SSNeumorphicKit, a neumorphic UI library for Android (83 stars).",
+      <>Authored and open-sourced <a href="https://github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit" target="_blank" rel="noreferrer noopener" className="underline decoration-[var(--link)] underline-offset-2 hover:text-[var(--link)]"><span className="marker-hl">SSNeumorphicKit</span></a>, a neumorphic UI library for Android (83 stars).</>,
       "Mentored trainees from year one in Simform's mentorship program.",
     ],
   },
