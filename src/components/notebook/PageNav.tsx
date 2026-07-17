@@ -13,19 +13,29 @@ export const PAGES = [
 
 export function usePageNav(currentPath: string) {
   const navigate = useNavigate();
+  const isIndex = currentPath === "/index-page";
   const idx = PAGES.findIndex((p) => p.to === currentPath);
   const prev = idx > 0 ? PAGES[idx - 1] : null;
-  const next = idx >= 0 && idx < PAGES.length - 1 ? PAGES[idx + 1] : null;
+  const next = isIndex
+    ? PAGES[0]
+    : idx >= 0 && idx < PAGES.length - 1
+      ? PAGES[idx + 1]
+      : null;
   const touch = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
+    const goLeft = () => {
+      if (isIndex) { navigate({ to: "/" }); return; }
+      if (prev) navigate({ to: prev.to });
+      else navigate({ to: "/index-page" });
+    };
+    const goRight = () => {
+      if (next) navigate({ to: next.to });
+    };
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLElement && ["INPUT", "TEXTAREA"].includes(e.target.tagName)) return;
-      if (e.key === "ArrowRight" && next) navigate({ to: next.to });
-      else if (e.key === "ArrowLeft") {
-        if (prev) navigate({ to: prev.to });
-        else navigate({ to: "/index-page" });
-      }
+      if (e.key === "ArrowRight") goRight();
+      else if (e.key === "ArrowLeft") goLeft();
     };
     const onTS = (e: TouchEvent) => { const t = e.changedTouches[0]; touch.current = { x: t.clientX, y: t.clientY }; };
     const onTE = (e: TouchEvent) => {
@@ -34,11 +44,8 @@ export function usePageNav(currentPath: string) {
       const dx = t.clientX - touch.current.x;
       const dy = t.clientY - touch.current.y;
       if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-        if (dx < 0 && next) navigate({ to: next.to });
-        else if (dx > 0) {
-          if (prev) navigate({ to: prev.to });
-          else navigate({ to: "/index-page" });
-        }
+        if (dx < 0) goRight();
+        else goLeft();
       }
       touch.current = null;
     };
@@ -50,7 +57,7 @@ export function usePageNav(currentPath: string) {
       window.removeEventListener("touchstart", onTS);
       window.removeEventListener("touchend", onTE);
     };
-  }, [prev, next, navigate]);
+  }, [prev, next, isIndex, navigate]);
 
   return { prev, next, idx };
 }
