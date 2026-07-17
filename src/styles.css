@@ -198,9 +198,9 @@ html {
 .page-stack {
   position: absolute;
   left: 1.5%;
-  right: 1.5%;
-  bottom: -10px;
-  height: 14px;
+  right: -7px;
+  bottom: -6px;
+  height: 8px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: var(--nb-radius-r);
   background:
@@ -230,6 +230,47 @@ html {
     );
   box-shadow:
     0 6px 10px -6px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+/* Right-edge page block — the primary visible book block, persistent */
+.page-right {
+  position: absolute;
+  top: 1.5%;
+  bottom: -6px;
+  right: -7px;
+  width: 7px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: var(--nb-radius-r);
+  background:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--paper) 92%, #b8a98a) 0%,
+      color-mix(in oklab, var(--paper) 92%, #b8a98a) 34%,
+      color-mix(in oklab, var(--paper) 88%, #a89a7c) 34%,
+      color-mix(in oklab, var(--paper) 88%, #a89a7c) 67%,
+      color-mix(in oklab, var(--paper) 84%, #8f8266) 67%,
+      color-mix(in oklab, var(--paper) 84%, #8f8266) 100%
+    );
+  box-shadow:
+    4px 6px 10px -6px rgba(0,0,0,0.25),
+    inset 0 1px 0 rgba(0,0,0,0.08);
+  transition: right 400ms ease-out, width 400ms ease-out;
+  pointer-events: none;
+}
+.dark .page-right {
+  background:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--paper) 80%, #000) 0%,
+      color-mix(in oklab, var(--paper) 80%, #000) 34%,
+      color-mix(in oklab, var(--paper) 70%, #000) 34%,
+      color-mix(in oklab, var(--paper) 70%, #000) 67%,
+      color-mix(in oklab, var(--paper) 60%, #000) 67%,
+      color-mix(in oklab, var(--paper) 60%, #000) 100%
+    );
+  box-shadow:
+    4px 6px 12px -6px rgba(0,0,0,0.6),
     inset 0 1px 0 rgba(255,255,255,0.03);
 }
 
@@ -296,46 +337,22 @@ html {
   }
 }
 
-/* Right-edge page sliver — only visible while the cover lifts */
-.page-edge-right {
-  position: absolute;
-  top: 4%;
-  bottom: 4%;
-  right: -2px;
-  width: 4px;
-  border-radius: 2px;
-  background: linear-gradient(
-    to right,
-    color-mix(in oklab, var(--paper) 92%, #b8a98a) 0%,
-    color-mix(in oklab, var(--paper) 82%, #8f8266) 100%
-  );
-  opacity: 0;
-  transform: translateX(0);
-  transition: opacity 400ms ease-out, transform 400ms ease-out;
-  pointer-events: none;
-}
-.dark .page-edge-right {
-  background: linear-gradient(
-    to right,
-    color-mix(in oklab, var(--paper) 78%, #000) 0%,
-    color-mix(in oklab, var(--paper) 58%, #000) 100%
-  );
-}
 @media (hover: hover) and (pointer: fine) {
-  .cover-hover-scope:has(.cover-tilt:hover:not(.cover-opening)) .page-edge-right,
-  .cover-hover-scope:has(.cover-tilt:focus-visible:not(.cover-opening)) .page-edge-right {
-    opacity: 1;
-    transform: translateX(5px);
+  .cover-hover-scope:has(.cover-tilt:hover:not(.cover-opening)) .page-right,
+  .cover-hover-scope:has(.cover-tilt:focus-visible:not(.cover-opening)) .page-right {
+    right: -12px;
+    width: 12px;
   }
   .cover-hover-scope:has(.cover-tilt:hover:not(.cover-opening)) .page-stack,
   .cover-hover-scope:has(.cover-tilt:focus-visible:not(.cover-opening)) .page-stack {
-    bottom: -13px;
+    bottom: -9px;
     box-shadow:
       0 12px 18px -6px rgba(0,0,0,0.4),
       inset 0 1px 0 rgba(0,0,0,0.08);
     transition: bottom 400ms ease-out, box-shadow 400ms ease-out;
   }
 }
+
 
 /* Cover hinge open animation — starts from the lifted hover pose so hover→click is seamless */
 @keyframes cover-hinge {
