@@ -260,6 +260,7 @@ export function usePageTurn(currentPath: string) {
     el.addEventListener("pointercancel", onCancel);
     el.addEventListener("click", onClick);
     return () => {
+      clearRaf();
       el.removeEventListener("pointerdown", onDown);
       el.removeEventListener("pointermove", onMove);
       el.removeEventListener("pointerup", onUp);
