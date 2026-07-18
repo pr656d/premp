@@ -197,12 +197,14 @@ export function usePageTurn(currentPath: string) {
     };
 
     const onUp = (e: PointerEvent) => {
-      if (!active) return;
+      if (!active && !engaged) return;
       const wasEngaged = engaged;
       const d = dir;
       const dx = e.clientX - startX;
       active = false;
       engaged = false;
+      decided = false;
+      clearRaf();
       try {
         el.releasePointerCapture(pointerId);
       } catch {
@@ -223,10 +225,12 @@ export function usePageTurn(currentPath: string) {
     };
 
     const onCancel = () => {
-      if (!active) return;
+      if (!active && !engaged) return;
       const wasEngaged = engaged;
       active = false;
       engaged = false;
+      decided = false;
+      clearRaf();
       if (wasEngaged) snapBack();
     };
 
