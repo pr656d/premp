@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 export const PAGES = [
   { to: "/about", label: "About", n: "01" },
@@ -21,7 +21,6 @@ export function usePageNav(currentPath: string) {
     : idx >= 0 && idx < PAGES.length - 1
       ? PAGES[idx + 1]
       : null;
-  const touch = useRef<{ x: number; y: number } | null>(null);
 
   useEffect(() => {
     const goLeft = () => {
@@ -37,26 +36,9 @@ export function usePageNav(currentPath: string) {
       if (e.key === "ArrowRight") goRight();
       else if (e.key === "ArrowLeft") goLeft();
     };
-    const onTS = (e: TouchEvent) => { const t = e.changedTouches[0]; touch.current = { x: t.clientX, y: t.clientY }; };
-    const onTE = (e: TouchEvent) => {
-      if (!touch.current) return;
-      const t = e.changedTouches[0];
-      const dx = t.clientX - touch.current.x;
-      const dy = t.clientY - touch.current.y;
-      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
-        window.scrollTo(0, 0);
-        if (dx < 0) goRight();
-        else goLeft();
-      }
-      touch.current = null;
-    };
     window.addEventListener("keydown", onKey);
-    window.addEventListener("touchstart", onTS, { passive: true });
-    window.addEventListener("touchend", onTE, { passive: true });
     return () => {
       window.removeEventListener("keydown", onKey);
-      window.removeEventListener("touchstart", onTS);
-      window.removeEventListener("touchend", onTE);
     };
   }, [prev, next, isIndex, navigate]);
 
