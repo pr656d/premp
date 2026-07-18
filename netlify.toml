@@ -9,3 +9,6 @@
   NITRO_PRESET = "netlify"
   # Use bun for install to match the committed bun.lock.
   NETLIFY_USE_BUN = "true"
+  # VITE_POSTHOG_KEY is a client-side ingest key shipped in the browser bundle
+  # by design, so Netlify secret scanning must skip it (build fails otherwise).
+  SECRETS_SCAN_OMIT_KEYS = "VITE_POSTHOG_KEY"
