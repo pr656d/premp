@@ -143,10 +143,11 @@ function RootComponent() {
   const router = useRouter();
   useEffect(() => {
     const key = import.meta.env.VITE_POSTHOG_KEY;
-    const host = import.meta.env.VITE_POSTHOG_HOST || "https://us.i.posthog.com";
+    const host = import.meta.env.VITE_POSTHOG_HOST || "https://cdn.premp.in";
     if (key && typeof window !== "undefined") {
       posthog.init(key, {
         api_host: host,
+        ui_host: "https://us.posthog.com",
         capture_pageview: "history_change",
         capture_pageleave: true,
         person_profiles: "identified_only",
