@@ -94,6 +94,7 @@ export function usePageTurn(currentPath: string) {
 
     let active = false;
     let engaged = false;
+    let decided = false; // axis lock decided (horizontal engage or vertical bail)
     let startX = 0;
     let startY = 0;
     let width = 1;
@@ -102,6 +103,34 @@ export function usePageTurn(currentPath: string) {
     let lastT = 0;
     let vx = 0;
     let pointerId = -1;
+    let rafId = 0;
+    let pendingDx = 0;
+
+    const clearRaf = () => {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = 0;
+      }
+    };
+
+    const applyFrame = () => {
+      rafId = 0;
+      if (!engaged || !dir || reducedRef.current) return;
+      const d = dir;
+      const dx = pendingDx;
+      const canTurn = d === "next" ? !!nextTo : !!prevTo;
+      const rawProg = Math.abs(dx) / width;
+      const prog = canTurn ? Math.min(1, rawProg) : Math.min(0.12, rawProg * 0.25);
+      const angle = d === "next" ? -prog * 168 : prog * 168;
+      const shadowX = d === "next" ? -prog * 40 : prog * 40;
+      setStyle({
+        transform: `perspective(1600px) rotateY(${angle}deg)`,
+        transformOrigin: d === "next" ? "left center" : "right center",
+        transition: "none",
+        boxShadow: `${shadowX}px ${prog * 40}px ${prog * 60}px -20px rgba(0,0,0,${0.15 + prog * 0.25})`,
+        willChange: "transform",
+      });
+    };
 
     const onDown = (e: PointerEvent) => {
       if (committingRef.current) return;
@@ -111,12 +140,14 @@ export function usePageTurn(currentPath: string) {
       if (target?.closest("input, textarea, select")) return;
       active = true;
       engaged = false;
+      decided = false;
       startX = lastX = e.clientX;
       startY = e.clientY;
       lastT = performance.now();
       width = el.getBoundingClientRect().width;
       dir = null;
       vx = 0;
+      pendingDx = 0;
       pointerId = e.pointerId;
     };
 
@@ -125,13 +156,14 @@ export function usePageTurn(currentPath: string) {
       const dx = e.clientX - startX;
       const dy = e.clientY - startY;
 
-      if (!engaged) {
-        if (Math.abs(dy) > 12 && Math.abs(dy) > Math.abs(dx)) {
-          // user is scrolling vertically — bail out cleanly
-          active = false;
-          return;
-        }
-        if (Math.abs(dx) > 10 && Math.abs(dx) > Math.abs(dy) * 1.2) {
+      if (!decided) {
+        const adx = Math.abs(dx);
+        const ady = Math.abs(dy);
+        // Wait until motion exceeds a small deadzone before locking an axis.
+        if (Math.max(adx, ady) < 10) return;
+        if (adx > ady * 1.2) {
+          // lock horizontal
+          decided = true;
           engaged = true;
           dir = dx < 0 ? "next" : "prev";
           setTurning(true);
@@ -141,9 +173,14 @@ export function usePageTurn(currentPath: string) {
             /* noop */
           }
         } else {
+          // lock vertical — let native scroll take over for the rest of this gesture
+          decided = true;
+          active = false;
           return;
         }
       }
+
+      if (!engaged) return;
 
       const now = performance.now();
       const ddx = e.clientX - lastX;
@@ -155,20 +192,8 @@ export function usePageTurn(currentPath: string) {
       if (e.cancelable) e.preventDefault();
       if (reducedRef.current) return;
 
-      const d = dir!;
-      const canTurn = d === "next" ? !!nextTo : !!prevTo;
-      const rawProg = Math.abs(dx) / width;
-      const prog = canTurn ? Math.min(1, rawProg) : Math.min(0.12, rawProg * 0.25);
-      const angle = d === "next" ? -prog * 168 : prog * 168;
-      const shadowX = d === "next" ? -prog * 40 : prog * 40;
-
-      setStyle({
-        transform: `perspective(1600px) rotateY(${angle}deg)`,
-        transformOrigin: d === "next" ? "left center" : "right center",
-        transition: "none",
-        boxShadow: `${shadowX}px ${prog * 40}px ${prog * 60}px -20px rgba(0,0,0,${0.15 + prog * 0.25})`,
-        willChange: "transform",
-      });
+      pendingDx = dx;
+      if (!rafId) rafId = requestAnimationFrame(applyFrame);
     };
 
     const onUp = (e: PointerEvent) => {
