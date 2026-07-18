@@ -1,4 +1,4 @@
-import { useEffect, useRef, type ReactNode } from "react";
+import { memo, useEffect, useRef, type ReactNode } from "react";
 import { PaperCanvas } from "./PaperCanvas";
 import { NotebookSurface } from "./NotebookSurface";
 import { PageNavBar, PAGES } from "./PageNav";
@@ -18,9 +18,11 @@ interface Props {
 /**
  * Static clone of the page scaffold for an arbitrary path. Rendered
  * underneath the interactive top surface so the peel reveals real
- * content — never a blank frame. Non-interactive.
+ * content — never a blank frame. Non-interactive. Memoized: gesture
+ * start/end flips React state in usePageTurn, and these two extra full
+ * page trees must not re-render along with it.
  */
-function StaticPageSurface({ path }: { path: string }) {
+const StaticPageSurface = memo(function StaticPageSurface({ path }: { path: string }) {
   if (path === "/index-page") {
     return (
       <div className="absolute inset-0 pointer-events-none select-none" style={{ zIndex: 0 }} aria-hidden>
@@ -58,7 +60,7 @@ function StaticPageSurface({ path }: { path: string }) {
       </NotebookSurface>
     </div>
   );
-}
+});
 
 export function NotebookPage({ currentPath, title, kicker, tint = "none", align = "center", children }: Props) {
   const page = PAGES.find((p) => p.to === currentPath);

@@ -11,6 +11,17 @@ import { PAGES } from "./PageNav";
  *    so links/buttons in the middle of the page still receive their own clicks)
  *  - keyboard/arrow-key nav is kept on the shared usePageNav hook
  *  - reduced motion: skip transforms, still allow tap zones to navigate instantly
+ *
+ * Gesture arbitration vs. vertical scroll: the axis decision happens in a
+ * non-passive touchmove listener, because only a cancelable touchmove can stop
+ * the browser's native scroll from claiming the gesture (preventDefault on
+ * pointermove has no effect on scrolling, and once native scroll starts the
+ * browser fires pointercancel and the swipe is lost). A 45° split decides the
+ * axis, so a horizontal swipe with some vertical wobble still turns the page.
+ *
+ * Perf: while the finger is down, the transform is written imperatively to the
+ * element (never through React state) so dragging doesn't re-render the page
+ * tree on every frame. React state is only touched at gesture start/end.
  */
 export function usePageTurn(currentPath: string) {
   const navigate = useNavigate();
@@ -38,10 +49,18 @@ export function usePageTurn(currentPath: string) {
   const [turning, setTurning] = useState(false);
   const committingRef = useRef(false);
   const dragRecent = useRef(false);
+  const timeoutRef = useRef(0);
 
   const reducedRef = useRef(false);
   useEffect(() => {
     reducedRef.current = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }, []);
+
+  // Clear any pending commit/snap timer if the page unmounts mid-animation.
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    };
   }, []);
 
   const snapBack = useCallback(() => {
@@ -50,7 +69,8 @@ export function usePageTurn(currentPath: string) {
       transformOrigin: "center center",
       transition: "transform 260ms cubic-bezier(0.2,0.7,0.3,1), box-shadow 260ms",
     });
-    window.setTimeout(() => {
+    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+    timeoutRef.current = window.setTimeout(() => {
       setStyle({});
       setTurning(false);
     }, 280);
@@ -81,7 +101,8 @@ export function usePageTurn(currentPath: string) {
             ? "40px 40px 60px -20px rgba(0,0,0,0.35)"
             : "-40px 40px 60px -20px rgba(0,0,0,0.35)",
       });
-      window.setTimeout(() => {
+      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+      timeoutRef.current = window.setTimeout(() => {
         navigate({ to: target });
       }, 380);
     },
@@ -95,6 +116,7 @@ export function usePageTurn(currentPath: string) {
     let active = false;
     let engaged = false;
     let decided = false; // axis lock decided (horizontal engage or vertical bail)
+    let isTouch = false;
     let startX = 0;
     let startY = 0;
     let width = 1;
@@ -113,6 +135,11 @@ export function usePageTurn(currentPath: string) {
       }
     };
 
+    // Written straight to the element: dragging must not go through React
+    // state or every frame re-renders the current page plus both pre-mounted
+    // static pages. box-shadow is deliberately NOT animated per-frame (it
+    // forces a repaint of the large blurred shadow each frame — one of the
+    // things that piled up until iOS Safari killed the tab).
     const applyFrame = () => {
       rafId = 0;
       if (!engaged || !dir || reducedRef.current) return;
@@ -122,14 +149,56 @@ export function usePageTurn(currentPath: string) {
       const rawProg = Math.abs(dx) / width;
       const prog = canTurn ? Math.min(1, rawProg) : Math.min(0.12, rawProg * 0.25);
       const angle = d === "next" ? -prog * 168 : prog * 168;
-      const shadowX = d === "next" ? -prog * 40 : prog * 40;
-      setStyle({
-        transform: `perspective(1600px) rotateY(${angle}deg)`,
-        transformOrigin: d === "next" ? "left center" : "right center",
-        transition: "none",
-        boxShadow: `${shadowX}px ${prog * 40}px ${prog * 60}px -20px rgba(0,0,0,${0.15 + prog * 0.25})`,
-        willChange: "transform",
-      });
+      el.style.transform = `perspective(1600px) rotateY(${angle}deg)`;
+      el.style.transformOrigin = d === "next" ? "left center" : "right center";
+      el.style.transition = "none";
+      el.style.willChange = "transform";
+    };
+
+    const engageHorizontal = (dx: number) => {
+      decided = true;
+      engaged = true;
+      dir = dx < 0 ? "next" : "prev";
+      setTurning(true);
+      try {
+        el.setPointerCapture(pointerId);
+      } catch {
+        /* noop */
+      }
+    };
+
+    const bailVertical = () => {
+      decided = true;
+      active = false;
+    };
+
+    // 45° split: horizontal wins ties, so a swipe with vertical wobble still
+    // reads as a page turn instead of being discarded.
+    const decideAxis = (dx: number, dy: number): "h" | "v" | null => {
+      const adx = Math.abs(dx);
+      const ady = Math.abs(dy);
+      if (Math.max(adx, ady) < 6) return null;
+      return adx >= ady ? "h" : "v";
+    };
+
+    // Non-passive: the ONLY reliable way to keep the inner scroller's native
+    // vertical scroll from hijacking a horizontal swipe on iOS. Once the axis
+    // locks horizontal, every touchmove is preventDefault-ed so the browser
+    // never starts scrolling (and never fires pointercancel at us).
+    const onTouchMove = (e: TouchEvent) => {
+      if (!active && !engaged) return;
+      const t = e.touches[0];
+      if (!t) return;
+      if (!decided) {
+        const axis = decideAxis(t.clientX - startX, t.clientY - startY);
+        if (axis === null) return;
+        if (axis === "h") engageHorizontal(t.clientX - startX);
+        else {
+          bailVertical();
+          return;
+        }
+      }
+      if (engaged && e.cancelable) e.preventDefault();
     };
 
     const onDown = (e: PointerEvent) => {
@@ -141,6 +210,7 @@ export function usePageTurn(currentPath: string) {
       active = true;
       engaged = false;
       decided = false;
+      isTouch = e.pointerType !== "mouse";
       startX = lastX = e.clientX;
       startY = e.clientY;
       lastT = performance.now();
@@ -152,30 +222,17 @@ export function usePageTurn(currentPath: string) {
     };
 
     const onMove = (e: PointerEvent) => {
-      if (!active) return;
-      const dx = e.clientX - startX;
-      const dy = e.clientY - startY;
+      if (!active && !engaged) return;
 
       if (!decided) {
-        const adx = Math.abs(dx);
-        const ady = Math.abs(dy);
-        // Wait until motion exceeds a small deadzone before locking an axis.
-        if (Math.max(adx, ady) < 10) return;
-        if (adx > ady * 1.2) {
-          // lock horizontal
-          decided = true;
-          engaged = true;
-          dir = dx < 0 ? "next" : "prev";
-          setTurning(true);
-          try {
-            el.setPointerCapture(pointerId);
-          } catch {
-            /* noop */
-          }
-        } else {
-          // lock vertical — let native scroll take over for the rest of this gesture
-          decided = true;
-          active = false;
+        // Touch decisions belong to onTouchMove (it can preventDefault);
+        // only mouse drags decide here, where there's no scroll to race.
+        if (isTouch) return;
+        const axis = decideAxis(e.clientX - startX, e.clientY - startY);
+        if (axis === null) return;
+        if (axis === "h") engageHorizontal(e.clientX - startX);
+        else {
+          bailVertical();
           return;
         }
       }
@@ -189,11 +246,14 @@ export function usePageTurn(currentPath: string) {
       lastX = e.clientX;
       lastT = now;
 
-      if (e.cancelable) e.preventDefault();
       if (reducedRef.current) return;
 
-      pendingDx = dx;
+      pendingDx = e.clientX - startX;
       if (!rafId) rafId = requestAnimationFrame(applyFrame);
+    };
+
+    const clearInline = () => {
+      el.style.willChange = "";
     };
 
     const onUp = (e: PointerEvent) => {
@@ -205,6 +265,7 @@ export function usePageTurn(currentPath: string) {
       engaged = false;
       decided = false;
       clearRaf();
+      clearInline();
       try {
         el.releasePointerCapture(pointerId);
       } catch {
@@ -231,6 +292,7 @@ export function usePageTurn(currentPath: string) {
       engaged = false;
       decided = false;
       clearRaf();
+      clearInline();
       if (wasEngaged) snapBack();
     };
 
@@ -255,14 +317,17 @@ export function usePageTurn(currentPath: string) {
     };
 
     el.addEventListener("pointerdown", onDown);
-    el.addEventListener("pointermove", onMove, { passive: false });
+    el.addEventListener("pointermove", onMove);
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
     el.addEventListener("pointerup", onUp);
     el.addEventListener("pointercancel", onCancel);
     el.addEventListener("click", onClick);
     return () => {
       clearRaf();
+      clearInline();
       el.removeEventListener("pointerdown", onDown);
       el.removeEventListener("pointermove", onMove);
+      el.removeEventListener("touchmove", onTouchMove);
       el.removeEventListener("pointerup", onUp);
       el.removeEventListener("pointercancel", onCancel);
       el.removeEventListener("click", onClick);
