@@ -50,8 +50,7 @@ function StaticPageSurface({ path }: { path: string }) {
               </div>
               <h1 className="ink-hand text-[clamp(2.75rem,7vh,5rem)] leading-[0.95] text-[var(--ink)]">{meta.title}</h1>
               <div className={`mt-6 flex-1 min-h-0 flex flex-col ${justify} text-[var(--ink)] leading-relaxed`}>
-                {/* @ts-expect-error - Body FC has no required props */}
-                <Body interactive={false} />
+                <Body />
               </div>
             </div>
           </div>
