@@ -151,6 +151,7 @@ function RootComponent() {
         capture_pageleave: true,
         person_profiles: "identified_only",
       });
+      posthog.register({ site: "premp" });
     }
   }, []);
   useEffect(() => {
