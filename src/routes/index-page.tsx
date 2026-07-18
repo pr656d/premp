@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { PaperCanvas } from "../components/notebook/PaperCanvas";
 import { NotebookSurface } from "../components/notebook/NotebookSurface";
 import { usePageNav, PAGES } from "../components/notebook/PageNav";
-import { usePageTurn } from "../components/notebook/usePageTurn";
+import { consumeViaTurn, usePageTurn } from "../components/notebook/usePageTurn";
 import { IndexContent } from "../components/notebook/IndexContent";
 import { PAGE_BODIES, PAGE_META } from "../components/notebook/pageBodies";
 
@@ -51,14 +51,19 @@ function NextPageUnderlay() {
 function IndexPage() {
   usePageNav("/index-page");
   const { surfaceRef, turnStyle } = usePageTurn("/index-page");
-  const [suppress, setSuppress] = useState(false);
-  useEffect(() => {
-    if (typeof window === "undefined") return;
+  // Arriving via the cover open or a page turn: the content was already
+  // visible during the animation, so skip the ink-in entrance. Decided in a
+  // lazy initializer (not an effect) so the skip applies on the very first
+  // frame instead of one paint later.
+  const [suppress] = useState(() => {
+    if (typeof window === "undefined") return false;
+    let via = false;
     if (sessionStorage.getItem("viaCover") === "1") {
       sessionStorage.removeItem("viaCover");
-      setSuppress(true);
+      via = true;
     }
-  }, []);
+    return consumeViaTurn() || via;
+  });
 
   return (
     <PaperCanvas>

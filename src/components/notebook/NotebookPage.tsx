@@ -1,8 +1,8 @@
-import { memo, useEffect, useRef, type ReactNode } from "react";
+import { memo, useEffect, useRef, useState, type ReactNode } from "react";
 import { PaperCanvas } from "./PaperCanvas";
 import { NotebookSurface } from "./NotebookSurface";
 import { PageNavBar, PAGES } from "./PageNav";
-import { usePageTurn } from "./usePageTurn";
+import { consumeViaTurn, usePageTurn } from "./usePageTurn";
 import { PAGE_BODIES, PAGE_META, type PageMeta } from "./pageBodies";
 import { IndexContent } from "./IndexContent";
 
@@ -67,6 +67,9 @@ export function NotebookPage({ currentPath, title, kicker, tint = "none", align 
   const justify = align === "start" ? "justify-start" : "justify-center";
   const pageScrollRef = useRef<HTMLDivElement>(null);
   const { surfaceRef, turnStyle, prevTo, nextTo } = usePageTurn(currentPath);
+  // Arriving via a page turn: content is already on screen under the peel —
+  // replaying the ink-in entrance reads as a phantom "refresh".
+  const [viaTurn] = useState(consumeViaTurn);
 
   useEffect(() => {
     pageScrollRef.current?.scrollTo(0, 0);
@@ -81,7 +84,7 @@ export function NotebookPage({ currentPath, title, kicker, tint = "none", align 
           {nextTo && <StaticPageSurface path={nextTo} />}
           <NotebookSurface ref={surfaceRef} tint={tint} style={{ ...turnStyle, position: "relative", zIndex: 1 }}>
             <div ref={pageScrollRef} key={currentPath} className="page-scroll flex h-full w-full flex-col overflow-y-auto">
-              <div className="mx-auto flex w-full max-w-[92%] flex-1 flex-col px-2 py-8 md:px-8 md:py-12 lg:px-12 ink-in">
+              <div className={`mx-auto flex w-full max-w-[92%] flex-1 flex-col px-2 py-8 md:px-8 md:py-12 lg:px-12 ${viaTurn ? "" : "ink-in"}`}>
                 <div className="border-l-2 border-[var(--link)]/40 pl-5 md:pl-8 flex-1 flex flex-col">
                   <div className="mb-4 flex items-baseline justify-between gap-3 text-[0.7rem] uppercase tracking-widest text-[var(--ink-faint)]">
                     <span>{page?.n ?? "—"} · {kicker ?? page?.label}</span>

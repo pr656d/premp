@@ -23,6 +23,18 @@ import { PAGES } from "./PageNav";
  * element (never through React state) so dragging doesn't re-render the page
  * tree on every frame. React state is only touched at gesture start/end.
  */
+/**
+ * True exactly once for the mount that immediately follows a page-turn
+ * navigation (gesture or tap zone). Used to skip the ink-in entrance,
+ * since the turn already revealed identical content.
+ */
+export function consumeViaTurn(): boolean {
+  if (typeof window === "undefined") return false;
+  if (sessionStorage.getItem("viaTurn") !== "1") return false;
+  sessionStorage.removeItem("viaTurn");
+  return true;
+}
+
 export function usePageTurn(currentPath: string) {
   const navigate = useNavigate();
   const isIndex = currentPath === "/index-page";
@@ -83,6 +95,10 @@ export function usePageTurn(currentPath: string) {
         snapBack();
         return;
       }
+      // The turn has already revealed the destination page (pre-mounted
+      // underneath), so its mount must not replay the ink-in entrance —
+      // same trick as the cover's viaCover flag.
+      sessionStorage.setItem("viaTurn", "1");
       if (reducedRef.current) {
         navigate({ to: target });
         return;
