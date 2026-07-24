@@ -5,11 +5,6 @@
       "type": "remote",
       "url": "https://mcp.lovable.dev",
       "enabled": true
-    },
-    "netlify": {
-      "type": "remote",
-      "url": "https://netlify-mcp.netlify.app/mcp",
-      "enabled": true
     }
   },
   "skills": {
