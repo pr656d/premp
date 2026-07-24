@@ -30,3 +30,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+graphify-out/cost.json
+graphify-out/manifest.json
+graphify-out/cache/
+graphify-out/20*/
