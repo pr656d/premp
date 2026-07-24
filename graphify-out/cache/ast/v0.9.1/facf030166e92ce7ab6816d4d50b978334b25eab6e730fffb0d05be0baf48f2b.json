@@ -1,1 +1,0 @@
-{"nodes": [{"id": "pkg_github_com_luizdepra_hugo_coder", "label": "github.com/luizdepra/hugo-coder", "file_type": "code", "type": "package", "ecosystem": "go", "source_file": "themes/hugo-coder/go.mod", "source_location": "L1"}], "edges": []}
