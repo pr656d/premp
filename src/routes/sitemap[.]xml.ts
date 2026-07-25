@@ -22,6 +22,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/uses", changefreq: "monthly", priority: "0.6" },
           { path: "/now", changefreq: "weekly", priority: "0.7" },
           { path: "/resume", changefreq: "monthly", priority: "0.6" },
+          { path: "/llms.txt", changefreq: "monthly", priority: "0.6" },
           { path: "/contact", changefreq: "yearly", priority: "0.6" },
         ];
         const urls = entries.map((e) =>
@@ -31,7 +32,9 @@ export const Route = createFileRoute("/sitemap.xml")({
             e.changefreq ? `    <changefreq>${e.changefreq}</changefreq>` : null,
             e.priority ? `    <priority>${e.priority}</priority>` : null,
             `  </url>`,
-          ].filter(Boolean).join("\n"),
+          ]
+            .filter(Boolean)
+            .join("\n"),
         );
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,

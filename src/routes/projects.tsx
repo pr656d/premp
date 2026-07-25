@@ -6,16 +6,26 @@ export const Route = createFileRoute("/projects")({
   head: () => ({
     meta: [
       { title: "Projects — Prem Patel" },
-      { name: "description", content: "Engineering projects by Prem Patel, including smart vending, autonomous drone ground control, SSNeumorphicKit, and self-hosted infrastructure." },
+      {
+        name: "description",
+        content:
+          "Engineering projects by Prem Patel: QOTA, Podium, agy-swap, open-source work on open-connector, Android systems, and developer tooling.",
+      },
       { property: "og:url", content: "https://premp.in/projects" },
       { property: "og:title", content: "Projects — Prem Patel" },
-      { property: "og:description", content: "Engineering projects by Prem Patel, including smart vending, autonomous drone ground control, SSNeumorphicKit, and self-hosted infrastructure." },
+      {
+        property: "og:description",
+        content:
+          "QOTA, Podium, agy-swap, open-source work on open-connector, Android systems, and developer tooling by Prem Patel.",
+      },
       { name: "twitter:title", content: "Projects — Prem Patel" },
-      { name: "twitter:description", content: "Engineering projects by Prem Patel, including smart vending, autonomous drone ground control, SSNeumorphicKit, and self-hosted infrastructure." },
+      {
+        name: "twitter:description",
+        content:
+          "QOTA, Podium, agy-swap, open-source work on open-connector, Android systems, and developer tooling by Prem Patel.",
+      },
     ],
-    links: [
-      { rel: "canonical", href: "https://premp.in/projects" },
-    ],
+    links: [{ rel: "canonical", href: "https://premp.in/projects" }],
   }),
   component: Projects,
 });
@@ -29,41 +39,85 @@ type Project = {
 
 const FEATURED: Project[] = [
   {
+    title: "QOTA",
+    body: (
+      <>
+        Open-source Rust CLI and terminal dashboard for{" "}
+        <span className="marker-hl">live AI quota telemetry</span>: provider windows, reset times,
+        headroom, and per-account failures across Claude, Codex, and Antigravity. Published on
+        crates.io.
+      </>
+    ),
+    tags: ["Rust", "Ratatui", "Multi-provider telemetry"],
+    href: "https://github.com/pr656d/qota",
+  },
+  {
+    title: "Podium",
+    body: (
+      <>
+        AI-agnostic local orchestration system coordinating Claude Code, Codex, Antigravity, and
+        opencode crews against a <span className="marker-hl">Linear-backed task board</span>. Each
+        task runs in an isolated git worktree with explicit review gates.
+      </>
+    ),
+    tags: ["Local orchestration", "Linear", "Git worktrees"],
+  },
+  {
+    title: "agy-swap",
+    body: (
+      <>
+        Python CLI and TUI for switching between multiple Antigravity accounts without logging out,
+        with aliases, safe credential handling, and a{" "}
+        <span className="marker-hl">live Gemini quota dashboard</span>.
+      </>
+    ),
+    tags: ["Python", "OAuth account switching", "Terminal UI"],
+    href: "https://github.com/pr656d/agy-swap",
+  },
+  {
+    title: "open-connector contribution",
+    body: (
+      <>
+        Traced a 23 MB dashboard catalog payload, then slimmed, cached, compressed, and lazy-loaded
+        it. Result: <span className="marker-hl">about 50× fewer bytes on the wire</span>, no catalog
+        refetch on refresh, plus ETag revalidation.
+      </>
+    ),
+    tags: ["Open Source", "Performance", "TypeScript"],
+    href: "https://github.com/oomol-lab/open-connector/issues/172",
+  },
+  {
     title: "Smart Vending Platform",
     body: (
-      <>BLE/IoT Android app converting <span className="marker-hl">manual vending machines into app-connected ones</span>. Custom BLE protocol, white-label multi-brand builds.</>
+      <>
+        BLE/IoT Android app converting{" "}
+        <span className="marker-hl">manual vending machines into app-connected ones</span>. Custom
+        BLE protocol, white-label multi-brand builds.
+      </>
     ),
     tags: ["BLE GATT", "IoT", "White-label flavors"],
   },
   {
     title: "Autonomous Drone Ground Control",
     body: (
-      <>Android ground-control app over a custom RF SDK: <span className="marker-hl">live telemetry, offline maps</span>, route planning and in-flight navigation.</>
+      <>
+        Android ground-control app over a custom RF SDK:{" "}
+        <span className="marker-hl">live telemetry, offline maps</span>, route planning and
+        in-flight navigation.
+      </>
     ),
     tags: ["Offline Maps", "RF Telemetry", "Route Navigation"],
   },
   {
     title: "SSNeumorphicKit",
     body: (
-      <>Open-source neumorphic UI kit for Android — soft shadows done properly, without murdering the CPU. <span className="marker-hl">83 stars</span> on GitHub.</>
+      <>
+        Open-source neumorphic UI kit for Android — soft shadows done properly, without murdering
+        the CPU. <span className="marker-hl">83 stars</span> on GitHub.
+      </>
     ),
     tags: ["Kotlin Library", "Custom Views", "Open Source"],
     href: "https://github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit",
-  },
-  {
-    title: "Unified Communications Platform",
-    body: (
-      <>Jitsi + Matrix event architecture on Android: channels, calls, threads. Parsed the event stream into a <span className="marker-hl">scalable chat UI</span>.</>
-    ),
-    tags: ["Jitsi", "Matrix", "Event-driven Architecture"],
-  },
-  {
-    title: "Homelab",
-    body: (
-      <>Self-hosted services on a cloud VPS: Tailscale, reverse proxy, Cloudflare Tunnels, Docker Compose, n8n with LLM-powered automations, <span className="marker-hl">custom AI agent orchestration</span>.</>
-    ),
-    tags: ["Tailscale", "Docker Compose", "n8n + LLM", "Hetzner"],
-    href: "https://dashboard.premp.in",
   },
 ];
 
@@ -100,7 +154,9 @@ function Card({ p }: { p: Project }) {
 function Projects() {
   return (
     <NotebookPage currentPath="/projects" title="Projects" tint="2">
-      <p className="text-[var(--ink-muted)]">Five worth writing down.</p>
+      <p className="text-[var(--ink-muted)]">
+        Tools I own, systems shipped at work, fixes sent upstream.
+      </p>
 
       <div className="mt-4 flex-1 min-h-0">
         {FEATURED.map((p) => (

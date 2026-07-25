@@ -1,0 +1,43 @@
+# Prem Patel
+
+> Personal site and resume of Prem Patel, Lead Engineer focused on Android at Simform, open-source contributor, and practical AI/developer-tooling builder.
+
+Canonical site: https://premp.in
+Location: Ahmedabad, India
+Email: hello@premp.in
+GitHub: https://github.com/pr656d
+LinkedIn: https://www.linkedin.com/in/pr656d/
+
+## About Prem
+
+Prem has 6+ years of native Android engineering experience across Kotlin, Java, BLE/IoT, offline maps, route navigation, autonomous drone ground control, and unified communications. He leads engineering teams and practices at Simform while building open-source tools, self-hosted infrastructure, CI/CD systems, and AI-agnostic local orchestration.
+
+His view of AI is practical: it shortens the path from an idea to a working tool, while problem selection, architecture, constraints, verification, and responsibility remain human work.
+
+## Current open-source and builder work
+
+- QOTA: Open-source Rust CLI and Ratatui terminal dashboard for live AI quota telemetry across Claude, Codex, and Antigravity. Supports multiple accounts, provider quota windows, reset times, headroom, and independent account errors. Published on crates.io.
+  - Source: https://github.com/pr656d/qota
+  - Package: https://crates.io/crates/qota
+- Podium: AI-agnostic local orchestration system coordinating Claude Code, Codex, Antigravity, and opencode crews against a Linear-backed task board. Tasks run in isolated git worktrees with written policy, tests, human review, and explicit merge gates.
+- agy-swap: Python CLI and terminal UI for switching between multiple Antigravity accounts without logging out, plus live Gemini quota tracking.
+  - Source: https://github.com/pr656d/agy-swap
+- open-connector: Prem is an active upstream contributor. His dashboard performance work slimmed and cached immutable catalog data, lazy-loaded action schemas, added scoped gzip, and added ETag revalidation. The measured provider-catalog transfer dropped by about 50×.
+  - Contribution: https://github.com/oomol-lab/open-connector/issues/172
+- SSNeumorphicKit: Open-source Kotlin neumorphic UI library for Android authored by Prem.
+  - Source: https://github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit
+
+## Site sections
+
+- Home: https://premp.in/
+- About: https://premp.in/about
+- Experience: https://premp.in/experience
+- Projects: https://premp.in/projects
+- Now: https://premp.in/now
+- Uses: https://premp.in/uses
+- Resume: https://premp.in/resume
+- Downloadable resume PDF: https://premp.in/prem-patel-resume.pdf
+- Contact: https://premp.in/contact
+- XML sitemap: https://premp.in/sitemap.xml
+
+Last updated: 2026-07-25
