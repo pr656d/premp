@@ -3,7 +3,6 @@
 > Personal site and resume of Prem Patel, Lead Engineer focused on Android at Simform, open-source contributor, and practical AI/developer-tooling builder.
 
 Canonical site: https://premp.in
-Location: Ahmedabad, India
 Email: hello@premp.in
 GitHub: https://github.com/pr656d
 LinkedIn: https://www.linkedin.com/in/pr656d/
