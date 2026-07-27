@@ -64,9 +64,9 @@ _July 2017 – 2019_
 ## Open Source & Builder Work
 
 - **QOTA**: Open-source Rust CLI and Ratatui dashboard for live quota telemetry across Claude, Codex, and Antigravity, including multiple accounts, provider windows, reset times, headroom, and independent account errors. Published on [crates.io](https://crates.io/crates/qota); source at [github.com/pr656d/qota](https://github.com/pr656d/qota).
-- **Podium**: AI-agnostic local orchestration system coordinating Claude Code, Codex, Antigravity, and opencode crews against a Linear-backed task board. Work runs in isolated git worktrees with written policy, tests, and explicit review gates.
+- **Podium**: AI-agnostic local orchestration system coordinating Claude Code, Codex, Antigravity, and Opencode crews against a Linear-backed task board. Work runs in isolated git worktrees with written policy, tests, and explicit review gates.
 - **agy-swap**: Python CLI and TUI for switching between multiple Antigravity accounts without logging out and monitoring Gemini quota. Source at [github.com/pr656d/agy-swap](https://github.com/pr656d/agy-swap).
-- **open-connector**: Active upstream contributor. Diagnosed and fixed the dashboard's provider-catalog bottleneck by slimming responses, caching immutable catalog data, lazy-loading schemas, adding scoped gzip, and adding ETag revalidation. The measured result was about 50× fewer bytes on the wire. [Issue #172](https://github.com/oomol-lab/open-connector/issues/172).
+- **open-connector**: Active upstream contributor. Diagnosed and fixed the dashboard's provider-catalog bottleneck by slimming responses, caching immutable catalog data, lazy-loading schemas, adding scoped gzip, and adding ETag revalidation. The measured result was about 50× fewer bytes on the wire. [Issue #172](https://github.com/oomol-lab/open-connector/issues/172); [all contributions](https://github.com/oomol-lab/open-connector/pulls?q=is%3Apr+author%3Apr656d).
 - **SSNeumorphicKit**: Authored and open-sourced a neumorphic UI library for Android built in Kotlin.
 
 ---
@@ -87,7 +87,7 @@ _July 2017 – 2019_
 - **Self-Hosting**: PostgreSQL, n8n, Firefly III
 - **Automation**: CI/CD (GitHub Actions, GitLab CI)
 - **Developer Tooling**: Rust, Python, shell automation, terminal UIs
-- **AI Tooling**: Podium, agentic developer workflows, Claude Code, Codex, Antigravity, opencode, Linear, MCP (Model Context Protocol), git-worktree orchestration
+- **AI Tooling**: Podium, agentic developer workflows, Claude Code, Codex, Antigravity, Opencode, OpenRouter, Linear, MCP (Model Context Protocol), git-worktree orchestration
 
 ---
 

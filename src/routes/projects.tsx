@@ -44,8 +44,16 @@ const FEATURED: Project[] = [
       <>
         Open-source Rust CLI and terminal dashboard for{" "}
         <span className="marker-hl">live AI quota telemetry</span>: provider windows, reset times,
-        headroom, and per-account failures across Claude, Codex, and Antigravity. Published on
-        crates.io.
+        headroom, and per-account failures across Claude, Codex, and Antigravity. Published on{" "}
+        <a
+          href="https://crates.io/crates/qota"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pen-underline hover:text-[var(--link)]"
+        >
+          crates.io
+        </a>
+        .
       </>
     ),
     tags: ["Rust", "Ratatui", "Multi-provider telemetry"],
@@ -56,7 +64,7 @@ const FEATURED: Project[] = [
     body: (
       <>
         AI-agnostic local orchestration system coordinating Claude Code, Codex, Antigravity, and
-        opencode crews against a <span className="marker-hl">Linear-backed task board</span>. Each
+        Opencode crews against a <span className="marker-hl">Linear-backed task board</span>. Each
         task runs in an isolated git worktree with explicit review gates.
       </>
     ),
@@ -80,7 +88,16 @@ const FEATURED: Project[] = [
       <>
         Traced a 23 MB dashboard catalog payload, then slimmed, cached, compressed, and lazy-loaded
         it. Result: <span className="marker-hl">about 50× fewer bytes on the wire</span>, no catalog
-        refetch on refresh, plus ETag revalidation.
+        refetch on refresh, plus ETag revalidation.{" "}
+        <a
+          href="https://github.com/oomol-lab/open-connector/pulls?q=is%3Apr+author%3Apr656d"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pen-underline hover:text-[var(--link)]"
+        >
+          See all contributions
+        </a>
+        .
       </>
     ),
     tags: ["Open Source", "Performance", "TypeScript"],

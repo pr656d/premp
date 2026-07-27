@@ -14,7 +14,7 @@ Lead Engineer with 6+ years of experience in native Android engineering (Kotlin,
 ## Skills
 
 - **Core Android (Primary)**: Kotlin, Kotlin Multiplatform, Jetpack Compose, Android SDK, BLE, ATAK, Java, Coroutines, Room, Navigation, Lifecycles, MVVM, Clean Architecture, Mapbox, Google Maps, offline tiles, routing, Gradle, Cookiecutter, custom library design
-- **Developer Tooling & AI Systems**: Rust, Python, terminal UIs, Podium, Claude Code, Codex, Antigravity, opencode, Linear, MCP, isolated git-worktree orchestration
+- **Developer Tooling & AI Systems**: Rust, Python, terminal UIs, Podium, Claude Code, Codex, Antigravity, Opencode, OpenRouter, Linear, MCP, isolated git-worktree orchestration
 - **DevOps & Systems**: Docker, Hetzner, Cloudflare, CI/CD (GitHub Actions), PostgreSQL, self-hosting automation (n8n, Firefly III)
 
 ---
@@ -55,9 +55,9 @@ Lead Engineer with 6+ years of experience in native Android engineering (Kotlin,
 ## Open Source & Side Projects
 
 - **QOTA** — Open-source Rust CLI and Ratatui dashboard for multi-provider, multi-account AI quota telemetry; published on [crates.io](https://crates.io/crates/qota). [github.com/pr656d/qota](https://github.com/pr656d/qota)
-- **Podium** — AI-agnostic local orchestration system coordinating Claude Code, Codex, Antigravity, and opencode crews against a Linear-backed task board, with isolated worktrees and explicit review gates.
+- **Podium** — AI-agnostic local orchestration system coordinating Claude Code, Codex, Antigravity, and Opencode crews against a Linear-backed task board, with isolated worktrees and explicit review gates.
 - **agy-swap** — Python CLI/TUI for switching Antigravity accounts without logging out and monitoring Gemini quota. [github.com/pr656d/agy-swap](https://github.com/pr656d/agy-swap)
-- **open-connector** — Active upstream contributor; fixed its dashboard catalog bottleneck with slimmer responses, caching, lazy schema loading, scoped gzip, and ETag revalidation, reducing provider-catalog bytes on the wire by about 50×. [Issue #172](https://github.com/oomol-lab/open-connector/issues/172)
+- **open-connector** — Active upstream contributor; fixed its dashboard catalog bottleneck with slimmer responses, caching, lazy schema loading, scoped gzip, and ETag revalidation, reducing provider-catalog bytes on the wire by about 50×. [Issue #172](https://github.com/oomol-lab/open-connector/issues/172) · [all contributions](https://github.com/oomol-lab/open-connector/pulls?q=is%3Apr+author%3Apr656d)
 - **SSNeumorphicKit** — Authored and open-sourced Kotlin neumorphic UI library for Android. [github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit](https://github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit)
 
 ---

@@ -117,11 +117,14 @@ function Resume() {
             <ul className="mt-1.5 space-y-1 text-[12px] leading-snug text-neutral-800">
               <li>
                 <span className="font-semibold">QOTA</span> · Rust CLI/TUI for multi-provider,
-                multi-account AI quota telemetry · crates.io
+                multi-account AI quota telemetry ·{" "}
+                <a href="https://crates.io/crates/qota" target="_blank" rel="noopener noreferrer" className="underline">
+                  crates.io
+                </a>
               </li>
               <li>
                 <span className="font-semibold">Podium</span> · Linear-backed local orchestration
-                for Claude Code, Codex, Antigravity, and opencode crews
+                for Claude Code, Codex, Antigravity, and Opencode crews
               </li>
               <li>
                 <span className="font-semibold">agy-swap</span> · Python CLI/TUI for Antigravity
@@ -129,7 +132,15 @@ function Resume() {
               </li>
               <li>
                 <span className="font-semibold">open-connector</span> · upstream dashboard fix:
-                about 50× fewer provider-catalog bytes on the wire
+                about 50× fewer provider-catalog bytes on the wire ·{" "}
+                <a
+                  href="https://github.com/oomol-lab/open-connector/pulls?q=is%3Apr+author%3Apr656d"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  all contributions
+                </a>
               </li>
             </ul>
           </div>

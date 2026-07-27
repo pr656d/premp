@@ -259,8 +259,8 @@ export const UsesBody: FC = () => (
         ["Android", "Android Studio"],
       ]} />
       <UsesSection title="AI" items={[
-        ["Primary", "Claude Code"],
-        ["Also", "Antigravity / Gemini CLI · OpenAI Codex CLI · opencode"],
+        ["Primary", "Claude Code · Codex"],
+        ["Also", "Antigravity · Opencode · OpenRouter for model routing"],
         ["Local", "MLX for local LLMs"],
       ]} />
       <UsesSection title="Android" items={[
@@ -296,7 +296,7 @@ export const NowBody: FC = () => (
     <p className="mt-4 text-[var(--ink-muted)]">I'm dad to a 16-month-old girl, and she gets the best of my time — has since before she was born.</p>
     <p className="mt-4 text-[var(--ink-muted)]">The question: what can AI actually <em>do</em>, and what can't it? Not the marketing answer — the real one. I've built my own agent orchestration setup (a crew of CLI agents working in parallel worktrees, in my style, my way) and I use it every day to find the edges.</p>
     <p className="mt-4 text-[var(--ink-muted)]">My take so far: AI is a tool, like compilers were. Nobody writes machine code anymore, but it's still humans who built the languages and decide what to compile. AI removes manual work; it doesn't remove the need for the human who knows what problem is being solved. That part isn't going anywhere.</p>
-    <p className="mt-4 text-[var(--ink-muted)]">On the workbench: redesigning this very website — the dot-grid notebook you're reading right now — and building an agent-agnostic orchestration setup: a crew of AI agents (Claude Code, Codex, Gemini, opencode) sharing one configuration of instructions, skills, and tools, dispatched in parallel and working my way.</p>
+    <p className="mt-4 text-[var(--ink-muted)]">On the workbench: redesigning this very website — the dot-grid notebook you're reading right now — and building an agent-agnostic orchestration setup: a crew of AI agents (Claude Code, Codex, Antigravity, Opencode) sharing one configuration of instructions, skills, and tools, dispatched in parallel and working my way.</p>
     <p className="mt-4 text-[var(--ink-muted)]">Also: relearning data structures properly, and riding the GT 650 when the weather agrees.</p>
     <div className="mt-10 flex items-center gap-3">
       <Doodle kind="star" className="h-5 w-5 text-[var(--red-pencil)]" />

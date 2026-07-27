@@ -56,8 +56,8 @@ function Uses() {
           ["Android", "Android Studio"],
         ]} />
         <Section title="AI" items={[
-          ["Primary", "Claude Code"],
-          ["Also", "Antigravity / Gemini CLI · OpenAI Codex CLI · opencode"],
+          ["Primary", "Claude Code · Codex"],
+          ["Also", "Antigravity · Opencode · OpenRouter for model routing"],
           ["Local", "MLX for local LLMs"],
         ]} />
         <Section title="Android" items={[

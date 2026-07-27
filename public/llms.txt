@@ -19,11 +19,12 @@ His view of AI is practical: it shortens the path from an idea to a working tool
 - QOTA: Open-source Rust CLI and Ratatui terminal dashboard for live AI quota telemetry across Claude, Codex, and Antigravity. Supports multiple accounts, provider quota windows, reset times, headroom, and independent account errors. Published on crates.io.
   - Source: https://github.com/pr656d/qota
   - Package: https://crates.io/crates/qota
-- Podium: AI-agnostic local orchestration system coordinating Claude Code, Codex, Antigravity, and opencode crews against a Linear-backed task board. Tasks run in isolated git worktrees with written policy, tests, human review, and explicit merge gates.
+- Podium: AI-agnostic local orchestration system coordinating Claude Code, Codex, Antigravity, and Opencode crews against a Linear-backed task board. Tasks run in isolated git worktrees with written policy, tests, human review, and explicit merge gates.
 - agy-swap: Python CLI and terminal UI for switching between multiple Antigravity accounts without logging out, plus live Gemini quota tracking.
   - Source: https://github.com/pr656d/agy-swap
 - open-connector: Prem is an active upstream contributor. His dashboard performance work slimmed and cached immutable catalog data, lazy-loaded action schemas, added scoped gzip, and added ETag revalidation. The measured provider-catalog transfer dropped by about 50×.
   - Contribution: https://github.com/oomol-lab/open-connector/issues/172
+  - All contributions: https://github.com/oomol-lab/open-connector/pulls?q=is%3Apr+author%3Apr656d
 - SSNeumorphicKit: Open-source Kotlin neumorphic UI library for Android authored by Prem.
   - Source: https://github.com/SimformSolutionsPvtLtd/SSAndroidNeumorphicKit
 

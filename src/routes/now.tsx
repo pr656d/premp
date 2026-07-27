@@ -56,7 +56,7 @@ function Now() {
         AI has given me something more useful than a reason to talk about AI: room to build things
         that had been sitting in my head. I shipped <span className="marker-hl">Podium</span>, my
         local, AI-agnostic orchestration system. Linear holds the work; Claude Code, Codex,
-        Antigravity, and opencode take isolated tasks; git worktrees, written policy, tests, and
+        Antigravity, and Opencode take isolated tasks; git worktrees, written policy, tests, and
         human review keep the output honest.
       </p>
 
@@ -71,7 +71,16 @@ function Now() {
           QOTA
         </a>
         , an open-source Rust CLI and terminal dashboard for quota telemetry across providers and
-        accounts, now published on crates.io; and{" "}
+        accounts, now published on{" "}
+        <a
+          href="https://crates.io/crates/qota"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pen-underline hover:text-[var(--link)]"
+        >
+          crates.io
+        </a>
+        ; and{" "}
         <a
           href="https://github.com/pr656d/agy-swap"
           target="_blank"
@@ -104,7 +113,16 @@ function Now() {
           diagnosing and fixing its dashboard catalog bottleneck
         </a>
         , cutting the provider payload on the wire by about 50× while removing repeated catalog
-        fetches.
+        fetches. See{" "}
+        <a
+          href="https://github.com/oomol-lab/open-connector/pulls?q=is%3Apr+author%3Apr656d"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="pen-underline hover:text-[var(--link)]"
+        >
+          all my open-connector contributions
+        </a>
+        .
       </p>
 
       <p className="mt-4 text-[var(--ink-muted)]">
