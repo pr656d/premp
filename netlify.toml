@@ -12,3 +12,60 @@
   # VITE_POSTHOG_KEY is a client-side ingest key shipped in the browser bundle
   # by design, so Netlify secret scanning must skip it (build fails otherwise).
   SECRETS_SCAN_OMIT_KEYS = "VITE_POSTHOG_KEY"
+
+# Legacy Hugo site 301 redirects (pre-2026-07-17 redesign)
+[[redirects]]
+  from = "/images/avatar.jpg"
+  to = "/about"
+  status = 301
+
+[[redirects]]
+  from = "/posts/*"
+  to = "/projects"
+  status = 301
+
+[[redirects]]
+  from = "/posts"
+  to = "/projects"
+  status = 301
+
+[[redirects]]
+  from = "/categories/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/categories"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/tags/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/tags"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/index.xml"
+  to = "/sitemap.xml"
+  status = 301
+
+[[redirects]]
+  from = "/en/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/en"
+  to = "/"
+  status = 301
+
