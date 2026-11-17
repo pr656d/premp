@@ -73,5 +73,13 @@ Mirrors the nyomipatel/tiny-artist-studio setup:
 ## Commands
 - Local dev: `bun install && bun run dev`
 - Build: `bun run build`
+- **Before every PR: `bun run check`** (types, lint, tests, build). It must
+  pass; quote its output in the PR. Checks run locally, not in CI.
+- Tests: `bun run test` (Vitest + jsdom, `tests/`). They render the real
+  router: cover → contents → pages, prev/next and keyboard/tap page turns,
+  404, SEO meta + sitemap, the copy rules above, and the SSR error page.
+  A new page needs its sitemap entry and head meta or the check fails.
+- Formatting: `bun run format` (Prettier). Not part of lint, because Lovable
+  commits unformatted code.
 - Regenerate per-CLI configs: `~/ai-config/skills/agent-agnostic-config/scripts/project-setup.sh ~/Documents/Projects/premp`
 - Reflect Lovable → preview branch: `/reflect-premp`
